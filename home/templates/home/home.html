@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 
-<div class="container home">
+<div class="container main home">
     <section>
         <p class="section__heading">Услуги</p>
         <div class="home__services">
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="tabs-content">
-                <div class="tab-content" data-tab-id="0" style="opacity: 1; transform: translateX(0);">
+                <div class="tab-content active" data-tab-id="0" style="opacity: 1; transform: translateX(0);">
                     <div class="upper">
                         <div class="home__service-header">
                             <p class="home__service-heading"><span class="font-for-numbers">+100</span> сайтов</p>
@@ -176,14 +176,14 @@
                     <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
                 </div>
                 <div class="rect-slide swiper-slide">
-                    <p class="rect-slide-heading">Помощь</p>
+                    <p class="rect-slide-heading">Услуги</p>
                     <hr>
-                    <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
+                    <p class="rect-slide-text">Мы предлагаем широкий спектр услуг, у нас вы найдете, подходящие решения</p>
                 </div>
                 <div class="rect-slide swiper-slide">
-                    <p class="rect-slide-heading">Помощь</p>
+                    <p class="rect-slide-heading">Время</p>
                     <hr>
-                    <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
+                    <p class="rect-slide-text">Позвоните нам и сэкономьте свое время, мы подберем для вас идеальное решение</p>
                 </div>
                 <div class="rect-slide swiper-slide">
                     <p class="rect-slide-heading">Помощь</p>
@@ -199,14 +199,14 @@
                 <img src="{% static 'images/right-black-arrow.svg' %}" alt="">
             </div>
         </div>
-        <div class="swiper circle-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">УСЛУГИ</div>
-                <div class="swiper-slide">ВРЕМЯ</div>
-                <div class="swiper-slide">ПОМОЩЬ</div>
-                <div class="swiper-slide">ПОМОЩЬ</div>
-                <div class="swiper-slide">ПОМОЩЬ</div>
-                <div class="swiper-slide">ПОМОЩЬ</div>
+        <div class="round-slider">
+            <div class="round-slider__image-wrapper">
+                <img class="round-slider__image" src="{% static 'images/services-round-slider.png' %}" alt="">
+            </div>
+            <div class="round-slider__request-button">
+                <button class="violet-button">
+                    Оставить заявку
+                </button>
             </div>
         </div>
     </section>
@@ -258,61 +258,109 @@
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
-                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
                 </div>
                 <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
                     <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-2.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-3.png' %}" alt="">
                 </div>
             </div>
         </div>
@@ -621,55 +669,79 @@
                     </div>
                 </div>
             </div>
+            <form class="form-block">
+                <div class="two-columned-row">
+                    <input type="text" placeholder="Ваше имя">
+                    <input type="text" placeholder="+7">
+                </div>
+                <textarea name="" id="" rows="3" placeholder="Кратко опишите свой вопрос">
+                </textarea>
+                <div class="buttons-row">
+                    <div class="checkbox">
+                        <div class="checkbox-wrap">
+                            <input checked type="checkbox" id="efficiency" name="efficiency" required>
+                        </div>
+                        <div>
+                            <label for="efficiency" class="checkbox-label">
+                                Согласие на обработку персональных данных
+                            </label>
+                        </div>
+                    </div>
+                    <button class="violet-button">Оставить заявку</button>
+                </div>
+            </form>
         </div>
     </section>
 </div>
 
 
-<!-- Tab menu -->
+<!-- Услуги -->
 <script defer>
     let activeIndex = 0;
 
     function changeTab(index) {
-        if (index === activeIndex) return;
+    if (index === activeIndex) return;
 
-        const current = document.querySelector(`.home__services .tab-content[data-tab-id="${activeIndex}"]`);
-        const next = document.querySelector(`.home__services .tab-content[data-tab-id="${index}"]`);
-        
-        if (!next) return;
+    const current = document.querySelector(`.home__services .tab-content[data-tab-id="${activeIndex}"]`);
+    const next = document.querySelector(`.home__services .tab-content[data-tab-id="${index}"]`);
+    
+    if (!next) return;
 
-        document.querySelectorAll('.home__services .tab').forEach(tab => 
-            tab.classList.toggle('active', tab.dataset.tabId == index)
-        );
+    document.querySelectorAll('.home__services .tab').forEach(tab => 
+        tab.classList.toggle('active', tab.dataset.tabId == index)
+    );
 
-        next.querySelectorAll(".home__services .lower p").forEach(p => 
-            p.classList.toggle('active', p.dataset.tabId == index)
-        );
+    next.querySelectorAll(".home__services .lower p").forEach(p => 
+        p.classList.toggle('active', p.dataset.tabId == index)
+    );
 
-        gsap.to(current, { 
-            opacity: 0, 
-            x: "-100%", 
-            duration: 0.6,
-            onComplete: () => current.classList.remove('active')
-        });
+    gsap.to(current, { 
+        opacity: 0, 
+        duration: 0.5,
+        onComplete: () => {
+            current.style.display = "none";
+        }
+    });
 
-        gsap.fromTo(next, 
-            { opacity: 0, x: "100%" }, 
-            { 
-                opacity: 1, 
-                x: "0", 
-                duration: 0.6,
-                onStart: () => next.classList.add('active')
-            }
-        );
+    next.style.display = "flex";
+    gsap.fromTo(next, 
+        { opacity: 0 }, 
+        { 
+            opacity: 1, 
+            duration: 0.5
+        }
+    );
 
-        activeIndex = index;
-    }
+    activeIndex = index;
+}
 </script>
 
-<!-- Круговой слайдер -->
+
+<!-- Услуги, круговой слайдер -->
 <script defer>
 document.addEventListener("DOMContentLoaded", function () {
+    let rotationAngle = 0; 
+
     const mainSLider = new Swiper('.rounded-slides.swiper', {
         loop: true, 
         slidesPerView: 3,
@@ -688,40 +760,70 @@ document.addEventListener("DOMContentLoaded", function () {
             modifier: 1,
             slideShadows: true, 
         },
+        on: {
+            slideNextTransitionStart: function () {
+                rotationAngle -= 60; 
+                rotateImage();
+            },
+            slidePrevTransitionStart: function () {
+                rotationAngle += 60;
+                rotateImage();
+            }
+        }
     });
 
-    const circleSlider = new Swiper('.circle-slider', {
-        loop: true,
-        slidesPerView: 3,
-        centeredSlides: true,
-        spaceBetween: 10,
-        effect: 'coverflow',
-        coverflowEffect: {
-            rotate: 1,
-            stretch: 6,
-            depth: 40,
-            modifier: 10,
-        },
-    });
-
-    circleSlider.controller.control = mainSLider; 
-    mainSLider.controller.control = circleSlider;
+    function rotateImage() {
+        const image = document.querySelector('.round-slider__image');
+        if (image) {
+            image.style.transform = `rotate(${rotationAngle}deg)`;
+        }
+    }
 });
 </script>
 
 <!-- Клиенты -->
 <script defer>
-    var swiper = new Swiper('.clients-cards', {
-      slidesPerView: 8,
-      spaceBetween: 30,
-      grid: {
-        rows: 2,
-      },
-    //   autoplay: {
-    //     delay: 5000,
-    //     disableOnInteraction: true,
-    // },
+    document.addEventListener('DOMContentLoaded', () => {
+    const clientsSection = document.querySelector('.clients-cards');
+
+    // gsap.set('.clients-cards', { x: '100vw', opacity: 0 });
+    
+    if (!clientsSection) return; 
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const tl = gsap.timeline({
+                    defaults: { ease: "power3.out" }
+                });
+                clientsSection.classList.add('active');
+                tl.from('.clients-cards', {
+                    x: '100vw',
+                    duration: 1, 
+                    opacity: 1,
+                })
+
+                observer.unobserve(entry.target);
+                var swiper = new Swiper('.clients-cards', {
+                    slidesPerView: 8,
+                    spaceBetween: 30,
+                    grid: {
+                        rows: 2,
+                    },
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: true,
+                    },
+                    });
+            }
+        });
+    }, {
+        threshold: 0.2, 
+        rootMargin: '0px 0px -50px 0px' 
     });
+
+    observer.observe(clientsSection);
+});
 </script>
 
 <!-- Отзывы -->
@@ -741,52 +843,53 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(reviews)
 </script>
 
+<!-- Технологии -->
 <script defer>
-    document.addEventListener("DOMContentLoaded", () => {
-        const techCards = document.querySelectorAll(".technology-small-card");
-        const techNameHeading = document.querySelector(".technology-name-heading");
-        const techDescription = document.querySelector(".technology-description");
+document.addEventListener("DOMContentLoaded", () => {
+    const techCards = document.querySelectorAll(".technology-small-card");
+    const techNameHeading = document.querySelector(".technology-name-heading");
+    const techDescription = document.querySelector(".technology-description");
 
-        const techData = {
-            "HTML": "HTML (HyperText Markup Language) — это стандартный язык разметки, используемый для создания веб-страниц. Он позволяет структурировать контент, определяя различные элементы, такие как заголовки, абзацы, списки, изображения и ссылки.",
-            "JavaScript": "JavaScript — это язык программирования, который позволяет делать веб-страницы интерактивными. Он широко используется для создания динамических элементов, анимаций и работы с серверами.",
-            "CSS": "CSS (Cascading Style Sheets) — это язык стилей, который используется для оформления веб-страниц. Он позволяет задавать цвета, шрифты, расположение элементов и адаптивность.",
-            "1С": "1С — это российская платформа для автоматизации бухгалтерии, управления бизнесом и других задач. Используется во многих компаниях для ведения учета.",
-            "C++": "C++ — это мощный язык программирования, используемый для разработки игр, системного ПО и высокопроизводительных приложений.",
-            "Python": "Python — это универсальный язык программирования, известный своей простотой и широким применением в веб-разработке, анализе данных и машинном обучении.",
-            "Adobe": "Adobe предлагает различные программные решения для графического дизайна, видеомонтажа и веб-разработки, включая Photoshop, Illustrator и Premiere Pro.",
-            "Figma": "Figma — это инструмент для совместного дизайна интерфейсов, который позволяет дизайнерам и разработчикам работать над проектами в режиме реального времени.",
-            "Яндекс Метрика": "Яндекс Метрика — это инструмент аналитики, который позволяет отслеживать поведение пользователей на сайте и анализировать эффективность маркетинговых кампаний."
-        };
+    const techData = {
+        "HTML": "HTML (HyperText Markup Language) — это стандартный язык разметки, используемый для создания веб-страниц. Он позволяет структурировать контент, определяя различные элементы, такие как заголовки, абзацы, списки, изображения и ссылки.",
+        "JavaScript": "JavaScript — это язык программирования, который позволяет делать веб-страницы интерактивными. Он широко используется для создания динамических элементов, анимаций и работы с серверами.",
+        "CSS": "CSS (Cascading Style Sheets) — это язык стилей, который используется для оформления веб-страниц. Он позволяет задавать цвета, шрифты, расположение элементов и адаптивность.",
+        "1С": "1С — это российская платформа для автоматизации бухгалтерии, управления бизнесом и других задач. Используется во многих компаниях для ведения учета.",
+        "C++": "C++ — это мощный язык программирования, используемый для разработки игр, системного ПО и высокопроизводительных приложений.",
+        "Python": "Python — это универсальный язык программирования, известный своей простотой и широким применением в веб-разработке, анализе данных и машинном обучении.",
+        "Adobe": "Adobe предлагает различные программные решения для графического дизайна, видеомонтажа и веб-разработки, включая Photoshop, Illustrator и Premiere Pro.",
+        "Figma": "Figma — это инструмент для совместного дизайна интерфейсов, который позволяет дизайнерам и разработчикам работать над проектами в режиме реального времени.",
+        "Яндекс Метрика": "Яндекс Метрика — это инструмент аналитики, который позволяет отслеживать поведение пользователей на сайте и анализировать эффективность маркетинговых кампаний."
+    };
 
-        techCards.forEach(card => {
-            card.addEventListener("click", () => {
-                const techName = card.querySelector(".technology-name").textContent.trim();
+    techCards.forEach(card => {
+        card.addEventListener("click", () => {
+            const techName = card.querySelector(".technology-name").textContent.trim();
 
-                techCards.forEach((card) => {
-                    card.classList.remove('active');
-                });
-
-                card.classList.add('active');
-                
-                if (techData[techName]) {
-                    gsap.to([techNameHeading, techDescription], {
-                        opacity: 0,
-                        x: -100,
-                        duration: 0.3,
-                        onComplete: () => {
-                            techNameHeading.textContent = techName;
-                            techDescription.textContent = techData[techName];
-                            gsap.fromTo([techNameHeading, techDescription], 
-                                { opacity: 0, x: 100 }, 
-                                { opacity: 1, x: 0, duration: 0.3 }
-                            );
-                        }
-                    });
-                }
+            techCards.forEach((card) => {
+                card.classList.remove('active');
             });
+
+            card.classList.add('active');
+
+            if (techData[techName]) {
+                gsap.to([techNameHeading, techDescription], {
+                    opacity: 0,
+                    duration: 0.3,
+                    onComplete: () => {
+                        techNameHeading.textContent = techName;
+                        techDescription.textContent = techData[techName];
+                        gsap.to([techNameHeading, techDescription], {
+                            opacity: 1,
+                            duration: 0.3
+                        });
+                    }
+                });
+            }
         });
     });
+});
+
 </script>
 
 
