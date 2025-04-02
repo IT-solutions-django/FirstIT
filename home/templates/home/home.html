@@ -1,0 +1,793 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+1IT
+{% endblock %}
+
+{% block content %} 
+<!-- Gsap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<!-- Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+<div class="container home">
+    <section>
+        <p class="section__heading">Услуги</p>
+        <div class="home__services">
+            <div class="tabs">
+                <div class="tab active" onclick="changeTab(0)" data-tab-id="0">
+                    <p class="tab-name">Программное обеспечение</p>
+                    <p class="tab-number">01</p>
+                </div>
+                <div class="tab" onclick="changeTab(1)" data-tab-id="1">
+                    <p class="tab-name">Сайты</p>
+                    <p class="tab-number">02</p>
+                </div>
+                <div class="tab" onclick="changeTab(2)" data-tab-id="2">
+                    <p class="tab-name">Интернет магазины</p>
+                    <p class="tab-number">03</p>
+                </div>
+                <div class="tab" onclick="changeTab(3)" data-tab-id="3">
+                    <p class="tab-name">SEO Оптимизация</p>
+                    <p class="tab-number">04</p>
+                </div>
+                <div class="tab" onclick="changeTab(4)" data-tab-id="4">
+                    <p class="tab-name">Контекстная реклама</p>
+                    <p class="tab-number">05</p>
+                </div>
+            </div>
+            <div class="tabs-content">
+                <div class="tab-content" data-tab-id="0" style="opacity: 1; transform: translateX(0);">
+                    <div class="upper">
+                        <div class="home__service-header">
+                            <p class="home__service-heading"><span class="font-for-numbers">+100</span> сайтов</p>
+                            <p class="home__service-label">Мы разработали</p>
+                        </div>
+                        <div class="description">
+                            Создаем адаптивные сайты, которые идеально работают на всех устройствах, обеспечивая отличный пользовательский опыт и эффективное онлайн-присутствие вашего бизнеса.
+                        </div>
+                        <div class="home__service-buttons">
+                            <button class="violet-button">Заказать услугу</button>
+                            <button class="gray-button">Все услуги</button>
+                        </div>
+                    </div>
+                    <div class="lower">
+                        <p data-tab-id="0" onclick="changeTab(0)" class="active">01</p>
+                        <p data-tab-id="1" onclick="changeTab(1)">02</p>
+                        <p data-tab-id="2" onclick="changeTab(2)">03</p>
+                        <p data-tab-id="3" onclick="changeTab(3)">04</p>
+                        <p data-tab-id="4" onclick="changeTab(4)">05</p>
+                    </div>
+                    <img class="image" src="{% static 'images/home-service-1.png' %}" alt="">
+                </div>
+                <div class="tab-content" data-tab-id="1">
+                    <div class="upper">
+                        <div class="home__service-header">
+                            <p class="home__service-heading"><span class="font-for-numbers">+100</span> сайтов</p>
+                            <p class="home__service-label">Мы разработали</p>
+                        </div>
+                        <div class="description">
+                            Создаем адаптивные сайты, которые идеально работают на всех устройствах, обеспечивая отличный пользовательский опыт и эффективное онлайн-присутствие вашего бизнеса.
+                        </div>
+                        <div class="home__service-buttons">
+                            <button class="violet-button">Заказать услугу</button>
+                            <button class="gray-button">Все услуги</button>
+                        </div>
+                    </div>
+                    <div class="lower">
+                        <p data-tab-id="0" onclick="changeTab(0)">01</p>
+                        <p data-tab-id="1" onclick="changeTab(1)">02</p>
+                        <p data-tab-id="2" onclick="changeTab(2)">03</p>
+                        <p data-tab-id="3" onclick="changeTab(3)">04</p>
+                        <p data-tab-id="4" onclick="changeTab(4)">05</p>
+                    </div>
+                    <img class="image" src="{% static 'images/home-service-2.png' %}" alt="">
+                </div>
+                <div class="tab-content" data-tab-id="2">
+                    <div class="upper">
+                        <div class="home__service-header">
+                            <p class="home__service-heading"><span class="font-for-numbers">+100</span> сайтов</p>
+                            <p class="home__service-label">Мы разработали</p>
+                        </div>
+                        <div class="description">
+                            Создаем адаптивные сайты, которые идеально работают на всех устройствах, обеспечивая отличный пользовательский опыт и эффективное онлайн-присутствие вашего бизнеса.
+                        </div>
+                        <div class="home__service-buttons">
+                            <button class="violet-button">Заказать услугу</button>
+                            <button class="gray-button">Все услуги</button>
+                        </div>
+                    </div>
+                    <div class="lower">
+                        <p data-tab-id="0" onclick="changeTab(0)">01</p>
+                        <p data-tab-id="1" onclick="changeTab(1)">02</p>
+                        <p data-tab-id="2" onclick="changeTab(2)">03</p>
+                        <p data-tab-id="3" onclick="changeTab(3)">04</p>
+                        <p data-tab-id="4" onclick="changeTab(4)">05</p>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab-id="3">
+                    <div class="upper">
+                        <div class="home__service-header">
+                            <p class="home__service-heading"><span class="font-for-numbers">+100</span> сайтов</p>
+                            <p class="home__service-label">Мы разработали</p>
+                        </div>
+                        <div class="description">
+                            Создаем адаптивные сайты, которые идеально работают на всех устройствах, обеспечивая отличный пользовательский опыт и эффективное онлайн-присутствие вашего бизнеса.
+                        </div>
+                        <div class="home__service-buttons">
+                            <button class="violet-button">Заказать услугу</button>
+                            <button class="gray-button">Все услуги</button>
+                        </div>
+                    </div>
+                    <div class="lower">
+                        <p data-tab-id="0" onclick="changeTab(0)">01</p>
+                        <p data-tab-id="1" onclick="changeTab(1)">02</p>
+                        <p data-tab-id="2" onclick="changeTab(2)">03</p>
+                        <p data-tab-id="3" onclick="changeTab(3)">04</p>
+                        <p data-tab-id="4" onclick="changeTab(4)">05</p>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab-id="4">
+                    <div class="upper">
+                        <div class="home__service-header">
+                            <p class="home__service-heading"><span class="font-for-numbers">+100</span> сайтов</p>
+                            <p class="home__service-label">Мы разработали</p>
+                        </div>
+                        <div class="description">
+                            Создаем адаптивные сайты, которые идеально работают на всех устройствах, обеспечивая отличный пользовательский опыт и эффективное онлайн-присутствие вашего бизнеса.
+                        </div>
+                        <div class="home__service-buttons">
+                            <button class="violet-button">Заказать услугу</button>
+                            <button class="gray-button">Все услуги</button>
+                        </div>
+                    </div>
+                    <div class="lower">
+                        <p data-tab-id="0" onclick="changeTab(0)">01</p>
+                        <p data-tab-id="1" onclick="changeTab(1)">02</p>
+                        <p data-tab-id="2" onclick="changeTab(2)">03</p>
+                        <p data-tab-id="3" onclick="changeTab(3)">04</p>
+                        <p data-tab-id="4" onclick="changeTab(4)">05</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="slides">
+        <div class="rounded-slides swiper">
+            <img class="black-ellipsis" src="{% static 'images/black-ellipsis.svg' %}" alt="">
+            <div class="rect-slides swiper-wrapper">
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Услуги</p>
+                    <hr>
+                    <p class="rect-slide-text">Мы предлагаем широкий спектр услуг, у нас вы найдете, подходящие решения</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Время</p>
+                    <hr>
+                    <p class="rect-slide-text">Позвоните нам и сэкономьте свое время, мы подберем для вас идеальное решение</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Помощь</p>
+                    <hr>
+                    <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Помощь</p>
+                    <hr>
+                    <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Помощь</p>
+                    <hr>
+                    <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Помощь</p>
+                    <hr>
+                    <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
+                </div>
+            </div>
+            <img class="down-black-ellipsis" src="{% static 'images/down-black-ellipsis.svg' %}" alt="">
+            <div class="swiper-button-prev">
+                <img src="{% static 'images/left-black-arrow.svg' %}" alt="">
+            </div>
+            <div class="swiper-button-next">
+                <img src="{% static 'images/right-black-arrow.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="swiper circle-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">УСЛУГИ</div>
+                <div class="swiper-slide">ВРЕМЯ</div>
+                <div class="swiper-slide">ПОМОЩЬ</div>
+                <div class="swiper-slide">ПОМОЩЬ</div>
+                <div class="swiper-slide">ПОМОЩЬ</div>
+                <div class="swiper-slide">ПОМОЩЬ</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <p class="section__heading">Кейсы</p>
+        <div class="cases">
+            <div class="case">
+                <img class="background" src="{% static 'images/case-example-1.png' %}" alt="">
+                <img class="logo" src="{% static 'images/case-logo-example-1.png' %}" alt="">
+            </div>
+            <div class="case">
+                <img src="{% static 'images/case-example-2.png' %}" alt="">
+            </div>
+            <div class="case">
+                <img src="{% static 'images/case-example-3.png' %}" alt="">
+            </div>
+            <div class="case">
+                <img src="{% static 'images/case-example-1.png' %}" alt="">
+                <img class="logo" src="{% static 'images/case-logo-example-1.png' %}" alt="">
+            </div>
+            <div class="case">
+                <img src="{% static 'images/case-example-2.png' %}" alt="">
+            </div>
+            <div class="case">
+                <img src="{% static 'images/case-example-3.png' %}" alt="">
+            </div>
+            <div class="case">
+                <img src="{% static 'images/case-example-1.png' %}" alt="">
+                <img class="logo" src="{% static 'images/case-logo-example-1.png' %}" alt="">
+            </div>
+            <div class="case">
+                <img src="{% static 'images/case-example-2.png' %}" alt="">
+            </div>
+        </div>
+        <div class="all-cases">
+            <button class="violet-button">Все кейсы</button>
+        </div>
+    </section>
+
+    <section class="">
+        <p class="section__heading">Клиенты</p>
+        <div class="clients-description">
+            <p>Компании абсолютно из разных сфер, которые доверили нам автоматизацию своего бизнеса и повысили конверсию клиентовмабсолютно из разных сфер</p>
+        </div>
+        <div class="clients-cards swiper">
+            <div class="swiper-wrapper">
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+                <div class="client-card swiper-slide">
+                    <img src="{% static 'images/client-logo-example-1.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews__section">
+        <p class="section__heading">Отзывы</p>
+        <div class="reviews-platforms">
+            <div class="review-platform">
+                <img class="platform-logo" src="{% static 'images/2gis-icon.svg' %}" alt="">
+                <div class="rating">
+                    <p class="font-for-numbers">4.9</p>
+                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                </div>
+                <div class="divider"></div>
+                <div class="reviews-count">
+                    <p><span class="font-for-numbers">243</span> отзыва</p>
+                </div>
+            </div>
+            <div class="review-platform">
+                <img class="platform-logo" src="{% static 'images/vl-icon.svg' %}" alt="">
+                <div class="rating">
+                    <p class="font-for-numbers">4.9</p>
+                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                </div>
+                <div class="divider"></div>
+                <div class="reviews-count">
+                    <p><span class="font-for-numbers">243</span> отзыва</p>
+                </div>
+            </div>
+            <div class="review-platform">
+                <img class="platform-logo" src="{% static 'images/google-map-icon.png' %}" alt="">
+                <div class="rating">
+                    <p class="font-for-numbers">4.9</p>
+                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                </div>
+                <div class="divider"></div>
+                <div class="reviews-count">
+                    <p><span class="font-for-numbers">243</span> отзыва</p>
+                </div>
+            </div>
+        </div>
+        <div class="reviews swiper">
+            <div class="swiper-wrapper">
+                <div class="review swiper-slide">
+                    <div class="review-header">
+                        <div class="review-company">
+                            <img class="review-company-logo" src="{% static 'images/review-logo-example.svg' %}" alt="">
+                            <div class="review-company-info">
+                                <p class="company-name">Школа дизайна</p>
+                                <div class="company-stars">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-date">21.03.2025</p>
+                    </div>
+                    <div class="review-text">
+                        Мы обратились в "Первую IT компанию" для создания сайта нашей школы дизайна, и остались очень довольны результатом! Команда профессионалов внимательно выслушала наши идеи и предложила креативные решения.
+                        Сайт получился стильным, удобным и адаптивным, что позволяет пользователям легко им пользоваться на любых устройствах. Быстрая загрузка страниц и хорошая SEO-оптимизация уже привели к увеличению заявок на курсы.
+                        Рекомендуем "Первую IT компанию" как надежного партнера для разработки сайтов!
+                    </div>
+                </div>
+                <div class="review swiper-slide">
+                    <div class="review-header">
+                        <div class="review-company">
+                            <img class="review-company-logo" src="{% static 'images/review-logo-example.svg' %}" alt="">
+                            <div class="review-company-info">
+                                <p class="company-name">Школа дизайна</p>
+                                <div class="company-stars">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-date">21.03.2025</p>
+                    </div>
+                    <div class="review-text">
+                        Мы обратились в "Первую IT компанию" для создания сайта нашей школы дизайна, и остались очень довольны результатом! Команда профессионалов внимательно выслушала наши идеи и предложила креативные решения.
+                        Сайт получился стильным, удобным и адаптивным, что позволяет пользователям легко им пользоваться на любых устройствах. Быстрая загрузка страниц и хорошая SEO-оптимизация уже привели к увеличению заявок на курсы.
+                        Рекомендуем "Первую IT компанию" как надежного партнера для разработки сайтов!
+                    </div>
+                </div>
+                <div class="review swiper-slide">
+                    <div class="review-header">
+                        <div class="review-company">
+                            <img class="review-company-logo" src="{% static 'images/review-logo-example.svg' %}" alt="">
+                            <div class="review-company-info">
+                                <p class="company-name">Школа дизайна</p>
+                                <div class="company-stars">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-date">21.03.2025</p>
+                    </div>
+                    <div class="review-text">
+                        Мы обратились в "Первую IT компанию" для создания сайта нашей школы дизайна, и остались очень довольны результатом! Команда профессионалов внимательно выслушала наши идеи и предложила креативные решения.
+                        Сайт получился стильным, удобным и адаптивным, что позволяет пользователям легко им пользоваться на любых устройствах. Быстрая загрузка страниц и хорошая SEO-оптимизация уже привели к увеличению заявок на курсы.
+                        Рекомендуем "Первую IT компанию" как надежного партнера для разработки сайтов!
+                    </div>
+                </div>
+                <div class="review swiper-slide">
+                    <div class="review-header">
+                        <div class="review-company">
+                            <img class="review-company-logo" src="{% static 'images/review-logo-example.svg' %}" alt="">
+                            <div class="review-company-info">
+                                <p class="company-name">Школа дизайна</p>
+                                <div class="company-stars">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                    <img src="{% static 'images/star-icon.svg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-date">21.03.2025</p>
+                    </div>
+                    <div class="review-text">
+                        Мы обратились в "Первую IT компанию" для создания сайта нашей школы дизайна, и остались очень довольны результатом! Команда профессионалов внимательно выслушала наши идеи и предложила креативные решения.
+                        Сайт получился стильным, удобным и адаптивным, что позволяет пользователям легко им пользоваться на любых устройствах. Быстрая загрузка страниц и хорошая SEO-оптимизация уже привели к увеличению заявок на курсы.
+                        Рекомендуем "Первую IT компанию" как надежного партнера для разработки сайтов!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-prev">
+            <img src="{% static 'images/left-white-arrow.svg' %}" alt="">
+        </div>
+        <div class="swiper-button-next">
+            <img src="{% static 'images/right-white-arrow.svg' %}" alt="">
+        </div>
+        <img class="background-label" src="{% static 'images/background-label.png' %}" alt="">
+        <div class="swiper-pagination"></div>
+    </section>
+
+    <section class="about-section">
+        <p class="section__heading">О компании</p>
+        <div class="about__section">
+            <div class="first-column">
+                <p class="heading">первая IT компания</p>
+                <div class="text">
+                    Команда профессионалов, специализирующаяся на разработке инновационных программных решений для бизнеса. 
+                    <br>
+                    <br>
+                    Наша цель — помочь вам оптимизировать процессы и достичь новых высот с помощью передовых технологий. Мы гордимся индивидуальным подходом к каждому клиенту и готовы предложить решения, соответствующие вашим уникальным потребностям. 
+                </div>
+            </div>
+            <div class="second-column">
+                <p class="heading">Мы в соцсетях</p>
+                <div class="text">
+                    Следите за нами, чтобы быть в курсе последних новостей, акций и интересных событий! 
+                </div>
+            </div>
+        </div>
+        <img class="orbit" src="{% static 'images/orbit.png' %}" alt="">
+    </section>
+
+    <section>
+        <p class="section__heading">Наши сотрудники</p>
+        <div class="workers-cards">
+            <div class="worker-card">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/worker-example.png' %}" alt="">
+                </div>
+                <div class="worker-info">
+                    <p class="worker-department">Маркетинг</p>
+                    <div class="worker-name-and-role">
+                        <p class="worker-name">Иванов Иван</p>
+                        <p class="worker-role">Руководитель отдела Маркетинга</p>
+                    </div>
+                </div>
+            </div>
+            <div class="worker-card">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/worker-example.png' %}" alt="">
+                </div>
+                <div class="worker-info">
+                    <p class="worker-department">Маркетинг</p>
+                    <div class="worker-name-and-role">
+                        <p class="worker-name">Иванов Иван</p>
+                        <p class="worker-role">Руководитель отдела Маркетинга</p>
+                    </div>
+                </div>
+            </div>
+            <div class="worker-card">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/worker-example.png' %}" alt="">
+                </div>
+                <div class="worker-info">
+                    <p class="worker-department">Маркетинг</p>
+                    <div class="worker-name-and-role">
+                        <p class="worker-name">Иванов Иван</p>
+                        <p class="worker-role">Руководитель отдела Маркетинга</p>
+                    </div>
+                </div>
+            </div>
+            <div class="worker-card">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/worker-example.png' %}" alt="">
+                </div>
+                <div class="worker-info">
+                    <p class="worker-department">Маркетинг</p>
+                    <div class="worker-name-and-role">
+                        <p class="worker-name">Иванов Иван</p>
+                        <p class="worker-role">Руководитель отдела Маркетинга</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <p class="section__heading">Технологии</p>
+        <div class="technologies__section">
+            <div class="technologies-list">
+                <div class="technology-small-card active">
+                    <p class="technology-name">HTML</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name">JavaScript</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name violet">CSS</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name">1С</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name">C++</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name violet">Python</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name">1С</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name">C++</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name">Adobe</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name violet">Figma</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name">Яндекс Метрика</p>
+                </div>
+                <div class="technology-small-card">
+                    <p class="technology-name violet">HTML</p>
+                </div>
+            </div>
+            <div class="technology-info">
+                <div class="technology-name-heading">
+                    HTML
+                </div>
+                <div class="technology-description">
+                    HTML (HyperText Markup Language) — это стандартный язык разметки, используемый для создания веб-страниц. Он позволяет структурировать контент, определяя различные элементы, такие как заголовки, абзацы, списки, изображения и ссылки.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="request__section">
+            <div class="text-block">
+                <div class="leave-request">
+                    <p class="heading">Оставьте заявку</p>
+                    <p class="text">Вы хотите стать нашим партнером или обсудить возможности совместной работы? Заполните форму ниже, и мы свяжемся с вами в кратчайшие сроки. Мы открыты для новых идей и готовы к сотрудничеству!</p>
+                </div>
+                <div class="contacts">
+                    <div class="header">
+                        <p class="heading">Контакты</p>
+                        <div class="social-links">
+                            <img src="{% static 'images/whatsapp.svg' %}" alt="">
+                            <img src="{% static 'images/vk-icon.svg' %}" alt="">
+                            <img src="{% static 'images/telegram.svg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="contact-data">
+                        <div class="column">
+                            <img src="{% static 'images/address-icon.svg' %}" alt="">
+                            <p>г. Владивосток, ул. Портовая 13 </p>
+                        </div>
+                        <div class="column">
+                            <img src="{% static 'images/phone-icon.svg' %}" alt="">
+                            <p>+7 914 888 123</p>
+                        </div>
+                        <div class="column">
+                            <img src="{% static 'images/dog.svg' %}" alt="">
+                            <p>pervayaIT@mail.ru</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- Tab menu -->
+<script defer>
+    let activeIndex = 0;
+
+    function changeTab(index) {
+        if (index === activeIndex) return;
+
+        const current = document.querySelector(`.home__services .tab-content[data-tab-id="${activeIndex}"]`);
+        const next = document.querySelector(`.home__services .tab-content[data-tab-id="${index}"]`);
+        
+        if (!next) return;
+
+        document.querySelectorAll('.home__services .tab').forEach(tab => 
+            tab.classList.toggle('active', tab.dataset.tabId == index)
+        );
+
+        next.querySelectorAll(".home__services .lower p").forEach(p => 
+            p.classList.toggle('active', p.dataset.tabId == index)
+        );
+
+        gsap.to(current, { 
+            opacity: 0, 
+            x: "-100%", 
+            duration: 0.6,
+            onComplete: () => current.classList.remove('active')
+        });
+
+        gsap.fromTo(next, 
+            { opacity: 0, x: "100%" }, 
+            { 
+                opacity: 1, 
+                x: "0", 
+                duration: 0.6,
+                onStart: () => next.classList.add('active')
+            }
+        );
+
+        activeIndex = index;
+    }
+</script>
+
+<!-- Круговой слайдер -->
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+    const mainSLider = new Swiper('.rounded-slides.swiper', {
+        loop: true, 
+        slidesPerView: 3,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        spaceBetween: 53, 
+        mousewheel: {
+            sensitivity: 1
+        }, 
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 300,
+            modifier: 1,
+            slideShadows: true, 
+        },
+    });
+
+    const circleSlider = new Swiper('.circle-slider', {
+        loop: true,
+        slidesPerView: 3,
+        centeredSlides: true,
+        spaceBetween: 10,
+        effect: 'coverflow',
+        coverflowEffect: {
+            rotate: 1,
+            stretch: 6,
+            depth: 40,
+            modifier: 10,
+        },
+    });
+
+    circleSlider.controller.control = mainSLider; 
+    mainSLider.controller.control = circleSlider;
+});
+</script>
+
+<!-- Клиенты -->
+<script defer>
+    var swiper = new Swiper('.clients-cards', {
+      slidesPerView: 8,
+      spaceBetween: 30,
+      grid: {
+        rows: 2,
+      },
+    //   autoplay: {
+    //     delay: 5000,
+    //     disableOnInteraction: true,
+    // },
+    });
+</script>
+
+<!-- Отзывы -->
+<script defer>
+    const reviews = new Swiper('.reviews.swiper', {
+        slidesPerView: 1,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }, 
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+    console.log(reviews)
+</script>
+
+<script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+        const techCards = document.querySelectorAll(".technology-small-card");
+        const techNameHeading = document.querySelector(".technology-name-heading");
+        const techDescription = document.querySelector(".technology-description");
+
+        const techData = {
+            "HTML": "HTML (HyperText Markup Language) — это стандартный язык разметки, используемый для создания веб-страниц. Он позволяет структурировать контент, определяя различные элементы, такие как заголовки, абзацы, списки, изображения и ссылки.",
+            "JavaScript": "JavaScript — это язык программирования, который позволяет делать веб-страницы интерактивными. Он широко используется для создания динамических элементов, анимаций и работы с серверами.",
+            "CSS": "CSS (Cascading Style Sheets) — это язык стилей, который используется для оформления веб-страниц. Он позволяет задавать цвета, шрифты, расположение элементов и адаптивность.",
+            "1С": "1С — это российская платформа для автоматизации бухгалтерии, управления бизнесом и других задач. Используется во многих компаниях для ведения учета.",
+            "C++": "C++ — это мощный язык программирования, используемый для разработки игр, системного ПО и высокопроизводительных приложений.",
+            "Python": "Python — это универсальный язык программирования, известный своей простотой и широким применением в веб-разработке, анализе данных и машинном обучении.",
+            "Adobe": "Adobe предлагает различные программные решения для графического дизайна, видеомонтажа и веб-разработки, включая Photoshop, Illustrator и Premiere Pro.",
+            "Figma": "Figma — это инструмент для совместного дизайна интерфейсов, который позволяет дизайнерам и разработчикам работать над проектами в режиме реального времени.",
+            "Яндекс Метрика": "Яндекс Метрика — это инструмент аналитики, который позволяет отслеживать поведение пользователей на сайте и анализировать эффективность маркетинговых кампаний."
+        };
+
+        techCards.forEach(card => {
+            card.addEventListener("click", () => {
+                const techName = card.querySelector(".technology-name").textContent.trim();
+
+                techCards.forEach((card) => {
+                    card.classList.remove('active');
+                });
+
+                card.classList.add('active');
+                
+                if (techData[techName]) {
+                    gsap.to([techNameHeading, techDescription], {
+                        opacity: 0,
+                        x: -100,
+                        duration: 0.3,
+                        onComplete: () => {
+                            techNameHeading.textContent = techName;
+                            techDescription.textContent = techData[techName];
+                            gsap.fromTo([techNameHeading, techDescription], 
+                                { opacity: 0, x: 100 }, 
+                                { opacity: 1, x: 0, duration: 0.3 }
+                            );
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+
+{% endblock %}
