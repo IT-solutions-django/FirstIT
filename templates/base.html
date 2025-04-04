@@ -20,12 +20,10 @@
     <!-- Local files -->
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/header.js' %}"></script>
 
     <!-- Libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{% static 'js/slick/slick/slick.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'js/slick/slick/slick.css' %}">
-    <link rel="stylesheet" href="{% static 'js/slick/slick/slick-theme.css' %}">
     <script src="{% static 'js/imask/Imask.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -43,9 +41,9 @@
 
 </head>
 <body>
+    <img class="left-corner-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt="">
+    <img class="right-corner-gradient" src="{% static 'images/right-corner-gradient.png' %}" alt="">
     <header class="header">
-        <img class="left-corner-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt="">
-        <img class="right-corner-gradient" src="{% static 'images/right-corner-gradient.png' %}" alt="">
         <div class="container">
             <div class="header__row">
                 <div class="header__left-part">
@@ -93,23 +91,146 @@
         </div>
     </header>
 
-    <main>
-        {% block content %}
-        {% endblock content %}
-    </main>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-inner">
-            
+    <div class="preloader container">
+
+        <div class="preloader-parts">
+            <div class="preloader-heading top">
+                <p></p>
+            </div>
+
+            <div class="preloader-divider">
+
+            </div>
+            <main class="site-content">
+                {% block content %}
+                {% endblock content %}
+                <div class="bottom-divider"></div>
+            </main>
+            <div class="preloader-heading bottom">
+            </div>
+            <div class="preloader-bottom-divider">
+
             </div>
         </div>
-    </footer>
+        <footer class="container">
+            <!-- <img class="footer-left-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt=""> -->
+            <div class="upper">
+                <a href="" class="logo-link">
+                    <img src="{% static 'images/logo.svg' %}" alt="">
+                </a>
+                <div class="links">
+                    <div class="column">
+                        <img src="{% static 'images/address-icon.svg' %}" alt="">
+                        <p>г. Владивосток, ул. Портовая 13 </p>
+                    </div>
+                    <div class="column">
+                        <img src="{% static 'images/phone-icon.svg' %}" alt="">
+                        <p>+7 914 888 123</p>
+                    </div>
+                    <div class="column">
+                        <img src="{% static 'images/dog.svg' %}" alt="">
+                        <p>pervayaIT@mail.ru</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="lower">
+                <div class="nav-links">
+                    <p>Услуги</p>
+                    <p>Кейсы</p>
+                    <p>О компании</p>
+                    <p>Новости</p>
+                    <p>Контакты</p>
+                </div>
+                <p><span class="color-violet">Политика конфиденциальности</span> и <span class="color-violet">персональных данных</span></p>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
 </body>
 
 {% block script %}
 {% endblock script %}
+
+
+<script defer>
+    let cont = $('.preloader-heading'),
+	text = 'FIRST IT COMPANY';
+	p = 0;
+    cont.html("");
+
+    function printSmbl(onPrintComplete) {
+        let timeout = Math.round(Math.random() * 200);
+        cont.html(cont.html()+text[p]);
+        p++;
+        if (p < text.length) {
+            setTimeout(() => printSmbl(onPrintComplete), timeout);
+        } else {
+            setTimeout(onPrintComplete, 300);
+        }
+    }
+
+    function onPrintComplete() {
+        document.querySelector('.preloader-divider').classList.add('active');
+
+        setTimeout(() => {
+            document.querySelector('.preloader-heading.top').classList.add('active');
+            document.querySelector('.preloader-heading.bottom').classList.add('active');
+            document.querySelector('.preloader-bottom-divider').classList.add('active');
+
+            document.querySelector('header').classList.add('active');
+            document.querySelector('footer').classList.add('active');
+            document.querySelector('.preloader').classList.add('active');
+            document.querySelector('main').classList.add('active');
+        }, 1500);
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => printSmbl(onPrintComplete), 800);
+    });
+</script>
+
+
+<!-- Для тестов -->
+<!-- <script>
+    document.querySelector('.preloader-heading.top').classList.add('active');
+    document.querySelector('.preloader-heading.bottom').classList.add('active');
+    document.querySelector('.preloader-bottom-divider').classList.add('active');
+
+    document.querySelector('header').classList.add('active');
+    document.querySelector('footer').classList.add('active');
+    document.querySelector('.preloader').classList.add('active');
+    document.querySelector('main').classList.add('active');
+</script> -->
+
+
+<!-- Отправка формы ОС -->
+ <script defer>
+    const feedbackForm = document.getElementById("requestForm"); 
+    console.log(feedbackForm)
+    feedbackForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        let data = new FormData(feedbackForm);
+        let csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        
+        feedbackForm.reset();
+
+        try {
+            let s = await fetch(`contacts/api/save-request/`, {
+            method: "POST",
+            body: data,
+            headers: {
+                "X-CSRFToken": csrfToken
+            }
+        });
+            s.status
+        } catch (n) {
+            console.error("Ошибка запроса:", n)
+        }
+    });
+ </script>
 
 </html>
