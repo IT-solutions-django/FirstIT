@@ -35,3 +35,14 @@ class CompanyInfo(models.Model):
     
     def __str__(self): 
         return f'Информация о компании'
+    
+
+class Worker(models.Model): 
+    name = models.CharField('Имя', max_length=100) 
+    department = models.CharField('Отдел', max_length=100)
+    position = models.CharField('Должность', max_length=100) 
+    photo = models.ImageField('Фото', upload_to='workers/', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Сотрудник'
+        verbose_name_plural = 'Сотрудники'

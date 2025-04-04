@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import (
     Request,
     CompanyInfo,
+    Worker,
 )
 
 
@@ -13,3 +14,8 @@ class RequestAdmin(admin.ModelAdmin):
 @admin.register(CompanyInfo) 
 class CompanyInfoAdmin(admin.ModelAdmin): 
     list_display = ['__str__']
+
+
+@admin.register(Worker) 
+class WorkerAdmin(admin.ModelAdmin): 
+    list_display = ['name', 'department', 'position']

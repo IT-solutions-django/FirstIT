@@ -321,54 +321,20 @@
     <section>
         <p class="section__heading">Наши сотрудники</p>
         <div class="workers-cards">
-            <div class="worker-card">
-                <div class="image-wrapper">
-                    <img src="{% static 'images/worker-example.png' %}" alt="">
-                </div>
-                <div class="worker-info">
-                    <p class="worker-department">Маркетинг</p>
-                    <div class="worker-name-and-role">
-                        <p class="worker-name">Иванов Иван</p>
-                        <p class="worker-role">Руководитель отдела Маркетинга</p>
+            {% for worker in workers %}
+                <div class="worker-card">
+                    <div class="image-wrapper">
+                        <img src="{{ worker.photo.url }}" alt="">
+                    </div>
+                    <div class="worker-info">
+                        <p class="worker-department">{{ worker.department }}</p>
+                        <div class="worker-name-and-role">
+                            <p class="worker-name">{{ worker.name }}</p>
+                            <p class="worker-role">{{ worker.position }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="worker-card">
-                <div class="image-wrapper">
-                    <img src="{% static 'images/worker-example.png' %}" alt="">
-                </div>
-                <div class="worker-info">
-                    <p class="worker-department">Маркетинг</p>
-                    <div class="worker-name-and-role">
-                        <p class="worker-name">Иванов Иван</p>
-                        <p class="worker-role">Руководитель отдела Маркетинга</p>
-                    </div>
-                </div>
-            </div>
-            <div class="worker-card">
-                <div class="image-wrapper">
-                    <img src="{% static 'images/worker-example.png' %}" alt="">
-                </div>
-                <div class="worker-info">
-                    <p class="worker-department">Маркетинг</p>
-                    <div class="worker-name-and-role">
-                        <p class="worker-name">Иванов Иван</p>
-                        <p class="worker-role">Руководитель отдела Маркетинга</p>
-                    </div>
-                </div>
-            </div>
-            <div class="worker-card">
-                <div class="image-wrapper">
-                    <img src="{% static 'images/worker-example.png' %}" alt="">
-                </div>
-                <div class="worker-info">
-                    <p class="worker-department">Маркетинг</p>
-                    <div class="worker-name-and-role">
-                        <p class="worker-name">Иванов Иван</p>
-                        <p class="worker-role">Руководитель отдела Маркетинга</p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 
