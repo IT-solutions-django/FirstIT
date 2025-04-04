@@ -53,13 +53,13 @@
                             <img class="image" src="{% static 'images/home-service-2.png' %}" alt="">
                         {% endif %}
                         {% if forloop.counter == 3 %}
-                            <img class="image" src="{% static 'images/home-service-3.png' %}" alt="">
+                            <img class="image" src="{% static 'images/internet-shops.png' %}" alt="">
                         {% endif %}
                         {% if forloop.counter == 4 %}
-                            <img class="image" src="{% static 'images/home-service-4.png' %}" alt="">
+                            <img class="image" src="{% static 'images/seo.png' %}" alt="">
                         {% endif %}
                         {% if forloop.counter == 5 %}
-                            <img class="image" src="{% static 'images/home-service-5.png' %}" alt="">
+                            <img class="image" src="{% static 'images/context-ad.png' %}" alt="">
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -127,8 +127,8 @@
         <div class="cases">
             {% for case in cases %}
                 <div class="case">
-                    <img class="background" src="{% static 'images/case-example-1.png' %}" alt="">
-                    <img class="logo" src="{% static 'images/case-logo-example-1.png' %}" alt="">
+                    <img class="background" src="{{ case.photo.url }}" alt="">
+                    <img class="logo" src="{{ case.logo.url }}" alt="">
                 </div>
             {% endfor %}
         </div>
@@ -343,8 +343,8 @@
         <div class="technologies__section">
             <div class="technologies-list">
                 {% for technology in technologies %}
-                    <div class="technology-small-card active">
-                        <p class="technology-name {% if technology.is_hightlighted %}active{% endif %}">{{ technology.name }}</p>
+                    <div class="technology-small-card {% if forloop.counter == 1 %}active{% endif %}">
+                        <p class="technology-name {% if technology.is_highlighted %}active{% endif %}">{{ technology.name }}</p>
                     </div>
                 {% endfor %}
             </div>
