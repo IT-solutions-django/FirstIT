@@ -73,16 +73,16 @@
                     </div>
                     <div class="header__right-part">
                         <div class="header__contacts">
-                            <p class="header__phone">
-                                +7 914 914 4444
-                            </p>
+                            <a target="_blank" href="tel:{{ company_info.phone }}" class="header__phone">
+                                {{ company_info.phone }}
+                            </a>
                             <div class="header__contacts-social">
-                                <div class="header__contact-link">
+                                <a target="_blank" href="{{ company_info.whatsapp }}" class="header__contact-link">
                                     <img src="{% static 'images/whatsapp.svg' %}" alt="Логотип WhatsApp">
-                                </div>
-                                <div class="header__contact-link">
+                                </a>
+                                <a target="_blank" href="{{ company_info.telegram }}" class="header__contact-link">
                                     <img src="{% static 'images/telegram.svg' %}" alt="Логотип Telegram">
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -121,15 +121,15 @@
                 <div class="links">
                     <div class="column">
                         <img src="{% static 'images/address-icon.svg' %}" alt="">
-                        <p>г. Владивосток, ул. Портовая 13 </p>
+                        <p>{{ company_info.address }}</p>
                     </div>
                     <div class="column">
                         <img src="{% static 'images/phone-icon.svg' %}" alt="">
-                        <p>+7 914 888 123</p>
+                        <p>{{ company_info.phone }}</p>
                     </div>
                     <div class="column">
                         <img src="{% static 'images/dog.svg' %}" alt="">
-                        <p>pervayaIT@mail.ru</p>
+                        <p>{{ company_info.email }}</p>
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@
 {% endblock script %}
 
 
-<script defer>
+<!-- <script defer>
     let cont = $('.preloader-heading'),
 	text = 'FIRST IT COMPANY';
 	p = 0;
@@ -190,11 +190,11 @@
     document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => printSmbl(onPrintComplete), 800);
     });
-</script>
+</script> -->
 
 
 <!-- Для тестов -->
-<!-- <script>
+<script>
     document.querySelector('.preloader-heading.top').classList.add('active');
     document.querySelector('.preloader-heading.bottom').classList.add('active');
     document.querySelector('.preloader-bottom-divider').classList.add('active');
@@ -203,7 +203,7 @@
     document.querySelector('footer').classList.add('active');
     document.querySelector('.preloader').classList.add('active');
     document.querySelector('main').classList.add('active');
-</script> -->
+</script>
 
 
 <!-- Отправка формы ОС -->

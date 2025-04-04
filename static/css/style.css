@@ -259,7 +259,7 @@ header {
 .header__nav {
     width: 100%;
     display: flex;
-    gap: 218px;
+    gap: 190px;
     justify-content: space-between;
     align-items: center;
 }
@@ -285,7 +285,8 @@ header {
 .header__phone {
     font-family: var(--font-bebas);
     font-size: 32px;
-    line-height: 60px;
+    line-height: 32px;
+    height: 32px;
 }
 .header__contacts-block {
     display: flex;
@@ -322,6 +323,7 @@ section.slides {
 .home__services {
     display: flex;
     gap: 72px;
+    min-height: 500px;
 }
 .section__heading {
     font-family: var(--font-special);
