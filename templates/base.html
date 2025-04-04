@@ -206,4 +206,31 @@
 </script>
 
 
+<!-- Отправка формы ОС -->
+ <script defer>
+    const feedbackForm = document.getElementById("requestForm"); 
+    console.log(feedbackForm)
+    feedbackForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        let data = new FormData(feedbackForm);
+        let csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        
+        feedbackForm.reset();
+
+        try {
+            let s = await fetch(`contacts/api/save-request/`, {
+            method: "POST",
+            body: data,
+            headers: {
+                "X-CSRFToken": csrfToken
+            }
+        });
+            s.status
+        } catch (n) {
+            console.error("Ошибка запроса:", n)
+        }
+    });
+ </script>
+
 </html>

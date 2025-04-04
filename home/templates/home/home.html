@@ -677,13 +677,13 @@
                     </div>
                 </div>
             </div>
-            <form class="form-block">
+            <form class="form-block" id="requestForm" method="POST">
+                {% csrf_token %}
                 <div class="two-columned-row">
-                    <input type="text" placeholder="Ваше имя">
-                    <input type="text" placeholder="+7">
+                    {{ request_form.name }}
+                    {{ request_form.phone }}
                 </div>
-                <textarea name="" id="" rows="3" placeholder="Кратко опишите свой вопрос">
-                </textarea>
+                {{ request_form.message }}
                 <div class="buttons-row">
                     <div class="checkbox">
                         <div class="checkbox-wrap">
@@ -695,7 +695,7 @@
                             </label>
                         </div>
                     </div>
-                    <button class="violet-button">Оставить заявку</button>
+                    <button type="submit" class="violet-button">Оставить заявку</button>
                 </div>
             </form>
         </div>

@@ -41,6 +41,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-special);
 }
 
+textarea {
+    outline: 0;
+}
+
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -185,10 +189,6 @@ header.header {
 
 .header.nav-down {
     top: 0;
-}
-
-.container.main {
-    /* margin-top: 83px; */
 }
 .left-corner-gradient, 
 .right-corner-gradient, 
@@ -1107,9 +1107,6 @@ footer .nav-links p {
     position: relative;
     transition: all 0.3s ease;
 }
-.technology-small-card:hover {
-
-}
 .technology-small-card::after {
     background-color: transparent;
     border-radius: inherit;
@@ -1267,7 +1264,6 @@ footer .column,
 
 .checkbox-wrap,
 .checkbox-wrap input {
-    pointer-events: none;
     opacity: 1;
 }
 
@@ -1301,7 +1297,8 @@ footer .column,
         background-repeat: no-repeat;
         background-position: center center;
         color: black;
-        font-size: 16px;
+        font-size: 10px;
+        background-size: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
