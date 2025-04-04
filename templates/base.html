@@ -26,6 +26,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/imask/Imask.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/imask/Imask.min.js' %}"></script>
 
     <!-- Logo -->
     <link rel=icon type=image/png sizes=16x16 href="{% static 'images/logo.svg' %}">
@@ -230,6 +231,19 @@
         } catch (n) {
             console.error("Ошибка запроса:", n)
         }
+    });
+ </script>
+
+ <script defer>
+    document.querySelectorAll('input[type="tel"]').forEach(input => {
+        let phoneMask = IMask(input, { mask: "+{7} (000) 000-00-00" });
+
+        function validatePhoneNumber() {
+            let t = input.value.replace(/\D/g, "");
+            return t.length < 11 ? (input.setCustomValidity("Необходимо минимум 11 цифр"), !1) : (input.setCustomValidity(""), !0);
+        }
+
+        input.addEventListener("input", validatePhoneNumber);
     });
  </script>
 

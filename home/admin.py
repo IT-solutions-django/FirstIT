@@ -14,12 +14,12 @@ class CompanyServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Case) 
 class CaseAdmin(admin.ModelAdmin): 
-    list_display = ['photo', 'logo']
+    list_display = ['pk', 'photo', 'logo']
 
 
 @admin.register(CompanyClient) 
 class CompanyClientAdmin(admin.ModelAdmin): 
-    list_display = ['logo']
+    list_display = ['pk', 'logo']
 
 
 @admin.register(Technology) 
