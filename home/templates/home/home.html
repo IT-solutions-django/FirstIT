@@ -223,26 +223,31 @@
             </div>
             <div class="case">
                 <img src="{% static 'images/case-example-2.png' %}" alt="">
+                <img class="logo" src="{% static 'images/case-logo-example-2.png' %}" alt="">
             </div>
             <div class="case">
                 <img src="{% static 'images/case-example-3.png' %}" alt="">
+                <img class="logo" src="{% static 'images/case-logo-example-3.png' %}" alt="">
             </div>
             <div class="case">
-                <img src="{% static 'images/case-example-1.png' %}" alt="">
+                <img class="background" src="{% static 'images/case-example-1.png' %}" alt="">
                 <img class="logo" src="{% static 'images/case-logo-example-1.png' %}" alt="">
             </div>
             <div class="case">
                 <img src="{% static 'images/case-example-2.png' %}" alt="">
+                <img class="logo" src="{% static 'images/case-logo-example-2.png' %}" alt="">
             </div>
             <div class="case">
                 <img src="{% static 'images/case-example-3.png' %}" alt="">
+                <img class="logo" src="{% static 'images/case-logo-example-3.png' %}" alt="">
             </div>
             <div class="case">
-                <img src="{% static 'images/case-example-1.png' %}" alt="">
+                <img class="background" src="{% static 'images/case-example-1.png' %}" alt="">
                 <img class="logo" src="{% static 'images/case-logo-example-1.png' %}" alt="">
             </div>
             <div class="case">
                 <img src="{% static 'images/case-example-2.png' %}" alt="">
+                <img class="logo" src="{% static 'images/case-logo-example-2.png' %}" alt="">
             </div>
         </div>
         <div class="all-cases">
@@ -744,6 +749,7 @@
 <script defer>
 document.addEventListener("DOMContentLoaded", function () {
     let rotationAngle = 0; 
+    let currentSlideIndex = 1;
 
     const mainSLider = new Swiper('.rounded-slides.swiper', {
         loop: true, 
@@ -765,11 +771,18 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         on: {
             slideNextTransitionStart: function () {
-                rotationAngle -= 60; 
+                currentSlideIndex++;
+                console.log(`Остаток: ${currentSlideIndex % 6}`)
+
+                const angle = getRotationAngleNext();
+                rotationAngle -= angle; 
                 rotateImage();
             },
             slidePrevTransitionStart: function () {
-                rotationAngle += 60;
+                currentSlideIndex--;
+
+                const angle = getRotationAnglePrev();
+                rotationAngle += angle; 
                 rotateImage();
             }
         }
@@ -780,6 +793,47 @@ document.addEventListener("DOMContentLoaded", function () {
         if (image) {
             image.style.transform = `rotate(${rotationAngle}deg)`;
         }
+    }
+    function getRotationAnglePrev() {
+        const currentSlide = document.querySelector('.rect-slide.swiper-slide.swiper-slide-active');
+        const activeText = currentSlide.querySelector('.rect-slide-heading').textContent;
+        let angle = 60;
+        console.log(activeText)
+        
+        console.log(currentSlideIndex % 6)
+        if (activeText == 'Время') {
+            if (currentSlideIndex % 6 < 3) {
+                angle = 68.5;
+            } else {
+                angle = 64.5;
+            }
+        } else if (activeText == 'Помощь') {
+            angle = 56;
+        } else if (activeText == 'Услуги') {
+            angle = 57.6;
+        }
+        console.log(angle);
+        return angle;
+    }
+    function getRotationAngleNext() {
+        const currentSlide = document.querySelector('.rect-slide.swiper-slide.swiper-slide-next');
+        const activeText = currentSlide.querySelector('.rect-slide-heading').textContent;
+        let angle = 60;
+        console.log(activeText)
+        
+        if (activeText == 'Время') {
+            angle = 56;
+        } else if (activeText == 'Помощь') {
+            angle = 57.6;
+        } else if (activeText == 'Услуги') {
+            if (currentSlideIndex % 6 < 3) {
+                angle = 64.5;
+            } else {
+                angle = 68.5;
+            }
+        }
+        console.log(angle);
+        return angle;
     }
 });
 </script>
