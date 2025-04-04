@@ -133,3 +133,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REDIS_HOST = 'redis' 
+
+# Для локальной разработки
+# REDIS_HOST = '127.0.0.1' 
+
+REDIS_PORT = '6379' 
+REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
+
+# Celery
+CELERY_BROKER_URL = f'redis://:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0' 
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
+CELERY_RESULT_BACKEND = f'redis://:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0' 
+CELERY_ACCEPT_CONTENT = ['application/json'] 
+CELERY_TASK_SERIALIZER = 'json' 
+CELERY_RESULT_serializer = 'json' 
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
