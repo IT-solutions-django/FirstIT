@@ -41,9 +41,9 @@
 
 </head>
 <body>
+    <img class="left-corner-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt="">
+    <img class="right-corner-gradient" src="{% static 'images/right-corner-gradient.png' %}" alt="">
     <header class="header">
-        <img class="left-corner-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt="">
-        <img class="right-corner-gradient" src="{% static 'images/right-corner-gradient.png' %}" alt="">
         <div class="container">
             <div class="header__row">
                 <div class="header__left-part">
@@ -108,41 +108,44 @@
             </main>
             <div class="preloader-heading bottom">
             </div>
+            <div class="preloader-bottom-divider">
+
+            </div>
         </div>
+        <footer class="container">
+            <!-- <img class="footer-left-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt=""> -->
+            <div class="upper">
+                <a href="" class="logo-link">
+                    <img src="{% static 'images/logo.svg' %}" alt="">
+                </a>
+                <div class="links">
+                    <div class="column">
+                        <img src="{% static 'images/address-icon.svg' %}" alt="">
+                        <p>г. Владивосток, ул. Портовая 13 </p>
+                    </div>
+                    <div class="column">
+                        <img src="{% static 'images/phone-icon.svg' %}" alt="">
+                        <p>+7 914 888 123</p>
+                    </div>
+                    <div class="column">
+                        <img src="{% static 'images/dog.svg' %}" alt="">
+                        <p>pervayaIT@mail.ru</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="lower">
+                <div class="nav-links">
+                    <p>Услуги</p>
+                    <p>Кейсы</p>
+                    <p>О компании</p>
+                    <p>Новости</p>
+                    <p>Контакты</p>
+                </div>
+                <p><span class="color-violet">Политика конфиденциальности</span> и <span class="color-violet">персональных данных</span></p>
+            </div>
+        </footer>
     </div>
-    
-    <footer class="container">
-        <div class="upper">
-            <a href="" class="logo-link">
-                <img src="{% static 'images/logo.svg' %}" alt="">
-            </a>
-            <div class="links">
-                <div class="column">
-                    <img src="{% static 'images/address-icon.svg' %}" alt="">
-                    <p>г. Владивосток, ул. Портовая 13 </p>
-                </div>
-                <div class="column">
-                    <img src="{% static 'images/phone-icon.svg' %}" alt="">
-                    <p>+7 914 888 123</p>
-                </div>
-                <div class="column">
-                    <img src="{% static 'images/dog.svg' %}" alt="">
-                    <p>pervayaIT@mail.ru</p>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="lower">
-            <div class="nav-links">
-                <p>Услуги</p>
-                <p>Кейсы</p>
-                <p>О компании</p>
-                <p>Новости</p>
-                <p>Контакты</p>
-            </div>
-            <p><span class="color-violet">Политика конфиденциальности</span> и <span class="color-violet">персональных данных</span></p>
-        </div>
-    </footer>
 </body>
 </html>
 </body>
@@ -158,7 +161,7 @@
     cont.html("");
 
     function printSmbl(onPrintComplete) {
-        let timeout = Math.round(Math.random() * 140);
+        let timeout = Math.round(Math.random() * 200);
         cont.html(cont.html()+text[p]);
         p++;
         if (p < text.length) {
@@ -174,7 +177,7 @@
         setTimeout(() => {
             document.querySelector('.preloader-heading.top').classList.add('active');
             document.querySelector('.preloader-heading.bottom').classList.add('active');
-            document.querySelector('.bottom-divider').classList.add('active');
+            document.querySelector('.preloader-bottom-divider').classList.add('active');
 
             document.querySelector('header').classList.add('active');
             document.querySelector('footer').classList.add('active');

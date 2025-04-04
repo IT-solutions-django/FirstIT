@@ -107,6 +107,7 @@
                         <p data-tab-id="3" onclick="changeTab(3)">04</p>
                         <p data-tab-id="4" onclick="changeTab(4)">05</p>
                     </div>
+                    <img class="image" src="{% static 'images/internet-shops.png' %}" alt="">
                 </div>
                 <div class="tab-content" data-tab-id="3">
                     <div class="upper">
@@ -129,6 +130,7 @@
                         <p data-tab-id="3" onclick="changeTab(3)">04</p>
                         <p data-tab-id="4" onclick="changeTab(4)">05</p>
                     </div>
+                    <img class="image seo-optimization" src="{% static 'images/seo.png' %}" alt="">
                 </div>
                 <div class="tab-content" data-tab-id="4">
                     <div class="upper">
@@ -151,6 +153,7 @@
                         <p data-tab-id="3" onclick="changeTab(3)">04</p>
                         <p data-tab-id="4" onclick="changeTab(4)">05</p>
                     </div>
+                    <img class="image" src="{% static 'images/context-ad.png' %}" alt="">
                 </div>
             </div>
         </div>
@@ -247,7 +250,7 @@
         </div>
     </section>
 
-    <section class="">
+    <section>
         <p class="section__heading">Клиенты</p>
         <div class="clients-description">
             <p>Компании абсолютно из разных сфер, которые доверили нам автоматизацию своего бизнеса и повысили конверсию клиентовмабсолютно из разных сфер</p>
@@ -785,8 +788,6 @@ document.addEventListener("DOMContentLoaded", function () {
 <script defer>
     document.addEventListener('DOMContentLoaded', () => {
     const clientsSection = document.querySelector('.clients-cards');
-
-    // gsap.set('.clients-cards', { x: '100vw', opacity: 0 });
     
     if (!clientsSection) return; 
 
