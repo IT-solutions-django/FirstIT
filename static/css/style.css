@@ -502,7 +502,7 @@ footer .nav-links p {
 .home__service-heading {
     font-family: var(--font-special);
     font-size: 40px;
-    line-height: 25px;
+    line-height: 36px;
     text-shadow: 0px 0px 21px #542AC9;
 }
 .home__service-label{
@@ -1380,4 +1380,57 @@ footer .column,
 }
 .request__section .violet-button {
     text-wrap: nowrap;
+}
+.glowing-circle {
+    position: absolute;
+    transform: translateX(50%) translateY(-50%);
+    border-radius: 50%;
+    z-index: 10;
+    width: 90px;
+    height: 90px;
+    background: transparent;
+
+    box-shadow: 0 0 15px rgba(107, 82, 222, 0.7),
+                0 0 30px rgba(107, 82, 222, 0.5),
+                0 0 45px rgba(107, 82, 222, 0.3);
+    
+    animation: neon-glow 1.8s infinite ease-in-out;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+@keyframes neon-glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(107, 82, 222, 0.4),
+                    0 0 20px rgba(107, 82, 222, 0.6),
+                    0 0 40px rgba(107, 82, 222, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(107, 82, 222, 0.8),
+                    0 0 40px rgba(107, 82, 222, 1),
+                    0 0 60px rgba(107, 82, 222, 1);
+    }
+}
+.glowing-circle:hover {
+    border-color: rgb(170, 150, 255);
+    background: rgba(170, 150, 255, 0.08);
+}
+.glowing-circle-1 {
+    right: 413px;
+    top: 234px;
+}
+.glowing-circle-1 a {
+    height: 100%;
+    width: 100%;
+}
+.glowing-circle-2 {
+    right: 290px;
+    top: 200px;
+}
+.glowing-circle-3 {
+    right: 185px;
+    top: 314px;
+}
+.glowing-circle-4 {
+    right: 120px;
+    top: 170px;
 }
