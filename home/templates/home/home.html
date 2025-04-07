@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load home_filters %}
 
 {% block title %}
 1IT
@@ -30,14 +31,14 @@
                     <div class="tab-content {% if forloorp.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" style="{% if forloop.counter == 1%}opacity: 1; transform: translateX(0);{% endif %}">
                         <div class="upper">
                             <div class="home__service-header">
-                                <p class="home__service-heading">{{ service.heading }}</p>
+                                <p class="home__service-heading">{{ service.heading|highlight_digits }}</p>
                                 <p class="home__service-label">{{ service.label }}</p>
                             </div>
                             <div class="description">
                                 {{ service.text|linebreaks }}
                             </div>
                             <div class="home__service-buttons">
-                                <button class="violet-button">Заказать услугу</button>
+                                <a href="#request-section" class="violet-button">Заказать услугу</a>
                                 <button class="gray-button">Все услуги</button>
                             </div>
                         </div>
@@ -115,9 +116,9 @@
                 <img class="round-slider__image" src="{% static 'images/services-round-slider.png' %}" alt="">
             </div>
             <div class="round-slider__request-button">
-                <button class="violet-button">
+                <a href="#request-section" class="violet-button">
                     Оставить заявку
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -344,22 +345,22 @@
             <div class="technologies-list">
                 {% for technology in technologies %}
                     <div class="technology-small-card {% if forloop.counter == 1 %}active{% endif %}">
-                        <p class="technology-name {% if technology.is_highlighted %}active{% endif %}">{{ technology.name }}</p>
+                        <p class="technology-name {% if technology.is_highlighted %}violet{% endif %}">{{ technology.name|highlight_digits }}</p>
                     </div>
                 {% endfor %}
             </div>
             <div class="technology-info">
                 <div class="technology-name-heading">
-                    {{ technologies.0.name }}
+                    {{ technologies.0.name|highlight_digits }}
                 </div>
                 <div class="technology-description">
-                    {{ technologies.0.description|linebreaks }}
+                    {{ technologies.0.description|linebreaks|highlight_digits }}
                 </div>
             </div>
         </div>
     </section>
 
-    <section>
+    <section id="request-section">
         <div class="request__section">
             <div class="text-block">
                 <div class="leave-request">

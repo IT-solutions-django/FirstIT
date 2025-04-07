@@ -114,7 +114,8 @@
             </div>
         </div>
         <footer class="container">
-            <!-- <img class="footer-left-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt=""> -->
+            <img class="footer-left-gradient" src="{% static 'images/test-3.png' %}" alt="">
+            <img class="footer-right-gradient" src="{% static 'images/test-4.png' %}" alt="">
             <div class="upper">
                 <a href="" class="logo-link">
                     <img src="{% static 'images/logo.svg' %}" alt="">
@@ -156,41 +157,75 @@
 
 
 <script defer>
-    let cont = $('.preloader-heading'),
-	text = 'FIRST IT COMPANY';
-	p = 0;
-    cont.html("");
-
-    function printSmbl(onPrintComplete) {
-        let timeout = Math.round(Math.random() * 200);
-        cont.html(cont.html()+text[p]);
-        p++;
-        if (p < text.length) {
-            setTimeout(() => printSmbl(onPrintComplete), timeout);
-        } else {
-            setTimeout(onPrintComplete, 300);
-        }
-    }
-
-    function onPrintComplete() {
-        document.querySelector('.preloader-divider').classList.add('active');
-
-        setTimeout(() => {
-            document.querySelector('.preloader-heading.top').classList.add('active');
-            document.querySelector('.preloader-heading.bottom').classList.add('active');
-            document.querySelector('.preloader-bottom-divider').classList.add('active');
-
-            document.querySelector('header').classList.add('active');
-            document.querySelector('footer').classList.add('active');
-            document.querySelector('.preloader').classList.add('active');
-            document.querySelector('main').classList.add('active');
-        }, 1500);
-    }
-
-
     document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => printSmbl(onPrintComplete), 800);
+        const alreadyVisited = sessionStorage.getItem('alreadyVisited');
+
+        runPreloader();
+
+        // if (!alreadyVisited) {
+        //     sessionStorage.setItem('alreadyVisited', 'true');
+        //     runPreloader();
+        // } else {
+            
+        //     const heading = document.querySelector('.preloader-heading');
+
+        //     heading.textContent = 'FIRST IT COMPANY';
+        //     heading.style.opacity = '0';
+        //     heading.classList.add('without-animation');
+
+        //     void heading.offsetWidth;
+
+        //     heading.classList.remove('without-animation');
+        //     heading.classList.add('add-transition');
+
+        //     setTimeout(() => {
+        //         heading.classList.add('active');
+        //     }, 600);
+
+        //     document.querySelector('.preloader-heading.bottom')?.classList.add('active');
+        //     document.querySelector('.preloader-divider')?.classList.add('active');
+        //     document.querySelector('.preloader-bottom-divider')?.classList.add('active');
+        //     document.querySelector('header')?.classList.add('active');
+        //     document.querySelector('footer')?.classList.add('active');
+        //     document.querySelector('.preloader')?.classList.add('active');
+        //     document.querySelector('main')?.classList.add('active');
+        // }
     });
+
+    function runPreloader() {
+        let cont = $('.preloader-heading'),
+            text = 'FIRST IT COMPANY',
+            p = 0;
+        cont.html("");
+
+        function printSmbl(onPrintComplete) {
+            let timeout = Math.round(Math.random() * 200);
+            cont.html(cont.html() + text[p]);
+            p++;
+            if (p < text.length) {
+                setTimeout(() => printSmbl(onPrintComplete), timeout);
+            } else {
+                setTimeout(onPrintComplete, 400);
+            }
+        }
+
+        function onPrintComplete() {
+            document.querySelector('.preloader-divider')?.classList.add('active');
+
+            setTimeout(() => {
+                document.querySelector('.preloader-heading.top')?.classList.add('active');
+                document.querySelector('.preloader-heading.bottom')?.classList.add('active');
+                document.querySelector('.preloader-bottom-divider')?.classList.add('active');
+
+                document.querySelector('header')?.classList.add('active');
+                document.querySelector('footer')?.classList.add('active');
+                document.querySelector('.preloader')?.classList.add('active');
+                document.querySelector('main')?.classList.add('active');
+            }, 1700);
+        }
+
+        setTimeout(() => printSmbl(onPrintComplete), 800);
+    }
 </script>
 
 
