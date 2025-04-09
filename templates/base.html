@@ -44,6 +44,10 @@
 <body>
     <img class="left-corner-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt="">
     <img class="right-corner-gradient" src="{% static 'images/right-corner-gradient.png' %}" alt="">
+    <img class="request-background" src="{% static 'images/request-background.png' %}" alt="">
+    {% if page_heading == 'Услуги' %}
+        <img class="right-glowing" src="{% static 'images/right-glowing.png' %}" alt="">
+    {% endif %}
     <header class="header">
         <div class="container">
             <div class="header__row">
@@ -57,7 +61,7 @@
                 <div class="header__nav">
                     <div class="header__menu">
                         <div class="header__menu-link">
-                            <a class="red-hover" href="">Услуги</a>
+                            <a class="red-hover" href="{% url 'services:services' %}">Услуги</a>
                         </div>
                         <div class="header__menu-link">
                             <a class="red-hover" href="">Кейсы</a>
@@ -194,7 +198,7 @@
 
     function runPreloader() {
         let cont = $('.preloader-heading'),
-            text = 'FIRST IT COMPANY',
+            text = '{{ page_heading }}',
             p = 0;
         cont.html("");
 
@@ -221,10 +225,21 @@
                 document.querySelector('footer')?.classList.add('active');
                 document.querySelector('.preloader')?.classList.add('active');
                 document.querySelector('main')?.classList.add('active');
+
+                if (!isHomePage()) {
+                    setTimeout(() => {
+                        document.querySelector('.request-background').classList.add('active');
+                        document.querySelector('.right-glowing')?.classList.add('active');
+                    }, 500);
+                }
             }, 1700);
         }
 
         setTimeout(() => printSmbl(onPrintComplete), 800);
+    }
+
+    function isHomePage() {
+        return window.location.pathname === "/";
     }
 </script>
 
