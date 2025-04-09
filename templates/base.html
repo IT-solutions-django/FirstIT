@@ -64,7 +64,7 @@
                             <a class="red-hover" href="{% url 'services:services' %}">Услуги</a>
                         </div>
                         <div class="header__menu-link">
-                            <a class="red-hover" href="">Кейсы</a>
+                            <a class="red-hover" href="{% url 'cases:cases' %}">Кейсы</a>
                         </div>
                         <div class="header__menu-link">
                             <a class="red-hover" href="">Компании</a>
@@ -142,8 +142,8 @@
             <hr>
             <div class="lower">
                 <div class="nav-links">
-                    <p>Услуги</p>
-                    <p>Кейсы</p>
+                    <a href="{% url 'services:services' %}">Услуги</a>
+                    <a href="{% url 'cases:cases' %}">Кейсы</a>
                     <p>О компании</p>
                     <p>Новости</p>
                     <p>Контакты</p>

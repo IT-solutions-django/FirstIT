@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block title %}
+1IT
+{% endblock %}
+
+{% block content %} 
+<!-- Gsap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<!-- Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+<div class="container main home">
+    <section>
+        <p class="section__heading">Кейсы</p>
+        <div class="cases">
+            {% for case in cases %}
+                <div class="case">
+                    <img class="background" src="{{ case.photo.url }}" alt="">
+                    <img class="logo" src="{{ case.logo.url }}" alt="">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="all-cases">
+            <button class="violet-button">Показать ещё</button>
+        </div>
+    </section>
+
+    {% include 'home/includes/request_block.html' %}
+</div>
+
+{% endblock %}
