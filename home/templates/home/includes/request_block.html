@@ -1,0 +1,63 @@
+{% load static %}
+
+<section id="request-section">
+    <div class="request__section">
+        <div class="text-block">
+            <div class="leave-request">
+                <p class="heading">Оставьте заявку</p>
+                <p class="text">Вы хотите стать нашим партнером или обсудить возможности совместной работы? Заполните форму ниже, и мы свяжемся с вами в кратчайшие сроки. Мы открыты для новых идей и готовы к сотрудничеству!</p>
+            </div>
+            <div class="contacts">
+                <div class="header">
+                    <p class="heading">Контакты</p>
+                    <div class="social-links">
+                        <a href="{{ company_info.whatsapp }}">
+                            <img src="{% static 'images/whatsapp.svg' %}" alt="">
+                        </a>
+                        <a href="{{ company_info.vk }}">
+                            <img src="{% static 'images/vk-icon.svg' %}" alt="">
+                        </a>
+                        <a href="{{ company_info.telegram }}">
+                            <img src="{% static 'images/telegram.svg' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-data">
+                    <div class="column">
+                        <img src="{% static 'images/address-icon.svg' %}" alt="">
+                        <p>{{ company_info.address }}</p>
+                    </div>
+                    <div class="column">
+                        <img src="{% static 'images/phone-icon.svg' %}" alt="">
+                        <p>{{ company_info.phone }}</p>
+                    </div>
+                    <div class="column">
+                        <img src="{% static 'images/dog.svg' %}" alt="">
+                        <p>{{ company_info.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="form-block" id="requestForm" method="POST">
+            {% csrf_token %}
+            <div class="two-columned-row">
+                {{ request_form.name }}
+                {{ request_form.phone }}
+            </div>
+            {{ request_form.message }}
+            <div class="buttons-row">
+                <div class="checkbox">
+                    <div class="checkbox-wrap">
+                        <input checked type="checkbox" id="efficiency" name="efficiency" required>
+                    </div>
+                    <div>
+                        <label for="efficiency" class="checkbox-label">
+                            Согласие на обработку персональных данных
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="violet-button">Оставить заявку</button>
+            </div>
+        </form>
+    </div>
+</section>
