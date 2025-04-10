@@ -1,0 +1,38 @@
+{% extends 'base_without_animation.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    main .container {
+        min-height: calc(100vh - 216px) !important;
+    }
+    .footer-left-gradient, 
+    .footer-right-gradient {
+        display: none;
+    }
+    html {
+        overflow-y: hidden;
+    }
+    .left-corner-gradient, 
+    .right-corner-gradient {
+        display: none;
+    }
+</style>
+
+<img class="not-found__left-gradient" src="{% static 'images/request-background.png' %}" alt="">
+<img class="not-found__right-gradient" src="{% static 'images/right-glowing.png' %}" alt="">
+
+<div class="container main not-found">
+    <div class="content">
+        <div class="number">
+            404
+        </div>
+        <p class="label">Страница не найдена</p>
+        <div class="button-container">
+            <a href="{% url 'home:home' %}" class="violet-button">На главную</a>
+        </div>
+    </div>
+</div>
+
+<div class="not-found__bottom-divider"></div>
+{% endblock %}

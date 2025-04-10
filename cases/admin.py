@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import CaseCategory
 
-# Register your models here.
+
+@admin.register(CaseCategory)
+class CaseCategoryAdmin(admin.ModelAdmin): 
+    list_display = ['name']

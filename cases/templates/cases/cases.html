@@ -7,22 +7,41 @@
 {% endblock %}
 
 {% block content %} 
-<!-- Gsap -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<!-- Swiper -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+<style>
+    .preloader-heading.top.active {
+        max-height: 132px;
+    }
+    .preloader-divider {
+        top: 132px;
+    }
+    .preloader-heading {
+        line-height: 236px;;
+    }
+    .preloader-heading.bottom.active {
+        max-height: 104px;
+    }
+    .preloader-bottom-divider {
+        transform: translateY(-104px);
+    }
+</style>
 
 <div class="container main home">
     <section>
-        <p class="section__heading">Кейсы</p>
+        <div class="categories-panel">
+            <p class="category-name active">Все</p>
+            {% for category in case_categories %}
+                <p class="category-name">{{ category.name }}</p>
+                {% if not forloop.last %}
+                    <div class="divider"></div>                          
+                {% endif %}
+            {% endfor %}
+        </div>
         <div class="cases">
             {% for case in cases %}
-                <div class="case">
+                <a class="case" href="{{ case.get_absolute_url }}">
                     <img class="background" src="{{ case.photo.url }}" alt="">
                     <img class="logo" src="{{ case.logo.url }}" alt="">
-                </div>
+                </a>
             {% endfor %}
         </div>
         <div class="all-cases">

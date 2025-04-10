@@ -306,74 +306,11 @@
         <div class="swiper-pagination"></div>
     </section>
 
-    <section class="about-section">
-        <p class="section__heading">О компании</p>
-        <div class="about__section">
-            <div class="glowing-circle glowing-circle-1">
-                <a href="https://www.google.com/"></a>
-            </div>
-            <div class="glowing-circle glowing-circle-2"></div>
-            <div class="glowing-circle glowing-circle-3"></div>
-            <div class="glowing-circle glowing-circle-4"></div>
-            <div class="first-column">
-                <p class="heading">первая IT компания</p>
-                <div class="text">
-                    Команда профессионалов, специализирующаяся на разработке инновационных программных решений для бизнеса. 
-                    <br>
-                    <br>
-                    Наша цель — помочь вам оптимизировать процессы и достичь новых высот с помощью передовых технологий. Мы гордимся индивидуальным подходом к каждому клиенту и готовы предложить решения, соответствующие вашим уникальным потребностям. 
-                </div>
-            </div>
-            <div class="second-column">
-                <p class="heading">Мы в соцсетях</p>
-                <div class="text">
-                    Следите за нами, чтобы быть в курсе последних новостей, акций и интересных событий! 
-                </div>
-            </div>
-        </div>
-        <img class="orbit" src="{% static 'images/orbit.png' %}" alt="">
-    </section>
+    {% include 'home/includes/company_block.html' %}
 
-    <section>
-        <p class="section__heading">Наши сотрудники</p>
-        <div class="workers-cards">
-            {% for worker in workers %}
-                <div class="worker-card">
-                    <div class="image-wrapper">
-                        <img src="{{ worker.photo.url }}" alt="">
-                    </div>
-                    <div class="worker-info">
-                        <p class="worker-department">{{ worker.department }}</p>
-                        <div class="worker-name-and-role">
-                            <p class="worker-name">{{ worker.name }}</p>
-                            <p class="worker-role">{{ worker.position }}</p>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </section>
+    {% include 'home/includes/workers_block.html' %}
 
-    <section>
-        <p class="section__heading">Технологии</p>
-        <div class="technologies__section">
-            <div class="technologies-list">
-                {% for technology in technologies %}
-                    <div class="technology-small-card {% if forloop.counter == 1 %}active{% endif %}">
-                        <p class="technology-name {% if technology.is_highlighted %}violet{% endif %}">{{ technology.name|highlight_digits }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="technology-info">
-                <div class="technology-name-heading">
-                    {{ technologies.0.name|highlight_digits }}
-                </div>
-                <div class="technology-description">
-                    {{ technologies.0.description|linebreaks|highlight_digits }}
-                </div>
-            </div>
-        </div>
-    </section>
+    {% include 'home/includes/technologies_block.html' %}
 
     {% include 'home/includes/request_block.html' %}
 </div>

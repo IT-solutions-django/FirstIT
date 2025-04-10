@@ -1,0 +1,44 @@
+{% load static %}
+
+<section class="about-section">
+    <div class="about__section">
+
+        <div class="glowing-circle glowing-circle-1">
+            <a href="{{ company_info.behance }}">
+                <img src="{% static 'images/behance-logo.svg' %}" alt="">
+            </a>
+        </div>
+        <div class="glowing-circle glowing-circle-2">
+            <a href="{{ company_info.vk }}">
+                <img src="{% static 'images/vk-logo.svg' %}" alt="">
+            </a>
+        </div>
+        <div class="glowing-circle glowing-circle-3">
+            <a href="{{ company_info.telegram }}">
+                <img src="{% static 'images/telegram-logo.svg' %}" alt="">
+            </a>
+        </div>
+        <div class="glowing-circle glowing-circle-4">
+            <a href="{{ company_info.github }}">
+                <img src="{% static 'images/github-logo.svg' %}" alt="">
+            </a>
+        </div>
+
+        <div class="first-column">
+            <p class="heading">первая IT компания</p>
+            <div class="text">
+                Команда профессионалов, специализирующаяся на разработке инновационных программных решений для бизнеса. 
+                <br>
+                <br>
+                Наша цель — помочь вам оптимизировать процессы и достичь новых высот с помощью передовых технологий. Мы гордимся индивидуальным подходом к каждому клиенту и готовы предложить решения, соответствующие вашим уникальным потребностям. 
+            </div>
+        </div>
+        <div class="second-column">
+            <p class="heading">Мы в соцсетях</p>
+            <div class="text">
+                Следите за нами, чтобы быть в курсе последних новостей, акций и интересных событий! 
+            </div>
+        </div>
+    </div>
+    <img class="orbit" src="{% static 'images/orbit-2.png' %}" alt="">
+</section>

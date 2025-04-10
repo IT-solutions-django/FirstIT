@@ -3,6 +3,7 @@ from .models import (
     Request,
     CompanyInfo,
     Worker,
+    CompanyStat,
 )
 
 
@@ -19,3 +20,8 @@ class CompanyInfoAdmin(admin.ModelAdmin):
 @admin.register(Worker) 
 class WorkerAdmin(admin.ModelAdmin): 
     list_display = ['name', 'department', 'position']
+
+
+@admin.register(CompanyStat) 
+class CompanyStatAdmin(admin.ModelAdmin): 
+    list_display = ['heading', 'heading_label', 'lower_label']

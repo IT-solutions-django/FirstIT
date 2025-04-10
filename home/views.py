@@ -29,3 +29,10 @@ class HomeView(View):
             'workers': workers,
         }
         return render(request, self.template_name, context)
+    
+
+class Show404View(View): 
+    template_name = '404.html' 
+
+    def get(self, request): 
+        return render(request, self.template_name)

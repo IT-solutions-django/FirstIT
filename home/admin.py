@@ -14,7 +14,8 @@ class CompanyServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Case) 
 class CaseAdmin(admin.ModelAdmin): 
-    list_display = ['pk', 'photo', 'logo']
+    list_display = ['name', 'photo', 'logo']
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(CompanyClient) 

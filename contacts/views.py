@@ -4,6 +4,27 @@ from .models import Request
 from .forms import RequestForm
 from django.http import JsonResponse
 from notifications.tasks import send_telegram_message_for_all_task
+from home.models import Technology 
+from contacts.models import (
+    Worker, 
+    CompanyStat,
+)
+
+
+
+class AboutView(View): 
+    template_name = 'contacts/about.html'
+
+    def get(self, request): 
+        workers = Worker.objects.all()
+        technologies = Technology.objects.all()
+        company_stats = CompanyStat.objects.all()
+        context = {
+            'workers': workers, 
+            'technologies': technologies,
+            'company_stats': company_stats,
+        }
+        return render(request, self.template_name, context)
 
 
 class SaveRequestView(View): 

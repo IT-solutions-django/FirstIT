@@ -67,7 +67,7 @@
                             <a class="red-hover" href="{% url 'cases:cases' %}">Кейсы</a>
                         </div>
                         <div class="header__menu-link">
-                            <a class="red-hover" href="">Компании</a>
+                            <a class="red-hover" href="{% url 'contacts:about' %}">Компания</a>
                         </div>
                         <div class="header__menu-link">
                             <a class="red-hover" href="">Отзывы</a>
@@ -144,7 +144,7 @@
                 <div class="nav-links">
                     <a href="{% url 'services:services' %}">Услуги</a>
                     <a href="{% url 'cases:cases' %}">Кейсы</a>
-                    <p>О компании</p>
+                    <a href="{% url 'contacts:about' %}">О компании</a>
                     <p>Новости</p>
                     <p>Контакты</p>
                 </div>
@@ -226,11 +226,15 @@
                 document.querySelector('.preloader')?.classList.add('active');
                 document.querySelector('main')?.classList.add('active');
 
+                document.querySelector('body').classList.add('active');
+
                 if (!isHomePage()) {
-                    setTimeout(() => {
-                        document.querySelector('.request-background').classList.add('active');
-                        document.querySelector('.right-glowing')?.classList.add('active');
-                    }, 500);
+                    if ('{{ page_heading }}' != 'Компания') {
+                        setTimeout(() => {
+                            document.querySelector('.request-background').classList.add('active');
+                            document.querySelector('.right-glowing')?.classList.add('active');
+                        }, 500);
+                    }
                 }
             }, 1700);
         }
