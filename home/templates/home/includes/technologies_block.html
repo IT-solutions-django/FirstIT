@@ -1,0 +1,23 @@
+{% load static %}
+{% load home_filters %}
+
+<section>
+    <p class="section__heading">Технологии</p>
+    <div class="technologies__section">
+        <div class="technologies-list">
+            {% for technology in technologies %}
+                <div class="technology-small-card {% if forloop.counter == 1 %}active{% endif %}">
+                    <p class="technology-name {% if technology.is_highlighted %}violet{% endif %}">{{ technology.name|highlight_digits }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="technology-info">
+            <div class="technology-name-heading">
+                {{ technologies.0.name|highlight_digits }}
+            </div>
+            <div class="technology-description">
+                {{ technologies.0.description|linebreaks|highlight_digits }}
+            </div>
+        </div>
+    </div>
+</section>

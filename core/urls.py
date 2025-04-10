@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('home.urls', namespace='home')),
     path('services/', include('services.urls', namespace='services')),
     path('cases/', include('cases.urls', namespace='cases')),
+    path('contacts/', include('contacts.urls', namespace='contacts')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
