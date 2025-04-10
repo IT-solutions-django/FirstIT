@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Local files -->
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/header.js' %}"></script>
+
+    <!-- Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/imask/Imask.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/imask/Imask.min.js' %}"></script>
+
+    <!-- Logo -->
+    <link rel=icon type=image/png sizes=16x16 href="{% static 'images/logo.svg' %}">
+
+    
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name=description content="{% block description %}{% endblock %}">
+    <meta property=og:title content="{% block meta_title %}{% endblock %}">
+    <meta property=og:description content="{% block meta_description %}{% endblock %}">
+    
+    {% block head %}
+    {% endblock %}
+
+</head>
+<body>
+    <img class="left-corner-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt="">
+    <img class="right-corner-gradient" src="{% static 'images/right-corner-gradient.png' %}" alt="">
+    <header class="header">
+        <div class="container">
+            <div class="header__row">
+                <div class="header__left-part">
+                    <div class="header__logo">
+                        <a href="{% url 'home:home' %}" class="header__logo-link">
+                            <img src="{% static 'images/logo.svg' %}" alt="Логотип">
+                        </a>
+                    </div>
+                </div>
+                <div class="header__nav">
+                    <div class="header__menu">
+                        <div class="header__menu-link">
+                            <a class="red-hover" href="{% url 'services:services' %}">Услуги</a>
+                        </div>
+                        <div class="header__menu-link">
+                            <a class="red-hover" href="{% url 'cases:cases' %}">Кейсы</a>
+                        </div>
+                        <div class="header__menu-link">
+                            <a class="red-hover" href="{% url 'contacts:about' %}">Компания</a>
+                        </div>
+                        <div class="header__menu-link">
+                            <a class="red-hover" href="">Отзывы</a>
+                        </div>
+                        <div class="header__menu-link">
+                            <a class="red-hover" href="">Контакты</a>
+                        </div>
+                    </div>
+                    <div class="header__right-part">
+                        <div class="header__contacts">
+                            <a target="_blank" href="tel:{{ company_info.phone }}" class="header__phone">
+                                {{ company_info.phone }}
+                            </a>
+                            <div class="header__contacts-social">
+                                <a target="_blank" href="{{ company_info.whatsapp }}" class="header__contact-link">
+                                    <img src="{% static 'images/whatsapp.svg' %}" alt="Логотип WhatsApp">
+                                </a>
+                                <a target="_blank" href="{{ company_info.telegram }}" class="header__contact-link">
+                                    <img src="{% static 'images/telegram.svg' %}" alt="Логотип Telegram">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="site-content">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer class="container">
+        <img class="footer-left-gradient" src="{% static 'images/test-3.png' %}" alt="">
+        <img class="footer-right-gradient" src="{% static 'images/test-4.png' %}" alt="">
+        <div class="upper">
+            <a href="" class="logo-link">
+                <img src="{% static 'images/logo.svg' %}" alt="">
+            </a>
+            <div class="links">
+                <div class="column">
+                    <img src="{% static 'images/address-icon.svg' %}" alt="">
+                    <p>{{ company_info.address }}</p>
+                </div>
+                <div class="column">
+                    <img src="{% static 'images/phone-icon.svg' %}" alt="">
+                    <p>{{ company_info.phone }}</p>
+                </div>
+                <div class="column">
+                    <img src="{% static 'images/dog.svg' %}" alt="">
+                    <p>{{ company_info.email }}</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="lower">
+            <div class="nav-links">
+                <a href="{% url 'services:services' %}">Услуги</a>
+                <a href="{% url 'cases:cases' %}">Кейсы</a>
+                <a href="{% url 'contacts:about' %}">О компании</a>
+                <p>Новости</p>
+                <p>Контакты</p>
+            </div>
+            <p><span class="color-violet">Политика конфиденциальности</span> и <span class="color-violet">персональных данных</span></p>
+        </div>
+    </footer>
+</body>
+</html>
+</body>
+
+{% block script %}
+{% endblock script %}
+
+
+<style>
+    main {
+        max-height: 10000px !important;
+    }
+
+    header {
+        opacity: 1;
+    }
+
+    footer {
+        opacity: 1;
+    }
+    .container.main {
+        padding-top: 210px;
+        padding-bottom: 123px;
+    }
+    .footer-left-gradient {
+        filter: blur(70px);
+    }
+    .footer-right-gradient {
+        filter: blur(50px);
+    }
+</style>
+
+
+<!-- Отправка формы ОС -->
+ <script defer>
+    const feedbackForm = document.getElementById("requestForm"); 
+    console.log(feedbackForm)
+    feedbackForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        let data = new FormData(feedbackForm);
+        let csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        
+        feedbackForm.reset();
+
+        try {
+            let s = await fetch(`contacts/api/save-request/`, {
+            method: "POST",
+            body: data,
+            headers: {
+                "X-CSRFToken": csrfToken
+            }
+        });
+            s.status
+        } catch (n) {
+            console.error("Ошибка запроса:", n)
+        }
+    });
+ </script>
+
+ <script defer>
+    document.querySelectorAll('input[type="tel"]').forEach(input => {
+        let phoneMask = IMask(input, { mask: "+{7} (000) 000-00-00" });
+
+        function validatePhoneNumber() {
+            let t = input.value.replace(/\D/g, "");
+            return t.length < 11 ? (input.setCustomValidity("Необходимо минимум 11 цифр"), !1) : (input.setCustomValidity(""), !0);
+        }
+
+        input.addEventListener("input", validatePhoneNumber);
+    });
+ </script>
+
+</html>

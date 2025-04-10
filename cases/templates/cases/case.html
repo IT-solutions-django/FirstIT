@@ -1,0 +1,101 @@
+{% extends 'base_without_animation.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block title %}
+{{ case.name }}
+{% endblock %}
+
+{% block content %}
+<div class="container main home">
+    <section>
+        <div class="case-screenshots">
+            <div class="heading">
+                <h1>{{ case.name }}</h1>
+            </div>
+            <div class="case-screenshots-container">
+                <img class="mobile-screenshot" src="{{ case.mobile_screenshot.url }}" alt="">
+                <img class="desktop-screenshot" src="{{ case.desktop_screenshot.url }}" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="case__client-info">
+        <p class="section__heading">Информация о клиенте</p>
+        <div class="big-gray-card card">
+            <img src="{{ case.logo.url }}" alt="">
+            <div class="description">
+                {{ case.description|linebreaks }}
+            </div>
+        </div>
+    </section>
+
+    <section class="goals-and-tasks">
+        <p class="section__heading">Цели и задачи</p>
+        <div class="goal">
+            <div class="left-column">
+                <p class="heading">Цель</p>
+                <p class="text">{{ case.goal|linebreaks }}</p>
+            </div>
+            <img src="{{ case.goal_screenshot.url }}" alt="">
+        </div>
+        <div class="tasks">
+            <img src="{{ case.tasks_screenshot.url }}" alt="">
+            <div class="right-column">
+                <p class="heading">Задачи</p>
+                <div class="text">
+                    {{ case.tasks|linebreaks }}
+                </div>
+            </div>
+        </div>
+        <div class="solution">
+            <div class="left-column">
+                <p class="heading">Решение</p>
+                <div class="text">
+                    {{ case.solution|linebreaks }}
+                </div>
+            </div>
+            <img src="{{ case.solution_screenshot.url }}" alt="">
+        </div>
+    </section>
+
+    <section class="result-section big-gray-card">
+        <p class="section__heading">Результаты</p>
+        <div class="body">
+            <div class="left-column">
+                <div class="stats">
+                    <div class="stat">
+                        <p class="heading">200+</p>
+                        <p class="label">Посещений в день</p>
+                    </div>
+                    <div class="stat">
+                        <p class="heading">200+</p>
+                        <p class="label">Посещений в день</p>
+                    </div>
+                    <div class="stat">
+                        <p class="heading">200+</p>
+                        <p class="label">Посещений в день</p>
+                    </div>
+                    <div class="stat">
+                        <p class="heading">200+</p>
+                        <p class="label">Посещений в день</p>
+                    </div>
+                    <div class="stat">
+                        <p class="heading">200+</p>
+                        <p class="label">Посещений в день</p>
+                    </div>
+                    <div class="stat">
+                        <p class="heading">200+</p>
+                        <p class="label">Посещений в день</p>
+                    </div>
+                </div>
+                <div class="text">
+                    {{ case.result|linebreaks }}
+                </div>
+            </div>
+            <img src="{{ case.result_screenshot.url }}" alt="">
+        </div>
+    </section>
+</div>
+
+{% endblock %}

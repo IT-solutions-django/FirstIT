@@ -20,10 +20,10 @@
         </div>
         <div class="cases">
             {% for case in cases %}
-                <div class="case">
+                <a class="case" href="{{ case.get_absolute_url }}">
                     <img class="background" src="{{ case.photo.url }}" alt="">
                     <img class="logo" src="{{ case.logo.url }}" alt="">
-                </div>
+                </a>
             {% endfor %}
         </div>
         <div class="all-cases">

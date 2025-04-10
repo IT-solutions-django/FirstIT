@@ -1551,3 +1551,174 @@ footer .column,
 .categories-panel .category-name:hover {
     opacity: 0.8;
 }
+.case-screenshots {
+    width: 100%;
+    height: 677px;
+    border-radius: 5px;
+    background-color: rgb(45, 46, 51, 0.4);
+    padding: 55px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.case-screenshots .heading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.case-screenshots .heading h1 {
+    font-family: var(--font-special);
+    font-size: 64px;
+    line-height: 45px;
+}
+.case-screenshots-container {
+    display: flex;
+    gap: 40px;
+}
+.case-screenshots-container img {
+    border-radius: 20px;
+    object-fit: cover;
+    max-height: 482px;
+    height: 100%;
+}
+.case-screenshots .mobile-screenshot {
+    width: 254px;
+}
+.case-screenshots .desktop-screenshot {
+    height: 100% !important;
+}
+.case__client-info {
+    gap: 50px;
+}
+.big-gray-card {
+    border-radius: 5px;
+    background-color: rgb(45, 46, 51, 0.4);
+    padding: 55px 50px;
+}
+.case__client-info .card {
+    display: flex;
+    gap: 40px; 
+    justify-content: space-between;   
+}
+.case__client-info .card img {
+    object-fit: contain;
+    width: 100%;
+    max-height: 92px;
+}
+.case__client-info .card .description {
+    width: 100%;
+}
+.goals-and-tasks .goal, 
+.goals-and-tasks .tasks, 
+.goals-and-tasks .solution {
+    display: flex;
+}
+.goals-and-tasks .goal {
+    gap: 120px;
+}
+.goals-and-tasks .goal .left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.goals-and-tasks .tasks {
+    justify-content: end;
+    position: relative;
+}
+.goals-and-tasks .tasks .right-column, 
+.goals-and-tasks .solution .left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.goals-and-tasks .tasks .right-column {
+    max-width: 820px;
+}
+.goals-and-tasks .solution .left-column {
+    max-width: 653px;
+    min-height: 444px;
+}
+.goals-and-tasks .solution {
+    padding: 93.5px;
+    padding-bottom: 105px;
+    position: relative;
+}
+.goals-and-tasks .tasks .right-column .text, 
+.goals-and-tasks .solution .left-column .text {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.goals-and-tasks .solution img {
+    object-fit: contain;
+    position: absolute;
+    right: -450px;
+    top: -130px;
+    max-width: 1140px;
+}
+.goals-and-tasks .tasks img {
+    position: absolute;
+    left: -460px;
+    top: -260px;
+}
+.goals-and-tasks .tasks, 
+.goals-and-tasks .solution {
+    gap: 30px;
+}
+.goals-and-tasks .goal .heading, 
+.goals-and-tasks .tasks .heading, 
+.goals-and-tasks .solution .heading {
+    font-size: 40px;
+    line-height: 17.2px;
+    font-family: var(--font-special);
+}
+.goals-and-tasks .goal .text, 
+.goals-and-tasks .tasks .text, 
+.goals-and-tasks .solution .text {
+    font-size: 16px;
+    line-height: 22px;
+}
+.goal .left-column {
+    max-width: 639px;
+}
+.result-section .section__heading {
+    widows: 100%;;
+    text-align: center;
+}
+.result-section .body {
+    display: flex;
+    gap: 50px;
+}
+.result-section .left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    min-width: 513.51px;
+    width: 513.51px;
+}
+.result-section .stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.result-section .stat {
+    width: calc((100% - 40px * 2) / 3);
+    display: flex;
+    flex-direction: column;
+    gap: 13.2px;
+    align-items: center;
+}
+.result-section .stat .heading {
+    font-size: 64px;
+    line-height: 45.7px;
+    font-family: var(--font-bebas);
+}
+.result-section .stat .label {
+    font-size: 14px;
+    line-height: 17.5px;
+}
+.result-section img {
+    object-fit: contain;
+    height: 100%;
+}
