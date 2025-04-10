@@ -226,6 +226,8 @@
                 document.querySelector('.preloader')?.classList.add('active');
                 document.querySelector('main')?.classList.add('active');
 
+                document.querySelector('body').classList.add('active');
+
                 if (!isHomePage()) {
                     if ('{{ page_heading }}' != 'Компания') {
                         setTimeout(() => {
