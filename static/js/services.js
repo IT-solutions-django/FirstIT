@@ -12,7 +12,7 @@ const initSmoothScrolling = () => {
 		smoothWheel: false
 	});
 
-	lenis.on('scroll', () => ScrollTrigger.update());
+	// lenis.on('scroll', () => ScrollTrigger.update());
 
 	// Define a function to run at each animation frame
 	const scrollFn = (time) => {
