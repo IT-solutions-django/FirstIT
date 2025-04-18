@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     'http://*.85.193.86.162', 
+    'http://*.перваякомпания.рф',
 ]
 
 
