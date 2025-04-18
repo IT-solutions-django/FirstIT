@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     'http://*.85.193.86.162', 
     'http://*.перваякомпания.рф',
+    'http://*.xn--80aaelskojgfgg1rh.xn--p1ai',
 ]
 
 
