@@ -1,7 +1,14 @@
 {% load static %}
 
 <section class="about-section">
+    {% if is_home_page %}
+        <p class="section__heading">О компании</p>
+    {% endif %}
     <div class="about__section">
+
+        <div class="logo-container only-less-than-990 flex">
+            <img class="logo" src="{% static 'images/logo.svg' %}" alt="">
+        </div>
 
         <div class="glowing-circle glowing-circle-1">
             <a href="{{ company_info.behance }}">
@@ -38,7 +45,28 @@
             <div class="text">
                 Следите за нами, чтобы быть в курсе последних новостей, акций и интересных событий! 
             </div>
+            <div class="social-media-container only-less-than-990 flex">
+                <div class="social-media">
+                    <div class="">
+                        <img class="circle" src="{% static 'images/violet-circle.svg' %}" alt="">
+                        <img class="mobile-logo" src="{% static 'images/github-logo.svg' %}" alt="">
+                    </div>
+                    <div class="">
+                        <img class="circle" src="{% static 'images/violet-circle.svg' %}" alt="">
+                        <img class="mobile-logo" src="{% static 'images/vk-logo.svg' %}" alt="">
+                    </div>
+                    <div class="">
+                        <img class="circle" src="{% static 'images/violet-circle.svg' %}" alt="">
+                        <img class="mobile-logo" src="{% static 'images/telegram-logo.svg' %}" alt="">
+                    </div>
+                    <div class="">
+                        <img class="circle" src="{% static 'images/violet-circle.svg' %}" alt="">
+                        <img class="mobile-logo" src="{% static 'images/behance-logo.svg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <img class="orbit-mobile only-less-than-990" src="{% static 'images/orbit-mobile.png' %}" alt="">
         </div>
     </div>
-    <img class="orbit" src="{% static 'images/orbit-2.png' %}" alt="">
+    <img class="orbit only-more-than-990" src="{% static 'images/orbit-2.png' %}" alt="">
 </section>

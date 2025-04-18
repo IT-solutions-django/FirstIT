@@ -1,21 +1,23 @@
 {% load static %}
 
-<section>
+<section class="section__workers">
     <p class="section__heading">Наши сотрудники</p>
-    <div class="workers-cards">
-        {% for worker in workers %}
-            <div class="worker-card">
-                <div class="image-wrapper">
-                    <img src="{{ worker.photo.url }}" alt="">
-                </div>
-                <div class="worker-info">
-                    <p class="worker-department">{{ worker.department }}</p>
-                    <div class="worker-name-and-role">
-                        <p class="worker-name">{{ worker.name }}</p>
-                        <p class="worker-role">{{ worker.position }}</p>
+    <div class="swiper">
+        <div class="workers-cards swiper-wrapper">
+            {% for worker in workers %}
+                <div class="worker-card swiper-slide">
+                    <div class="image-wrapper">
+                        <img src="{{ worker.photo.url }}" alt="">
+                    </div>
+                    <div class="worker-info">
+                        <p class="worker-department">{{ worker.department }}</p>
+                        <div class="worker-name-and-role">
+                            <p class="worker-name">{{ worker.name }}</p>
+                            <p class="worker-role">{{ worker.position }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </section>

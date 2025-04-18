@@ -6,116 +6,88 @@
 1IT
 {% endblock %}
 
-{% block content %} 
+{% block head %}
 <!-- Gsap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <!-- Swiper -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- Lenis -->
+<script src="https://unpkg.com/lenis@1.2.3/dist/lenis.min.js"></script> 
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@5.0.0/imagesloaded.pkgd.min.js"></script>
+
+
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+<!-- JS -->
+<script type="module" defer src="{% static 'js/services.js' %}"></script>
+{% endblock %}
+
+{% block content %}
 <div class="container main home">
-    <section>
+    <section class="services-section">
+      <div class="heading-wrapper">
         <p class="section__heading">Услуги</p>
-        <div class="home__services">
-            <div class="tabs">
-                {% for service in services %}
-                    <div class="tab {% if forloop.counter == 1 %}active{% endif %}" onclick="changeTab({{ forloop.counter }})" data-tab-id="{{ forloop.counter }}">
-                        <p class="tab-name">{{ service.name }}</p>
-                        <p class="tab-number">0{{ forloop.counter }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="tabs-content">
-                {% for service in services %}
-                    <div class="tab-content {% if forloorp.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" style="{% if forloop.counter == 1%}opacity: 1; transform: translateX(0);{% endif %}">
-                        <div class="upper">
-                            <div class="home__service-header">
-                                <p class="home__service-heading">{{ service.heading|highlight_digits }}</p>
-                                <p class="home__service-label">{{ service.label }}</p>
-                            </div>
-                            <div class="description">
-                                {{ service.text|linebreaks }}
-                            </div>
-                            <div class="home__service-buttons">
-                                <a href="#request-section" class="violet-button">Заказать услугу</a>
-                                <button class="gray-button">Все услуги</button>
-                            </div>
-                        </div>
-                        <div class="lower">
-                            {% for service in services %}
-                                <p class="{% if forloop.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" onclick="changeTab('{{ forloop.counter }}')">0{{ forloop.counter }}</p>
-                            {% endfor %}
-                        </div>
-                        {% if forloop.counter == 1 %}
-                            <img class="image" src="{% static 'images/home-service-1.png' %}" alt="">
-                        {% endif %}
-                        {% if forloop.counter == 2 %}
-                            <img class="image" src="{% static 'images/home-service-2.png' %}" alt="">
-                        {% endif %}
-                        {% if forloop.counter == 3 %}
-                            <img class="image" src="{% static 'images/internet-shops.png' %}" alt="">
-                        {% endif %}
-                        {% if forloop.counter == 4 %}
-                            <img class="image seo-optimization" src="{% static 'images/seo.png' %}" alt="">
-                        {% endif %}
-                        {% if forloop.counter == 5 %}
-                            <img class="image" src="{% static 'images/context-ad.png' %}" alt="">
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            </div>
+      </div>
+        <div class="fixed-menu">
+          {% for service in services %}
+              <div class="tab {% if forloop.counter == 1 %}active{% endif %}" onclick="changeTab({{ forloop.counter }})" data-tab-id="{{ forloop.counter }}">
+                  <p class="tab-name">{{ service.name }}</p>
+                  <p class="tab-number">0{{ forloop.counter }}</p>
+              </div>
+          {% endfor %}
+        </div>
+        <div class="services-sticky-container wrap">
+            {% for service in services %}
+              <div class="content content--sticky card" data-tab-id="{{ forloop.counter }}">
+                <div class="card-inner">
+                  <div class="heading-container">
+                    <p class="heading">{{ service.name }}</p>
+                    <p class="font-for-numbers">0{{ forloop.counter }}</p>
+                  </div>
+                  <p class="text">
+                    Разрабатывает индивидуальные решения, адаптированные под ваши потребности, что позволяет автоматизировать процессы продаж и улучшить обслуживание. 
+                  </p>
+                  <button class="violet-button">Заказать</button>
+                  <div class="contacts">
+                    <p class="phone">{{ company_info.phone }}</p>
+                    <img src="{% static 'images/whatsapp.svg' %}" alt="">
+                    <img src="{% static 'images/telegram.svg' %}" alt="">
+                  </div>
+                  {% if forloop.counter == 1 %}
+                      <img class="card-image" src="{% static 'images/new-service-1.png' %}" alt="">
+                  {% endif %}
+                  {% if forloop.counter == 2 %}
+                      <img class="card-image" src="{% static 'images/new-service-2.png' %}" alt="">
+                  {% endif %}
+                  {% if forloop.counter == 3 %}
+                      <img class="card-image" src="{% static 'images/new-service-3.png' %}" alt="">
+                  {% endif %}
+                  {% if forloop.counter == 4 %}
+                      <img class="card-image seo-optimization" src="{% static 'images/new-service-4.png' %}" alt="">
+                  {% endif %}
+                  {% if forloop.counter == 5 %}
+                      <img class="card-image" src="{% static 'images/new-service-5.png' %}" alt="">
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+            <div class="services-spacer"></div>
         </div>
     </section>
-
     {% include 'home/includes/request_block.html' %}
 </div>
 
 
-<!-- Услуги -->
-<script defer>
-    let activeIndex = 1;
-
-    function changeTab(index) {
-        console.log(index)
-        if (index === activeIndex) return;
-
-        const current = document.querySelector(`.home__services .tab-content[data-tab-id="${activeIndex}"]`);
-        const next = document.querySelector(`.home__services .tab-content[data-tab-id="${index}"]`);
-
-        console.log(current)
-        console.log(next)
-        
-        if (!next) return;
-
-        document.querySelectorAll('.home__services .tab').forEach(tab => 
-            tab.classList.toggle('active', tab.dataset.tabId == index)
-        );
-
-        next.querySelectorAll(".home__services .lower p").forEach(p => 
-            p.classList.toggle('active', p.dataset.tabId == index)
-        );
-
-        gsap.to(current, { 
-            opacity: 0, 
-            duration: 0.5,
-            onComplete: () => {
-                current.style.display = "none";
-            }
-        });
-
-        next.style.display = "flex";
-        gsap.fromTo(next, 
-            { opacity: 0 }, 
-            { 
-                opacity: 1, 
-                duration: 0.5
-            }
-        );
-
-        activeIndex = index;
-    }
-</script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
 
 {% endblock %}
