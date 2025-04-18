@@ -76,7 +76,7 @@
                             <a class="red-hover" href="">Контакты</a>
                         </div>
                     </div>
-                    <div class="header__right-part">
+                    <div class="header__right-part header__desktop">
                         <div class="header__contacts">
                             <a target="_blank" href="tel:{{ company_info.phone }}" class="header__phone">
                                 {{ company_info.phone }}
@@ -91,6 +91,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="header__mobile">
+                        <img src="{% static 'images/burger-icon.svg' %}" alt="">
+                    </div> 
                 </div>
             </div>
         </div>
@@ -165,35 +168,6 @@
         const alreadyVisited = sessionStorage.getItem('alreadyVisited');
 
         runPreloader();
-
-        // if (!alreadyVisited) {
-        //     sessionStorage.setItem('alreadyVisited', 'true');
-        //     runPreloader();
-        // } else {
-            
-        //     const heading = document.querySelector('.preloader-heading');
-
-        //     heading.textContent = 'FIRST IT COMPANY';
-        //     heading.style.opacity = '0';
-        //     heading.classList.add('without-animation');
-
-        //     void heading.offsetWidth;
-
-        //     heading.classList.remove('without-animation');
-        //     heading.classList.add('add-transition');
-
-        //     setTimeout(() => {
-        //         heading.classList.add('active');
-        //     }, 600);
-
-        //     document.querySelector('.preloader-heading.bottom')?.classList.add('active');
-        //     document.querySelector('.preloader-divider')?.classList.add('active');
-        //     document.querySelector('.preloader-bottom-divider')?.classList.add('active');
-        //     document.querySelector('header')?.classList.add('active');
-        //     document.querySelector('footer')?.classList.add('active');
-        //     document.querySelector('.preloader')?.classList.add('active');
-        //     document.querySelector('main')?.classList.add('active');
-        // }
     });
 
     function runPreloader() {
@@ -244,6 +218,13 @@
 
     function isHomePage() {
         return window.location.pathname === "/";
+    }
+
+    function isMobile() {
+        if (window.innerWidth < 990) {
+            return true;
+        }
+        return false;
     }
 </script>
 

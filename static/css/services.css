@@ -488,3 +488,17 @@ i {
 .text {
 	max-width: 400px;
 }
+
+.content--sticky.card {
+    position: sticky !important;
+}
+
+.card {
+	width: 830px;
+	height: 420px;
+	border-radius: 8px;
+	position: -webkit-sticky; /* Safari поддержка */
+	position: sticky;
+	top: 100px; /* пример отступа сверху */
+	z-index: 10;
+}
