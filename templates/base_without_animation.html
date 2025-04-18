@@ -31,6 +31,9 @@
     <!-- Logo -->
     <link rel=icon type=image/png sizes=16x16 href="{% static 'images/logo.svg' %}">
 
+    <!-- Меню-бургер -->
+    <script src="{% static 'js/menuBurger.js' %}"></script>
+
     
     <title>{% block title %}{% endblock title %}</title>
     <meta name=description content="{% block description %}{% endblock %}">
@@ -65,14 +68,8 @@
                         <div class="header__menu-link">
                             <a class="red-hover" href="{% url 'contacts:about' %}">Компания</a>
                         </div>
-                        <div class="header__menu-link">
-                            <a class="red-hover" href="">Отзывы</a>
-                        </div>
-                        <div class="header__menu-link">
-                            <a class="red-hover" href="">Контакты</a>
-                        </div>
                     </div>
-                    <div class="header__right-part">
+                    <div class="header__right-part header__desktop">
                         <div class="header__contacts">
                             <a target="_blank" href="tel:{{ company_info.phone }}" class="header__phone">
                                 {{ company_info.phone }}
@@ -87,13 +84,42 @@
                             </div>
                         </div>
                     </div>
+                    <div class="header__hamburger header__mobile">
+                        <img src="{% static 'images/burger-icon.svg' %}" alt="">
+                    </div> 
                 </div>
             </div>
+        </div>
+        <div class="header__mobile-menu">
+            <div class="header__mobile-menu-links">
+                <a href="{% url 'home:home' %}">Главная</a>
+                <a href="{% url 'services:services' %}">Услуги</a>
+                <a href="{% url 'cases:cases' %}">Кейсы</a>
+                <a href="{% url 'contacts:about' %}">О компании</a>
+            </div>   
+            <div class="header__mobile-menu-contacts">
+                <div class="header__contacts">
+                    <a target="_blank" href="tel:{{ company_info.phone }}" class="header__phone">
+                        {{ company_info.phone }}
+                    </a>
+                    <div class="header__contacts-social">
+                        <a target="_blank" href="{{ company_info.whatsapp }}" class="header__contact-link">
+                            <img src="{% static 'images/whatsapp.svg' %}" alt="Логотип WhatsApp">
+                        </a>
+                        <a target="_blank" href="{{ company_info.telegram }}" class="header__contact-link">
+                            <img src="{% static 'images/telegram.svg' %}" alt="Логотип Telegram">
+                        </a>
+                    </div>
+                </div>
+                <div class="email">
+                    {{ company_info.email }}
+                </div>
+            </div>           
         </div>
     </header>
 
 
-    <main class="site-content">
+    <main class="site-content active">
         {% block content %}
         {% endblock content %}
     </main>
@@ -143,6 +169,7 @@
 <style>
     main {
         max-height: 10000px !important;
+        overflow-y: scroll;
     }
 
     header {

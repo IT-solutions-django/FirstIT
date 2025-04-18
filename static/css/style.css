@@ -2380,8 +2380,11 @@ footer .column,
         width: 100%;
         text-align: center;
     }
-    .cases {
-        align-items: center;
+
+    @media (max-width: 990px) {
+        .cases {
+            align-items: center;
+        }   
     }
 }
 
