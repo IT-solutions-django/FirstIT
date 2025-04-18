@@ -469,7 +469,7 @@ i {
 }
 .section__heading {
 	width: 150.92px;
-	z-index: 20;
+	z-index: 10;
 }
 
 .card-image {

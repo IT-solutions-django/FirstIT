@@ -179,7 +179,7 @@
             </div>
         </div>
         <div class="all-cases">
-            <button class="violet-button">Все кейсы</button>
+            <a href="{% url 'cases:cases' %}" class="violet-button">Все кейсы</a>
         </div>
     </section>
 
@@ -483,7 +483,8 @@ document.addEventListener("DOMContentLoaded", function () {
         0: {
             slidesPerView: 1,
             spaceBetween: 24,
-            centeredSlides: true,
+            loop: true,
+            // centeredSlides: true,
             coverflowEffect: false, 
             effect: 'slide',
         },

@@ -31,6 +31,8 @@
     <!-- Logo -->
     <link rel=icon type=image/png sizes=16x16 href="{% static 'images/logo.svg' %}">
 
+    <!-- Меню-бургер -->
+    <script src="{% static 'js/menuBurger.js' %}"></script>
     
     <title>{% block title %}{% endblock title %}</title>
     <meta name=description content="{% block description %}{% endblock %}">
@@ -69,12 +71,6 @@
                         <div class="header__menu-link">
                             <a class="red-hover" href="{% url 'contacts:about' %}">Компания</a>
                         </div>
-                        <div class="header__menu-link">
-                            <a class="red-hover" href="">Отзывы</a>
-                        </div>
-                        <div class="header__menu-link">
-                            <a class="red-hover" href="">Контакты</a>
-                        </div>
                     </div>
                     <div class="header__right-part header__desktop">
                         <div class="header__contacts">
@@ -91,13 +87,39 @@
                             </div>
                         </div>
                     </div>
-                    <div class="header__mobile">
+                    <div class="header__hamburger header__mobile">
                         <img src="{% static 'images/burger-icon.svg' %}" alt="">
                     </div> 
                 </div>
             </div>
         </div>
     </header>
+    <div class="header__mobile-menu">
+        <div class="header__mobile-menu-links">
+            <a href="{% url 'home:home' %}">Главная</a>
+            <a href="{% url 'services:services' %}">Услуги</a>
+            <a href="{% url 'cases:cases' %}">Кейсы</a>
+            <a href="{% url 'contacts:about' %}">О компании</a>
+        </div>   
+        <div class="header__mobile-menu-contacts">
+            <div class="header__contacts">
+                <a target="_blank" href="tel:{{ company_info.phone }}" class="header__phone">
+                    {{ company_info.phone }}
+                </a>
+                <div class="header__contacts-social">
+                    <a target="_blank" href="{{ company_info.whatsapp }}" class="header__contact-link">
+                        <img src="{% static 'images/whatsapp.svg' %}" alt="Логотип WhatsApp">
+                    </a>
+                    <a target="_blank" href="{{ company_info.telegram }}" class="header__contact-link">
+                        <img src="{% static 'images/telegram.svg' %}" alt="Логотип Telegram">
+                    </a>
+                </div>
+            </div>
+            <div class="email">
+                {{ company_info.email }}
+            </div>
+        </div>           
+    </div>
 
     <div class="preloader container">
 
@@ -175,22 +197,36 @@
 {% block script %}
 {% endblock script %}
 
+{% if not is_home_page %}
+<style>
+    .preloader-divider {
+        transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);;
+    }
+</style>
+{% endif %}
+
 
 <!-- <script defer>
     document.addEventListener('DOMContentLoaded', () => {
         const alreadyVisited = sessionStorage.getItem('alreadyVisited');
+        const isHome = isHomePage();
 
-        runPreloader();
+        runPreloader(isHome);
     });
 
-    function runPreloader() {
+    function runPreloader(isHomePage = false) {
         let cont = $('.preloader-heading'),
             text = '{{ page_heading }}',
             p = 0;
         cont.html("");
 
+        let randomRange = 160;
+        if (isHomePage) {
+            randomRange = 200;
+        }
+
         function printSmbl(onPrintComplete) {
-            let timeout = Math.round(Math.random() * 200);
+            let timeout = Math.round(Math.random() * randomRange);
             cont.html(cont.html() + text[p]);
             p++;
             if (p < text.length) {
@@ -202,6 +238,11 @@
 
         function onPrintComplete() {
             document.querySelector('.preloader-divider')?.classList.add('active');
+
+            let timeout = 900;
+            if (isHomePage) {
+                timeout = 1700
+            }
 
             setTimeout(() => {
                 document.querySelector('.preloader-heading.top')?.classList.add('active');
@@ -215,7 +256,7 @@
 
                 document.querySelector('body').classList.add('active');
 
-                if (!isHomePage()) {
+                if (!isHomePage) {
                     if ('{{ page_heading }}' != 'Компания') {
                         setTimeout(() => {
                             document.querySelector('.request-background').classList.add('active');
@@ -223,7 +264,7 @@
                         }, 500);
                     }
                 }
-            }, 1700);
+            }, timeout);
         }
 
         setTimeout(() => printSmbl(onPrintComplete), 800);

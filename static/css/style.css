@@ -93,6 +93,54 @@ header {
 header.active {
     opacity: 1;
 }
+.header__mobile-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #010314;
+    padding: 62px 58px 36px 57px;
+    z-index: 20;
+}
+.header__mobile-menu.active {
+    display: flex;
+}
+.header__mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 40px;
+    font-family: var(--font-special);
+}
+.header__mobile-menu-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+.header__mobile-menu-contacts .email {
+    font-size: 32px;
+    font-family: var(--font-special);
+    line-height: 60px;
+}
+@media (max-width: 390px) {
+    .header__mobile-menu-contacts .header__contacts, 
+    .header__mobile-menu-contacts .email{
+        font-size: 28px;
+        display: flex;
+        justify-content: center;
+    }
+    .header__mobile-menu {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
 
 .preloader-parts {
     position: relative;
@@ -200,6 +248,18 @@ header.active {
     .preloader-heading.top.active {
         max-height: 36px;
     }
+    .preloader-heading.bottom.active {
+        max-height: 24px;
+    }
+    .preloader-bottom-divider {
+        transform: translateY(-25px);
+    }
+    .preloader-heading.top {
+        display: flex !important;
+    }
+    .preloader-heading.bottom {
+        display: flex !important;
+    }
 }
 
 
@@ -246,7 +306,7 @@ header.header {
 
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 21;
 }
 
 .header.nav-up {
@@ -651,7 +711,7 @@ footer .nav-links p {
 .rect-slide {
     padding: 120px 78px;
     background: linear-gradient(45deg, #010314 -1%, #5F32AD 69%, #00FFE7 120%);
-    width: calc((1400px - 53px * 2) / 3) !important;
+    width: calc((1400px - 53px * 2) / 3);
 
     display: flex !important;
     flex-direction: column;
@@ -899,7 +959,7 @@ footer .nav-links p {
     align-items: center;
     justify-content: center;
 
-    cursor: pointer;
+    cursor: grab;
     transition: all 0.4s ease !important;
 }
 .client-card img {
@@ -1820,6 +1880,7 @@ footer .column,
     justify-content: center;
     align-items: center;
 }
+/* Убрать стили Swiper для десктопа */
 @media (min-width: 990px) {
     .tabs-content.swiper {
         margin-left: auto; 
@@ -1838,6 +1899,65 @@ footer .column,
         flex: 1 1 0%;
         overflow: hidden;
         justify-content: space-between;
+    }
+    .tabs-content .swiper-slide {
+        display: flex;
+    }
+    .case.swiper-slide {
+        flex-shrink: unset;
+        transition-property: unset;
+        display: block;
+
+        width: calc((100% - 20px * 3) / 4);
+        height: 335px;
+        position: relative;
+        cursor: pointer;
+    }
+    .cases-container.swiper {
+        margin-left: unset;
+        margin-right: unset;
+        position: unset;
+        overflow: hidden;
+        list-style: unset;
+        padding: 0;
+        z-index: 1;
+        display: block;
+    }
+    .section__workers .swiper {
+        margin-left: unset;
+        margin-right: unset;
+        position: unset;
+        overflow: unset;
+        list-style: unset;
+        padding: unset;
+        z-index: unset;
+        display: unset;
+    }
+    .section__workers .swiper-wrapper {
+        position: relative;
+        width: unset;
+        height: unset;
+        z-index: 1;
+        transition-property: unset;
+        transition-timing-function: unset;
+        box-sizing: unset;
+    }
+    .section__workers .swiper-slide {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition-property: transform;
+        display: block;
+
+        display: flex;
+        flex-direction: column;
+        width: calc((100% - 30px * 3) / 4);
+        background-color: rgb(93, 93, 93, 0.21);
+        border-radius: 21px;
+        backdrop-filter: blur(12px);
+        padding: 24.5px 25px;
+        gap: 20px;
     }
 }
 @media(max-width: 990px) {
@@ -1877,8 +1997,11 @@ footer .column,
     .black-ellipsis, .down-black-ellipsis {
         max-width: calc(100vw);
     }
+    .down-black-ellipsis {
+        transform: scale(1.1) translateY(-35px);
+    }
     .rect-slides {
-        /* max-width: calc(100vw - 16px * 2); */
+        max-width: calc(100vw - 16px * 2);
         justify-content: center;
     }
     .rect-slide-heading {
@@ -1895,6 +2018,9 @@ footer .column,
     .preloader-heading {
         font-size: 60px;
         line-height: 60px;
+    }
+    .preloader {
+        padding: 187px 0px 56px 0px;
     }
     .preloader.active {
         padding: 187px 0px 56px 0px;
@@ -2198,6 +2324,12 @@ footer .column,
     footer .upper {
         flex-direction: row-reverse;
     }
+    footer .nav-links {
+        gap: 10px;
+    }
+    .footer-right-gradient {
+        bottom: -19px;
+    }
     footer .nav-links a {
         font-size: 12px;
         line-height: 22px;
@@ -2209,6 +2341,47 @@ footer .column,
     footer .privacy-policy {
         font-size: 11px;
         text-align: center;
+    }
+    .company-stats-wrapper {
+        flex-direction: column;
+        gap: 50px;
+    }
+    .company-stat .heading {
+        justify-content: center;
+    }
+    .company-stat {
+        width: 215px;
+    }
+    .round-slider__image-wrapper {
+        width: 390px;
+    }
+    .rounded-slides .swiper-button-next, .rounded-slides .swiper-button-prev {
+        display: none;
+    }
+    .round-slider__request-button .violet-button {
+        padding: 11.05px 21.4px;
+    }
+    .categories-panel {
+        display: flex;
+        gap: 37px;
+        font-size: 24px;
+        padding: 12px 40px;
+        font-family: var(--font-special);
+    }
+    .categories-panel .divider {
+        width: 2px;
+        background-color: white;
+    }
+    .categories-panel .label {
+        width: 100%;
+        text-align: center;
+    }
+    .categories-panel .sphere {
+        width: 100%;
+        text-align: center;
+    }
+    .cases {
+        align-items: center;
     }
 }
 

@@ -23,11 +23,20 @@
     .preloader-bottom-divider {
         transform: translateY(-104px);
     }
+
+
+
+    .cases {
+      flex-direction: column;
+    }
+
+
+
 </style>
 
 <div class="container main home">
     <section>
-        <div class="categories-panel">
+        <div class="categories-panel only-more-than-990">
             <p class="category-name active">Все</p>
             {% for category in case_categories %}
                 <p class="category-name">{{ category.name }}</p>
@@ -36,12 +45,31 @@
                 {% endif %}
             {% endfor %}
         </div>
+        <div class="categories-panel only-less-than-990 flex">
+          <div class="label">
+            ВЫБРАТЬ СФЕРУ
+          </div>
+          <div class="divider">
+
+          </div>
+          <div class="sphere">
+            Все
+          </div>
+        </div>
         <div class="cases">
             {% for case in cases %}
                 <a class="case" href="{{ case.get_absolute_url }}">
                     <img class="background" src="{{ case.photo.url }}" alt="">
                     <img class="logo" src="{{ case.logo.url }}" alt="">
                 </a>
+                <a class="case" href="{{ case.get_absolute_url }}">
+                  <img class="background" src="{{ case.photo.url }}" alt="">
+                  <img class="logo" src="{{ case.logo.url }}" alt="">
+              </a>
+              <a class="case" href="{{ case.get_absolute_url }}">
+                <img class="background" src="{{ case.photo.url }}" alt="">
+                <img class="logo" src="{{ case.logo.url }}" alt="">
+            </a>
             {% endfor %}
         </div>
         <div class="all-cases">

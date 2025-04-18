@@ -19,7 +19,7 @@
             {% for stat in company_stats %}
                 <div class="company-stat">
                     <p class="heading"><span>{{ stat.heading|highlight_digits }}</span><span class="heading-label">{{ stat.heading_label }}</span></p>
-                    <p class="lower-label">{{ stat.lower_label }}</p>
+                    <p class="lower-label">{{ stat.lower_label|br_every_two|safe }}</p>
                 </div>
             {% endfor %}
         </div>

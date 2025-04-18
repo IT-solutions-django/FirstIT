@@ -50,9 +50,6 @@ const scroll = () => {
                 start: 'center center',
                 end: '+=100%',
                 scrub: true, 
-                onEnter: () => {
-                    setActiveCard()
-                },
             }
         })
         .to(el, {
