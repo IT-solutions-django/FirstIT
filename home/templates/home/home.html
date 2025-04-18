@@ -27,7 +27,7 @@
     <section>
         <p class="section__heading">Услуги</p>
         <div class="home__services">
-            <div class="tabs">
+            <div class="tabs only-more-than-990">
                 {% for service in services %}
                     <div class="tab {% if forloop.counter == 1 %}active{% endif %}" onclick="changeTab({{ forloop.counter }})" data-tab-id="{{ forloop.counter }}">
                         <p class="tab-name">{{ service.name }}</p>
@@ -35,45 +35,48 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="tabs-content">
-                {% for service in services %}
-                    <div class="tab-content {% if forloorp.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" style="{% if forloop.counter == 1%}opacity: 1; transform: translateX(0);{% endif %}">
-                        <div class="upper">
-                            <div class="home__service-header">
-                                <p class="home__service-heading">{{ service.heading|highlight_digits }}</p>
-                                <p class="home__service-label">{{ service.label }}</p>
+            <div class="tabs-content swiper">
+                <div class="swiper-wrapper">
+                    {% for service in services %}
+                        <div class="tab-content swiper-slide {% if forloorp.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" style="{% if forloop.counter == 1%}opacity: 1; transform: translateX(0);{% endif %}">
+                            <div class="upper">
+                                <div class="home__service-header">
+                                    <p class="home__service-heading">{{ service.heading|highlight_digits }}</p>
+                                    <p class="home__service-label">{{ service.label }}</p>
+                                </div>
+                                <div class="description">
+                                    {{ service.text|linebreaks }}
+                                </div>
+                                <div class="home__service-buttons">
+                                    <a href="#request-section" class="violet-button">Заказать услугу</a>
+                                    <button class="gray-button">Все услуги</button>
+                                </div>
                             </div>
-                            <div class="description">
-                                {{ service.text|linebreaks }}
+                            <div class="lower only-more-than-990">
+                                {% for service in services %}
+                                    <p class="{% if forloop.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" onclick="changeTab('{{ forloop.counter }}')">0{{ forloop.counter }}</p>
+                                {% endfor %}
                             </div>
-                            <div class="home__service-buttons">
-                                <a href="#request-section" class="violet-button">Заказать услугу</a>
-                                <button class="gray-button">Все услуги</button>
-                            </div>
+                            {% if forloop.counter == 1 %}
+                                <img class="image" src="{% static 'images/home-service-1.png' %}" alt="">
+                            {% endif %}
+                            {% if forloop.counter == 2 %}
+                                <img class="image" src="{% static 'images/home-service-2.png' %}" alt="">
+                            {% endif %}
+                            {% if forloop.counter == 3 %}
+                                <img class="image" src="{% static 'images/internet-shops.png' %}" alt="">
+                            {% endif %}
+                            {% if forloop.counter == 4 %}
+                                <img class="image seo-optimization" src="{% static 'images/seo.png' %}" alt="">
+                            {% endif %}
+                            {% if forloop.counter == 5 %}
+                                <img class="image" src="{% static 'images/context-ad.png' %}" alt="">
+                            {% endif %}
                         </div>
-                        <div class="lower">
-                            {% for service in services %}
-                                <p class="{% if forloop.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" onclick="changeTab('{{ forloop.counter }}')">0{{ forloop.counter }}</p>
-                            {% endfor %}
-                        </div>
-                        {% if forloop.counter == 1 %}
-                            <img class="image" src="{% static 'images/home-service-1.png' %}" alt="">
-                        {% endif %}
-                        {% if forloop.counter == 2 %}
-                            <img class="image" src="{% static 'images/home-service-2.png' %}" alt="">
-                        {% endif %}
-                        {% if forloop.counter == 3 %}
-                            <img class="image" src="{% static 'images/internet-shops.png' %}" alt="">
-                        {% endif %}
-                        {% if forloop.counter == 4 %}
-                            <img class="image seo-optimization" src="{% static 'images/seo.png' %}" alt="">
-                        {% endif %}
-                        {% if forloop.counter == 5 %}
-                            <img class="image" src="{% static 'images/context-ad.png' %}" alt="">
-                        {% endif %}
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
     
@@ -134,13 +137,46 @@
 
     <section>
         <p class="section__heading">Кейсы</p>
-        <div class="cases">
-            {% for case in cases %}
-                <div class="case">
-                    <img class="background" src="{{ case.photo.url }}" alt="">
-                    <img class="logo" src="{{ case.logo.url }}" alt="">
-                </div>
-            {% endfor %}
+        <div class="cases-container swiper">
+            <div class="cases swiper-wrapper">
+                {% for case in cases %}
+                    <div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div>
+                    <div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div>
+                    <div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div>
+                    <div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div><div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div>
+                    <div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div>
+                    <div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div>
+                    <div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div>
+                    <div class="case swiper-slide">
+                        <img class="background" src="{{ case.photo.url }}" alt="">
+                        <img class="logo" src="{{ case.logo.url }}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
         </div>
         <div class="all-cases">
             <button class="violet-button">Все кейсы</button>
@@ -158,6 +194,43 @@
                     <div class="client-card swiper-slide">
                         <img src="{{ client.logo.url }}" alt="">
                     </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                    
                 {% endfor %}
             </div>
         </div>
@@ -207,6 +280,7 @@
                         <div class="review-company">
                             <img class="review-company-logo" src="{% static 'images/review-logo-example.svg' %}" alt="">
                             <div class="review-company-info">
+                                <p class="review-date only-less-than-990">21.03.2025</p>
                                 <p class="company-name">Школа дизайна</p>
                                 <div class="company-stars">
                                     <img src="{% static 'images/star-icon.svg' %}" alt="">
@@ -217,7 +291,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="review-date">21.03.2025</p>
+                        <p class="review-date only-more-than-990">21.03.2025</p>
                     </div>
                     <div class="review-text">
                         Мы обратились в "Первую IT компанию" для создания сайта нашей школы дизайна, и остались очень довольны результатом! Команда профессионалов внимательно выслушала наши идеи и предложила креативные решения.
@@ -314,50 +388,64 @@
 
     {% include 'home/includes/request_block.html' %}
 </div>
+{% endblock %}
 
-
+{% block script %}
 <!-- Услуги -->
 <script defer>
-    let activeIndex = 1;
+    if (!isMobile()) {
+        let activeIndex = 1;
 
-    function changeTab(index) {
-        console.log(index)
-        if (index === activeIndex) return;
+        function changeTab(index) {
+            console.log(index)
+            if (index === activeIndex) return;
 
-        const current = document.querySelector(`.home__services .tab-content[data-tab-id="${activeIndex}"]`);
-        const next = document.querySelector(`.home__services .tab-content[data-tab-id="${index}"]`);
+            const current = document.querySelector(`.home__services .tab-content[data-tab-id="${activeIndex}"]`);
+            const next = document.querySelector(`.home__services .tab-content[data-tab-id="${index}"]`);
 
-        console.log(current)
-        console.log(next)
-        
-        if (!next) return;
+            console.log(current)
+            console.log(next)
+            
+            if (!next) return;
 
-        document.querySelectorAll('.home__services .tab').forEach(tab => 
-            tab.classList.toggle('active', tab.dataset.tabId == index)
-        );
+            document.querySelectorAll('.home__services .tab').forEach(tab => 
+                tab.classList.toggle('active', tab.dataset.tabId == index)
+            );
 
-        next.querySelectorAll(".home__services .lower p").forEach(p => 
-            p.classList.toggle('active', p.dataset.tabId == index)
-        );
+            next.querySelectorAll(".home__services .lower p").forEach(p => 
+                p.classList.toggle('active', p.dataset.tabId == index)
+            );
 
-        gsap.to(current, { 
-            opacity: 0, 
-            duration: 0.5,
-            onComplete: () => {
-                current.style.display = "none";
-            }
+            gsap.to(current, { 
+                opacity: 0, 
+                duration: 0.5,
+                onComplete: () => {
+                    current.style.display = "none";
+                }
+            });
+
+            next.style.display = "flex";
+            gsap.fromTo(next, 
+                { opacity: 0 }, 
+                { 
+                    opacity: 1, 
+                    duration: 0.5
+                }
+            );
+
+            activeIndex = index;
+        }
+    } else {
+        var swiper = new Swiper(".tabs-content.swiper", {
+            spaceBetween: 32,
+            pagination: {
+                el: ".home__services .swiper-pagination",
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + (index + 1) + "</span>";
+                },
+            },
         });
-
-        next.style.display = "flex";
-        gsap.fromTo(next, 
-            { opacity: 0 }, 
-            { 
-                opacity: 1, 
-                duration: 0.5
-            }
-        );
-
-        activeIndex = index;
     }
 </script>
 
@@ -369,41 +457,49 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentSlideIndex = 1;
 
     const mainSLider = new Swiper('.rounded-slides.swiper', {
-        loop: true, 
-        slidesPerView: 3,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    mousewheel: {
+        sensitivity: 1
+    },
+    on: {
+        slideNextTransitionStart: function () {
+            currentSlideIndex++;
+            const angle = getRotationAngleNext();
+            rotationAngle -= angle; 
+            rotateImage();
         },
-        spaceBetween: 53, 
-        mousewheel: {
-            sensitivity: 1
-        }, 
-        coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 300,
-            modifier: 1,
-            slideShadows: true, 
+        slidePrevTransitionStart: function () {
+            currentSlideIndex--;
+            const angle = getRotationAnglePrev();
+            rotationAngle += angle; 
+            rotateImage();
+        }
+    }, 
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            centeredSlides: true,
+            coverflowEffect: false, 
+            effect: 'slide',
         },
-        on: {
-            slideNextTransitionStart: function () {
-                currentSlideIndex++;
-                console.log(`Остаток: ${currentSlideIndex % 6}`)
-
-                const angle = getRotationAngleNext();
-                rotationAngle -= angle; 
-                rotateImage();
-            },
-            slidePrevTransitionStart: function () {
-                currentSlideIndex--;
-
-                const angle = getRotationAnglePrev();
-                rotationAngle += angle; 
-                rotateImage();
+        990: {
+            slidesPerView: 3,
+            spaceBetween: 53,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 300,
+                modifier: 1,
+                slideShadows: true,
             }
         }
-    });
+    }
+});
 
     function rotateImage() {
         const image = document.querySelector('.round-slider__image');
@@ -455,6 +551,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+
+<script defer>
+    if (isMobile()) {
+        console.log('Кейсы')
+        var swiper = new Swiper(".cases-container.swiper", {
+            spaceBetween: 0, 
+            touchRatio: 0.8,   
+            simulateTouch: true, 
+            slidesPerView : 1,
+            freeMode: true,
+        });
+    }
+</script>
+
+
 <!-- Клиенты -->
 <script defer>
     document.addEventListener('DOMContentLoaded', () => {
@@ -482,6 +593,45 @@ document.addEventListener("DOMContentLoaded", function () {
                     grid: {
                         rows: 2,
                     },
+                    breakpoints: {
+                    0: {
+                        slidesPerView: 3,
+                        initialSlide: 2, 
+                        centeredSlides: true,
+                        spaceBetween: 16,
+                        grid: {
+                            rows: 2
+                        },
+                    },
+                    576: {
+                        slidesPerView: 3,
+                        spaceBetween: 16,
+                        grid: {
+                            rows: 2
+                        }
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                        grid: {
+                            rows: 2
+                        }
+                    },
+                    992: {
+                        slidesPerView: 6,
+                        spaceBetween: 24,
+                        grid: {
+                            rows: 2
+                        }
+                    },
+                    1200: {
+                        slidesPerView: 8,
+                        spaceBetween: 30,
+                        grid: {
+                            rows: 2
+                        }
+                    }
+                },
                     autoplay: {
                         delay: 5000,
                         disableOnInteraction: true,
@@ -502,6 +652,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script defer>
     const reviews = new Swiper('.reviews.swiper', {
         slidesPerView: 1,
+        spaceBetween: 4,
         loop: true,
         navigation: {
             nextEl: '.swiper-button-next',
@@ -512,8 +663,23 @@ document.addEventListener("DOMContentLoaded", function () {
             clickable: true,
         },
     });
-    console.log(reviews)
 </script>
+
+
+<!-- Сотрудники -->
+ <script defer>
+    if (isMobile()) {
+        const reviews = new Swiper('.section__workers .swiper', {
+            slidesPerView: 1,
+            spaceBetween: 4,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }, 
+            freeMode: true,
+        });
+    }
+ </script>
 
 <!-- Технологии -->
 <script defer>
@@ -557,6 +723,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
-
-
 {% endblock %}

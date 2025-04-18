@@ -151,7 +151,7 @@
                     <p>Новости</p>
                     <p>Контакты</p>
                 </div>
-                <p><span class="color-violet">Политика конфиденциальности</span> и <span class="color-violet">персональных данных</span></p>
+                <p class="privacy-policy"><span class="color-violet">Политика конфиденциальности</span> и <span class="color-violet">персональных данных</span></p>
             </div>
         </footer>
     </div>
@@ -159,11 +159,24 @@
 </html>
 </body>
 
+<script>
+    function isHomePage() {
+        return window.location.pathname === "/";
+    }
+    
+    function isMobile() {
+        if (window.innerWidth < 990) {
+            return true;
+        }
+        return false;
+    }
+</script>
+
 {% block script %}
 {% endblock script %}
 
 
-<script defer>
+<!-- <script defer>
     document.addEventListener('DOMContentLoaded', () => {
         const alreadyVisited = sessionStorage.getItem('alreadyVisited');
 
@@ -215,31 +228,21 @@
 
         setTimeout(() => printSmbl(onPrintComplete), 800);
     }
-
-    function isHomePage() {
-        return window.location.pathname === "/";
-    }
-
-    function isMobile() {
-        if (window.innerWidth < 990) {
-            return true;
-        }
-        return false;
-    }
-</script>
+</script> -->
 
 
 <!-- Для тестов -->
-<!-- <script>
+<script>
     document.querySelector('.preloader-heading.top').classList.add('active');
     document.querySelector('.preloader-heading.bottom').classList.add('active');
     document.querySelector('.preloader-bottom-divider').classList.add('active');
+    document.querySelector('body').classList.add('active');
 
     document.querySelector('header').classList.add('active');
     document.querySelector('footer').classList.add('active');
     document.querySelector('.preloader').classList.add('active');
     document.querySelector('main').classList.add('active');
-</script> -->
+</script>
 
 
 <!-- Отправка формы ОС -->

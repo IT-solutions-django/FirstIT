@@ -27,6 +27,7 @@ class HomeView(View):
             'clients': clients, 
             'technologies': technologies,
             'workers': workers,
+            'is_home_page': True,
         }
         return render(request, self.template_name, context)
     
