@@ -173,7 +173,7 @@
                     <p>Новости</p>
                     <p>Контакты</p>
                 </div>
-                <p class="privacy-policy"><span class="color-violet">Политика конфиденциальности</span> и <span class="color-violet">персональных данных</span></p>
+                <p class="privacy-policy"><span class="color-violet">Политика конфиденциальности</span></p>
             </div>
         </footer>
     </div>
@@ -211,8 +211,110 @@
         const alreadyVisited = sessionStorage.getItem('alreadyVisited');
         const isHome = isHomePage();
 
-        runPreloader(isHome);
+        if (isHome) {
+            runHomePreloader();
+        } else {
+            runPreloader(isHome);
+        }
     });
+
+    function runHomePreloader() {
+        let cont = $('.preloader-heading'),
+            text = '{{ page_heading }}',
+            p = 0;
+        cont.html("");
+
+        randomRange = 120;
+
+        let lastDeletedIndex = 0;
+
+        let removedIndexes = [];
+
+
+        function printSmbl(onPrintComplete) {
+            let timeout = Math.round(Math.random() * randomRange);
+
+            console.log(removedIndexes)
+            
+            cont.html(cont.html() + text[p]);
+            if (p < text.length - 1) {
+                if (Math.random() > 0.2) {
+                    setTimeout(() => printSmbl(onPrintComplete), timeout);
+                    p++;
+                } else {
+                    if (p < 2 || lastDeletedIndex == p || removedIndexes.includes(p - 1)) {
+                        setTimeout(() => printSmbl(onPrintComplete), timeout);
+                        p++;
+
+                        console.log(`${p} ${text[p]}, ${lastDeletedIndex}`);
+
+                    } else {
+                        p--;
+                        setTimeout(() => {
+                            deleteSmbl();
+                        }, 300);
+                    }
+                }
+            } else {
+                setTimeout(onPrintComplete, 400);
+            }
+        }
+
+        function deleteSmbl() {
+            removedIndexes.push(p);
+
+            console.log(`Удаляю ${p}`)
+
+            cont.html(cont.html().substring(0, cont.html().length - 1));
+
+            let timeout = Math.round(Math.random() * randomRange);
+            
+            if (p < text.length - 1) {
+                if (Math.random() > 0.2) {
+                    setTimeout(() => printSmbl(onPrintComplete), timeout);
+                    p++;
+                } else {
+                    if (p < 2 || lastDeletedIndex == p || removedIndexes.includes(p - 1)) {
+                        setTimeout(() => printSmbl(onPrintComplete), 200);
+                        p++;
+
+                        console.log(`${p} ${text[p]}, ${lastDeletedIndex}`);
+
+                    } else {
+                        lastDeletedIndex = p;
+                        p--;
+                        setTimeout(() => {
+                            deleteSmbl();
+                        }, 200);
+                    }
+                }
+            } else {
+                setTimeout(onPrintComplete, 400);
+            }
+        }
+
+        function onPrintComplete() {
+            document.querySelector('.preloader-divider')?.classList.add('active');
+
+            timeout = 1700
+
+            setTimeout(() => {
+                document.querySelector('.preloader-heading.top')?.classList.add('active');
+                document.querySelector('.preloader-heading.bottom')?.classList.add('active');
+                document.querySelector('.preloader-bottom-divider')?.classList.add('active');
+
+                document.querySelector('header')?.classList.add('active');
+                document.querySelector('footer')?.classList.add('active');
+                document.querySelector('.preloader')?.classList.add('active');
+                document.querySelector('main')?.classList.add('active');
+
+                document.querySelector('body').classList.add('active');
+
+            }, timeout);
+        }
+
+        setTimeout(() => printSmbl(onPrintComplete), 800);
+    }
 
     function runPreloader(isHomePage = false) {
         let cont = $('.preloader-heading'),

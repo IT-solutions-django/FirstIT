@@ -4,15 +4,18 @@ let lenis;
 const contentElements = [...document.querySelectorAll('.content--sticky.card')];
 const totalContentElements = contentElements.length;
 
-console.log(contentElements)
-
 const initSmoothScrolling = () => {
 	lenis = new Lenis({
 		lerp: 0.1, 
 		smoothWheel: false
 	});
 
-	// lenis.on('scroll', () => ScrollTrigger.update());
+	lenis.on('scroll', () => {
+        console.log('укри');
+
+
+        ScrollTrigger.update();
+    });
 
 	// Define a function to run at each animation frame
 	const scrollFn = (time) => {
@@ -21,12 +24,12 @@ const initSmoothScrolling = () => {
 	};
 	// Start the animation frame loop
 	requestAnimationFrame(scrollFn);
+
+    
 };
 
 // Function to handle scroll-triggered animations
 const scroll = () => {
-    const fixedMenu = document.querySelector('.fixed-menu');
-
     gsap.timeline({
         scrollTrigger: {
             trigger: '.services-section',
@@ -41,8 +44,6 @@ const scroll = () => {
         const isLast = position === totalContentElements-1;
 
         const currentIndex = el.dataset.tabId;
-
-        console.log(currentIndex)
         
         gsap.timeline({
             scrollTrigger: {
@@ -66,6 +67,7 @@ const scroll = () => {
         }, 0);
     });
 
+
 };
 
 // Initialization function
@@ -80,29 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// function setActiveCard(index) {
-//     const cards = document.querySelectorAll('.tab');
-//     cards.forEach((card) => {
-//         card.classList.remove('active'); 
-//     });
-//     const activeCard = cards.querySelector(`tab[data-tab-id="${index}"]`);
-//     activeCard.classList.add('active');
-// }
+console.log('тест')
+
+document.addEventListener('scroll', function() {
+    console.log('Скролл работает')
 
 
+    const container = document.querySelector('.container.main.home'); 
+    const menu = document.querySelector('.fixed-menu'); 
+    const heading = document.querySelector('.section__heading '); 
 
-window.addEventListener('scroll', function() {
-    const container = this.document.querySelector('.container.main.home'); 
-    const menu = this.document.querySelector('.fixed-menu'); 
-    const heading = this.document.querySelector('.section__heading '); 
-
-    const cards = this.document.querySelectorAll('.content--sticky')
+    const cards = document.querySelectorAll('.content--sticky')
     const lastCard = cards[cards.length - 1];
 
     const containerRect = container.getBoundingClientRect();
     const menuRect = menu.getBoundingClientRect();
     const headingRect = heading.getBoundingClientRect();
     const lastCardRect = lastCard.getBoundingClientRect();
+
+    console.log(containerRect.top)
 
     if (containerRect.top < 0) {
         if (lastCardRect.bottom - 201 <= menuRect.height) {
@@ -111,6 +109,7 @@ window.addEventListener('scroll', function() {
             menu.style.bottom = '0';
         } else {
             menu.style.position = 'fixed';
+            alert('fuf')
             menu.style.top = '201px';
             menu.style.bottom = 'auto';
         }
