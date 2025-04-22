@@ -2435,6 +2435,12 @@ footer .column,
     .workers-cards {
         gap: 0px;
     }
+    .cases-container.swiper {
+        width: 100%;
+    }
+    .cases-container.swiper-wrapper {
+        width: 100%;
+    }
     .rounded-slides .swiper-button-next, .rounded-slides .swiper-button-prev {
         display: none;
     }
