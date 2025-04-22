@@ -497,10 +497,11 @@ preventInteractionOnTransition: false,
         console.log('Кейсы')
         var swiper = new Swiper(".cases-container.swiper", {
             spaceBetween: 0, 
-            touchRatio: 0.8,   
+            touchRatio: 0.8, 
+            slidesOffsetBefore: 16, 
             simulateTouch: true, 
-            slidesPerView : 1,
-            freeMode: true,
+            slidesPerView : 'auto',
+            // freeMode: true,
         });
     }
 </script>
