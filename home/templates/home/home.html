@@ -24,7 +24,7 @@
 
 
 <div class="container main home">
-    <section>
+    <section class="x-container">
         <p class="section__heading">Услуги</p>
         <div class="home__services">
             <div class="tabs only-more-than-990">
@@ -399,6 +399,11 @@ document.addEventListener("DOMContentLoaded", function () {
     mousewheel: {
         sensitivity: 1
     },
+    touchRatio: 1.5, // насколько чувствителен свайп
+    threshold: 10,   // минимальное расстояние свайпа, чтобы считать его переходом
+    allowTouchMove: true,
+preventClicks: false,
+preventInteractionOnTransition: false,
     on: {
         slideNextTransitionStart: function () {
             currentSlideIndex++;
@@ -415,10 +420,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 
     breakpoints: {
         0: {
-            slidesPerView: 1,
+            slidesPerView: 1.2,
             spaceBetween: 24,
             loop: true,
-            // centeredSlides: true,
+            centeredSlides: true,
             coverflowEffect: false, 
             effect: 'slide',
         },
@@ -508,6 +513,59 @@ document.addEventListener("DOMContentLoaded", function () {
     
     if (!clientsSection) return; 
 
+    var swiper = new Swiper('.clients-cards', {
+        slidesPerView: 8,
+        spaceBetween: 30,
+        centeredSlides: true,
+        initialSlide: 1,
+        grid: {
+            rows: 2,
+        },
+        breakpoints: {
+        0: {
+            slidesPerView: 3.5,
+            initialSlide: 0, 
+            centeredSlides: true,
+            spaceBetween: 16,
+            grid: {
+                rows: 2
+            },
+        },
+        576: {
+            slidesPerView: 3,
+            spaceBetween: 16,
+            grid: {
+                rows: 2
+            }
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            grid: {
+                rows: 2
+            }
+        },
+        992: {
+            slidesPerView: 6,
+            spaceBetween: 24,
+            grid: {
+                rows: 2
+            }
+        },
+        1200: {
+            slidesPerView: 8,
+            spaceBetween: 30,
+            grid: {
+                rows: 2
+            }
+        }
+    },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: true,
+        },
+    });
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -522,56 +580,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
 
                 observer.unobserve(entry.target);
-                var swiper = new Swiper('.clients-cards', {
-                    slidesPerView: 8,
-                    spaceBetween: 30,
-                    grid: {
-                        rows: 2,
-                    },
-                    breakpoints: {
-                    0: {
-                        slidesPerView: 3,
-                        initialSlide: 2, 
-                        centeredSlides: true,
-                        spaceBetween: 16,
-                        grid: {
-                            rows: 2
-                        },
-                    },
-                    576: {
-                        slidesPerView: 3,
-                        spaceBetween: 16,
-                        grid: {
-                            rows: 2
-                        }
-                    },
-                    768: {
-                        slidesPerView: 4,
-                        spaceBetween: 20,
-                        grid: {
-                            rows: 2
-                        }
-                    },
-                    992: {
-                        slidesPerView: 6,
-                        spaceBetween: 24,
-                        grid: {
-                            rows: 2
-                        }
-                    },
-                    1200: {
-                        slidesPerView: 8,
-                        spaceBetween: 30,
-                        grid: {
-                            rows: 2
-                        }
-                    }
-                },
-                    autoplay: {
-                        delay: 5000,
-                        disableOnInteraction: true,
-                    },
-                    });
             }
         });
     }, {
@@ -605,8 +613,8 @@ document.addEventListener("DOMContentLoaded", function () {
  <script defer>
     if (isMobile()) {
         const reviews = new Swiper('.section__workers .swiper', {
-            slidesPerView: 1,
-            spaceBetween: 4,
+            slidesPerView: 1.6,
+            spaceBetween: 30,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
