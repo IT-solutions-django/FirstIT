@@ -81,6 +81,12 @@ main .container {
 .color-violet {
     color: #6D45DD;
 }
+.hover-violet {
+    transition: all 0.3s ease;
+}
+.hover-violet:hover {
+    color: #6B52DE;
+}
 
 
 /* Preloader */
@@ -129,7 +135,7 @@ header.active {
     font-family: var(--font-special);
     line-height: 60px;
 }
-@media (max-width: 390px) {
+@media (max-width: 990px) {
     .header__mobile-menu-contacts .header__contacts, 
     .header__mobile-menu-contacts .email{
         font-size: 28px;
@@ -154,7 +160,7 @@ header.active {
     left: calc(0px - (100vw - 1400px) / 2);
     top: 108px;
 
-    transition: all 1.4s cubic-bezier(0.85, 0, 0.15, 1);
+    transition: all 1s cubic-bezier(0.85, 0, 0.15, 1);
 }
 .preloader-divider.active {
     width: 100vw;
@@ -369,7 +375,7 @@ header {
 
 .header__row {
     display: flex;
-    gap: 218px;
+    gap: 340px;
     align-items: center;
 }
 
@@ -420,8 +426,11 @@ header {
 
     transition: all 0.3s ease;
 }
-.header__menu-link:hover {
-    opacity: 0.7;
+.header__menu-link a {
+    transition: all 0.3s ease;
+}
+.header__menu-link:hover a {
+    color: #6B52DE;
 }
 .header__phone {
     font-family: var(--font-bebas);
@@ -613,6 +622,14 @@ footer .nav-links p {
     height: -webkit-fill-available;
     padding-bottom: 55px;
 }
+.home__services .tab-content .home__service-buttons a {
+    /* pointer-events: none !important; */
+    /* z-index: 50; */
+}
+.home__services .tab-content.active .home__service-buttons a {
+    /* pointer-events: all !important; */
+    /* z-index: 100; */
+}
 .tab-content {
     display: flex;
     flex-direction: column;
@@ -651,6 +668,7 @@ footer .nav-links p {
 }
 .home__services .description {
     line-height: 25px;;
+    min-height: 125px;
 }
 .violet-button, 
 .gray-button {
@@ -660,6 +678,11 @@ footer .nav-links p {
     font-family: var(--font-special);
     line-height: 21px;
     letter-spacing: 0%;
+
+    pointer-events: all !important;
+}
+.tab-content .swiper-slide {
+
 }
 .violet-button {
     background-color: #6B52DE;
@@ -667,7 +690,7 @@ footer .nav-links p {
     transition: all 0.4s ease;
 }
 .violet-button:hover {
-    opacity: 0.8;
+    background: #4C3B98;
 }
 .gray-button {
     background-color: rgb(83, 84, 94, 0.55);
@@ -789,7 +812,7 @@ footer .nav-links p {
 }
 .rounded-slides .swiper-button-next:hover,
 .rounded-slides .swiper-button-prev:hover {
-    background-color: white;
+    background-color: rgb(255, 255, 255, 0.8);
 }
 .rounded-slides .swiper-button-next img, 
 .rounded-slides .swiper-button-prev img {
@@ -862,6 +885,10 @@ footer .nav-links p {
     font-weight: bold;
     
     
+}
+
+#request-section {
+    scroll-behavior: smooth; 
 }
 
 .circle-slider .swiper-slide {
@@ -1133,13 +1160,21 @@ footer .nav-links p {
 .reviews__section .swiper-button-prev, 
 .reviews__section .swiper-button-next {
     position: absolute;
-    background-color: rgb(93, 93, 93, 0.21);
     background-color: rgb(93, 93, 93, 0.21) !important;
     border-radius: 8px;
     width: 60px;
     height: 283.71px;
 
     transform: translateY(-24.7px);
+    transition: all 0.3s ease;
+}
+.reviews__section .swiper-button-prev img, 
+.reviews__section .swiper-button-next img {
+    user-select: none;
+}
+.reviews__section .swiper-button-prev:hover, 
+.reviews__section .swiper-button-next:hover {
+    background-color: rgb(195, 195, 195, 0.21) !important;
 }
 .reviews__section .swiper-button-next {
     right: 186px
@@ -1169,6 +1204,10 @@ footer .nav-links p {
     /* transform: translateY(20px);    */
     padding-top: 6px;
     height: 15px;
+
+    /* width: 100px;
+    height: 100px;
+    background: red; */
 }
 .reviews__section .swiper-pagination-bullet {
     background-color: rgb(45, 46, 51, 1)
@@ -1298,6 +1337,7 @@ footer .nav-links p {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    max-width: calc(100vw - 32px);
 }
 .technology-small-card {
     padding: 10px 20px;
@@ -1568,6 +1608,11 @@ footer .column,
     transition: all 0.6s ease;
     cursor: pointer;
 }
+.social-media .glowing-circle {
+    transform: none;
+    height: auto;
+    display: flex;
+}
 @keyframes neon-glow {
     0%, 100% {
         box-shadow: 0 0 10px rgba(107, 82, 222, 0.4),
@@ -1637,7 +1682,7 @@ footer .column,
     cursor: pointer;
 }
 .categories-panel .category-name:hover {
-    opacity: 0.8;
+    color: #6B52DE;
 }
 .case-screenshots {
     width: 100%;
@@ -1964,7 +2009,10 @@ footer .column,
 }
 @media(max-width: 990px) {
     .left-corner-gradient {
-        transform: translateX(-190px) translateY(-30px);
+        transform: translateX(-240px) translateY(-36px) scale(2);
+    }
+    .right-corner-gradient {
+        transform: translateX(250px) translateY(-300px) scale(1);
     }
     .header__mobile {
         display: flex;
@@ -2286,7 +2334,7 @@ footer .column,
         gap: 21px;
         width: 100%;
     }
-    .social-media > div {
+    .social-media > a {
         width: calc((100% - 21px) / 2);
         position: relative;
     }
@@ -2332,6 +2380,9 @@ footer .column,
     .technologies__section {
         gap: 25px;
         flex-direction: column;
+    }
+    .technologies {
+        width: 100%;
     }
     .technology-info {
         flex-direction: column;
@@ -2404,7 +2455,7 @@ footer .column,
         gap: 10px;
     }
     .footer-right-gradient {
-        bottom: -19px;
+        bottom: -23px;
     }
     footer .nav-links a, 
     footer .nav-links p  {
@@ -2442,7 +2493,14 @@ footer .column,
         width: 100%;
     }
     .rounded-slides .swiper-button-next, .rounded-slides .swiper-button-prev {
-        display: none;
+        width: 80px !important;
+        height: 80px !important;
+    }
+    .rounded-slides .swiper-button-next img, .rounded-slides .swiper-button-prev img {
+        width: 16px;
+    } 
+    .rounded-slides .swiper-button-next {
+
     }
     .rounded-slides.swiper {
         margin-left: 0px;
@@ -2470,6 +2528,9 @@ footer .column,
         width: 100%;
         text-align: center;
     }
+    .cases.cases-page {
+        gap: 20px;
+    }
 
     .home__services .tab-content .image.seo-optimization {
         height: 80%;
@@ -2478,6 +2539,18 @@ footer .column,
     .clients-cards.active {
         height: 171px;
     }
+    .buttons-row label {
+        font-size: 11px;
+        line-height: auto;
+    }
+    .cases {
+        gap: 0px;
+    }
+    .home__services .description {
+        min-height: 0;
+    }
+
+
 
     @media (max-width: 990px) {
         .cases {
@@ -2486,6 +2559,16 @@ footer .column,
     }
 }
 
+
+@media(max-width: 568px) {
+    .left-corner-gradient {
+        left: 180px;
+    }
+    .right-corner-gradient {
+        right: 80px;
+        transform: translateX(250px) translateY(-300px) scale(1);
+    }
+}
 
 
 

@@ -11,13 +11,13 @@
                 <div class="header">
                     <p class="heading">Контакты</p>
                     <div class="social-links">
-                        <a href="{{ company_info.whatsapp }}">
+                        <a target="_blank" href="{{ company_info.whatsapp }}">
                             <img src="{% static 'images/whatsapp.svg' %}" alt="">
                         </a>
-                        <a href="{{ company_info.vk }}">
+                        <a target="_blank" href="{{ company_info.vk }}">
                             <img src="{% static 'images/vk-icon.svg' %}" alt="">
                         </a>
-                        <a href="{{ company_info.telegram }}">
+                        <a target="_blank" href="{{ company_info.telegram }}">
                             <img src="{% static 'images/telegram.svg' %}" alt="">
                         </a>
                     </div>
@@ -25,15 +25,15 @@
                 <div class="contact-data">
                     <div class="column">
                         <img src="{% static 'images/address-icon.svg' %}" alt="">
-                        <p>{{ company_info.address }}</p>
+                        <a>{{ company_info.address }}</a>
                     </div>
                     <div class="column">
                         <img src="{% static 'images/phone-icon.svg' %}" alt="">
-                        <p>{{ company_info.phone }}</p>
+                        <a target="_blank" href="tel:{{ company_info.email }}">{{ company_info.phone }}</a>
                     </div>
                     <div class="column">
                         <img src="{% static 'images/dog.svg' %}" alt="">
-                        <p>{{ company_info.email }}</p>
+                        <a target="_blank" href="mailto:{{ company_info.email }}">{{ company_info.email }}</a>
                     </div>
                 </div>
             </div>

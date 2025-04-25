@@ -15,10 +15,10 @@
 
 <style>
     .preloader-heading.top {
-        display: block;
+        /* display: block; */
     }
     .preloader-heading.bottom {
-        display: block;
+        /* display: block; */
     }
 </style>
 
@@ -38,7 +38,7 @@
             <div class="tabs-content swiper">
                 <div class="swiper-wrapper">
                     {% for service in services %}
-                        <div class="tab-content swiper-slide {% if forloorp.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" style="{% if forloop.counter == 1%}opacity: 1; transform: translateX(0);{% endif %}">
+                        <div class="tab-content swiper-slide {% if forloop.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" style="{% if forloop.counter == 1%}opacity: 1; transform: translateX(0);{% endif %}">
                             <div class="upper">
                                 <div class="home__service-header">
                                     <p class="home__service-heading">{{ service.heading|highlight_digits }}</p>
@@ -48,8 +48,8 @@
                                     {{ service.text|linebreaks }}
                                 </div>
                                 <div class="home__service-buttons">
-                                    <a href="#request-section" class="violet-button">Заказать услугу</a>
-                                    <button class="gray-button">Все услуги</button>
+                                    <a href="{% url 'home:home' %}#request-section" class="violet-button">Заказать услугу</a>
+                                    <a class="gray-button" href="{% url 'services:services' %}">Все услуги</a>
                                 </div>
                             </div>
                             <div class="lower only-more-than-990">
@@ -238,6 +238,7 @@
                         <div class="review-company">
                             <img class="review-company-logo" src="{% static 'images/review-logo-example.svg' %}" alt="">
                             <div class="review-company-info">
+                                <p class="review-date only-less-than-990">21.03.2025</p>
                                 <p class="company-name">Школа дизайна</p>
                                 <div class="company-stars">
                                     <img src="{% static 'images/star-icon.svg' %}" alt="">
@@ -248,7 +249,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="review-date">21.03.2025</p>
+                        <p class="review-date only-more-than-990">21.03.2025</p>
                     </div>
                     <div class="review-text">
                         Мы обратились в "Первую IT компанию" для создания сайта нашей школы дизайна, и остались очень довольны результатом! Команда профессионалов внимательно выслушала наши идеи и предложила креативные решения.
@@ -261,6 +262,7 @@
                         <div class="review-company">
                             <img class="review-company-logo" src="{% static 'images/review-logo-example.svg' %}" alt="">
                             <div class="review-company-info">
+                                <p class="review-date only-less-than-990">21.03.2025</p>
                                 <p class="company-name">Школа дизайна</p>
                                 <div class="company-stars">
                                     <img src="{% static 'images/star-icon.svg' %}" alt="">
@@ -271,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="review-date">21.03.2025</p>
+                        <p class="review-date only-more-than-990">21.03.2025</p>
                     </div>
                     <div class="review-text">
                         Мы обратились в "Первую IT компанию" для создания сайта нашей школы дизайна, и остались очень довольны результатом! Команда профессионалов внимательно выслушала наши идеи и предложила креативные решения.
@@ -284,6 +286,7 @@
                         <div class="review-company">
                             <img class="review-company-logo" src="{% static 'images/review-logo-example.svg' %}" alt="">
                             <div class="review-company-info">
+                                <p class="review-date only-less-than-990">21.03.2025</p>
                                 <p class="company-name">Школа дизайна</p>
                                 <div class="company-stars">
                                     <img src="{% static 'images/star-icon.svg' %}" alt="">
@@ -294,7 +297,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="review-date">21.03.2025</p>
+                        <p class="review-date only-more-than-990">21.03.2025</p>
                     </div>
                     <div class="review-text">
                         Мы обратились в "Первую IT компанию" для создания сайта нашей школы дизайна, и остались очень довольны результатом! Команда профессионалов внимательно выслушала наши идеи и предложила креативные решения.
@@ -311,12 +314,12 @@
             <img src="{% static 'images/right-white-arrow.svg' %}" alt="">
         </div>
         <img class="background-label" src="{% static 'images/background-label.png' %}" alt="">
-        <div class="swiper-pagination"></div>
+        <div class="reviews-pagination swiper-pagination"></div>
     </section>
 
     {% include 'home/includes/company_block.html' %}
 
-    {% include 'home/includes/workers_block.html' %}
+    <!-- {% include 'home/includes/workers_block.html' %} -->
 
     {% include 'home/includes/technologies_block.html' %}
 
@@ -345,6 +348,12 @@
             document.querySelectorAll('.home__services .tab').forEach(tab => 
                 tab.classList.toggle('active', tab.dataset.tabId == index)
             );
+
+            
+            document.querySelectorAll('.home__services .tab-content').forEach(element => {
+                element.classList.remove('active');
+            });
+            next.classList.toggle('active');
 
             next.querySelectorAll(".home__services .lower p").forEach(p => 
                 p.classList.toggle('active', p.dataset.tabId == index)
@@ -399,11 +408,11 @@ document.addEventListener("DOMContentLoaded", function () {
     mousewheel: {
         sensitivity: 1
     },
-    touchRatio: 1.5, // насколько чувствителен свайп
-    threshold: 10,   // минимальное расстояние свайпа, чтобы считать его переходом
+    touchRatio: 1.5,
+    threshold: 10,
     allowTouchMove: true,
-preventClicks: false,
-preventInteractionOnTransition: false,
+    preventClicks: false,
+    preventInteractionOnTransition: false,
     on: {
         slideNextTransitionStart: function () {
             currentSlideIndex++;
@@ -496,9 +505,10 @@ preventInteractionOnTransition: false,
     if (isMobile()) {
         console.log('Кейсы')
         var swiper = new Swiper(".cases-container.swiper", {
-            spaceBetween: 0, 
+            spaceBetween: 20, 
             touchRatio: 0.8, 
             slidesOffsetBefore: 16, 
+            freeMode: true,
             simulateTouch: true, 
             slidesPerView : 'auto',
             // freeMode: true,
@@ -518,7 +528,6 @@ preventInteractionOnTransition: false,
         slidesPerView: 8,
         spaceBetween: 30,
         centeredSlides: true,
-        initialSlide: 1,
         grid: {
             rows: 2,
         },
@@ -527,6 +536,7 @@ preventInteractionOnTransition: false,
             slidesPerView: 3.5,
             initialSlide: 0, 
             centeredSlides: true,
+            initialSlide: 1,
             spaceBetween: 16,
             grid: {
                 rows: 2
@@ -556,6 +566,8 @@ preventInteractionOnTransition: false,
         1200: {
             slidesPerView: 8,
             spaceBetween: 30,
+            centeredSlides: false,
+            initialSlide: 0,
             grid: {
                 rows: 2
             }
@@ -603,7 +615,7 @@ preventInteractionOnTransition: false,
             prevEl: '.swiper-button-prev',
         }, 
         pagination: {
-            el: '.swiper-pagination',
+            el: '.reviews-pagination.swiper-pagination',
             clickable: true,
         },
     });

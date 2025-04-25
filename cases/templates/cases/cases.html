@@ -8,6 +8,7 @@
 
 {% block content %} 
 <style>
+@media (min-width: 991px) {
     .preloader-heading.top.active {
         max-height: 132px;
     }
@@ -15,7 +16,7 @@
         top: 132px;
     }
     .preloader-heading {
-        line-height: 236px;;
+        line-height: 236px;
     }
     .preloader-heading.bottom.active {
         max-height: 104px;
@@ -23,21 +24,26 @@
     .preloader-bottom-divider {
         transform: translateY(-104px);
     }
-
+    .footer-left-gradient {
+        bottom: 33px;
+    }
+    .footer-right-gradient {
+        bottom: 32px;
+    }
+}
 
     @media (max-width: 990px) {
         .cases {
             flex-direction: column;
         }
     }
-
-
 </style>
 
 <div class="container main home">
     <section>
         <div class="categories-panel only-more-than-990">
             <p class="category-name active">Все</p>
+            <div class="divider"></div>           
             {% for category in case_categories %}
                 <p class="category-name">{{ category.name }}</p>
                 {% if not forloop.last %}
@@ -56,7 +62,7 @@
             Все
           </div>
         </div>
-        <div class="cases">
+        <div class="cases cases-page">
             {% for case in cases %}
                 <a class="case" href="{{ case.get_absolute_url }}">
                     <img class="background" src="{{ case.photo.url }}" alt="">

@@ -11,22 +11,22 @@
         </div>
 
         <div class="glowing-circle glowing-circle-1">
-            <a href="{{ company_info.behance }}">
+            <a target="_blank" href="{{ company_info.behance }}">
                 <img src="{% static 'images/behance-logo.svg' %}" alt="">
             </a>
         </div>
         <div class="glowing-circle glowing-circle-2">
-            <a href="{{ company_info.vk }}">
+            <a target="_blank" href="{{ company_info.vk }}">
                 <img src="{% static 'images/vk-logo.svg' %}" alt="">
             </a>
         </div>
         <div class="glowing-circle glowing-circle-3">
-            <a href="{{ company_info.telegram }}">
+            <a target="_blank" href="{{ company_info.telegram }}">
                 <img src="{% static 'images/telegram-logo.svg' %}" alt="">
             </a>
         </div>
         <div class="glowing-circle glowing-circle-4">
-            <a href="{{ company_info.github }}">
+            <a target="_blank" href="{{ company_info.github }}">
                 <img src="{% static 'images/github-logo.svg' %}" alt="">
             </a>
         </div>
@@ -47,22 +47,22 @@
             </div>
             <div class="social-media-container only-less-than-990 flex">
                 <div class="social-media">
-                    <div class="">
+                    <a target="_blank" href="{{ company_info.github }}" class="glowing-circle">
                         <img class="circle" src="{% static 'images/violet-circle.svg' %}" alt="">
                         <img class="mobile-logo" src="{% static 'images/github-logo.svg' %}" alt="">
-                    </div>
-                    <div class="">
+                    </a>
+                    <a target="_blank" href="{{ company_info.vk }}" class="glowing-circle">
                         <img class="circle" src="{% static 'images/violet-circle.svg' %}" alt="">
                         <img class="mobile-logo" src="{% static 'images/vk-logo.svg' %}" alt="">
-                    </div>
-                    <div class="">
+                    </a>
+                    <a target="_blank" href="{{ company_info.telegram }}" class="glowing-circle">
                         <img class="circle" src="{% static 'images/violet-circle.svg' %}" alt="">
                         <img class="mobile-logo" src="{% static 'images/telegram-logo.svg' %}" alt="">
-                    </div>
-                    <div class="">
+                    </a>
+                    <a target="_blank" href="{{ company_info.behance }}" class="glowing-circle">
                         <img class="circle" src="{% static 'images/violet-circle.svg' %}" alt="">
                         <img class="mobile-logo" src="{% static 'images/behance-logo.svg' %}" alt="">
-                    </div>
+                    </a>
                 </div>
             </div>
             <img class="orbit-mobile only-less-than-990" src="{% static 'images/orbit-mobile.png' %}" alt="">
