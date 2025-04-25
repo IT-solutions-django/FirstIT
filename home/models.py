@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from cases.models import CaseCategory
 
 
 class CompanyService(models.Model): 
@@ -33,6 +34,8 @@ class Case(models.Model):
     tasks = models.TextField('Задачи', max_length=1000)  
     solution = models.TextField('Решение', max_length=1000) 
     result = models.TextField('Результат', max_length=1000)
+
+    category = models.ForeignKey(verbose_name='Категория', to=CaseCategory, on_delete=models.CASCADE, null=True, blank=True)
 
     slug = models.SlugField('Слаг', max_length=50)
 

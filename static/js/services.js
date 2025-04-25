@@ -138,4 +138,3 @@ document.addEventListener('scroll', function() {
         heading.style.right = '0px';
     }
 });
-

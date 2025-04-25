@@ -1682,7 +1682,7 @@ footer .column,
     cursor: pointer;
 }
 .categories-panel .category-name:hover {
-    opacity: 0.8;
+    color: #6B52DE;
 }
 .case-screenshots {
     width: 100%;
@@ -2452,7 +2452,7 @@ footer .column,
         gap: 10px;
     }
     .footer-right-gradient {
-        bottom: -12px;
+        bottom: -23px;
     }
     footer .nav-links a, 
     footer .nav-links p  {
@@ -2524,6 +2524,9 @@ footer .column,
     .categories-panel .sphere {
         width: 100%;
         text-align: center;
+    }
+    .cases.cases-page {
+        gap: 20px;
     }
 
     .home__services .tab-content .image.seo-optimization {
