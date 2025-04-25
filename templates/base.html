@@ -152,26 +152,25 @@
                 <div class="links">
                     <div class="column">
                         <img src="{% static 'images/address-icon.svg' %}" alt="">
-                        <p>{{ company_info.address }}</p>
+                        <a target="_blank">{{ company_info.address }}</a>
                     </div>
                     <div class="column">
                         <img src="{% static 'images/phone-icon.svg' %}" alt="">
-                        <p>{{ company_info.phone }}</p>
+                        <a target="_blank" href="tel:{{ company_info.phone }}">{{ company_info.phone }}</a>
                     </div>
                     <div class="column">
                         <img src="{% static 'images/dog.svg' %}" alt="">
-                        <p>{{ company_info.email }}</p>
+                        <a target="_blank" href="mailto:{{ company_info.phone }}">{{ company_info.email }}</a>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="lower">
                 <div class="nav-links">
-                    <a href="{% url 'services:services' %}">Услуги</a>
-                    <a href="{% url 'cases:cases' %}">Кейсы</a>
-                    <a href="{% url 'contacts:about' %}">О компании</a>
-                    <p>Новости</p>
-                    <p>Контакты</p>
+                    <a class="hover-violet" href="{% url 'services:services' %}">Услуги</a>
+                    <a class="hover-violet" href="{% url 'cases:cases' %}">Кейсы</a>
+                    <a class="hover-violet" href="{% url 'contacts:about' %}">О компании</a>
+
                 </div>
                 <p class="privacy-policy"><span class="color-violet">Политика конфиденциальности</span></p>
             </div>
@@ -276,6 +275,11 @@
                 'First IT Comp',
                 'First IT Compn',
                 'First IT Compay',
+                'First IT Company'
+            ];
+
+            texts = [
+                'Farst',
                 'First IT Company'
             ];
 
