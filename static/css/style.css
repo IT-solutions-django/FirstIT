@@ -2333,6 +2333,9 @@ footer .column,
         gap: 25px;
         flex-direction: column;
     }
+    .technologies {
+        width: 100%;
+    }
     .technology-info {
         flex-direction: column;
         gap: 20px;

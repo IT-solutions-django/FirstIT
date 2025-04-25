@@ -222,75 +222,80 @@
         let cont = $('.preloader-heading'),
             text = '{{ page_heading }}',
             p = 0;
-        cont.html("");
+        text = 'Fands.Agency';
+        cont.html("fgency");
 
         randomRange = 120;
 
-        let lastDeletedIndex = 0;
-
-        let removedIndexes = [];
-
+        let fixedInterval = 150;
 
         function printSmbl(onPrintComplete) {
-            let timeout = Math.round(Math.random() * randomRange);
-
-            console.log(removedIndexes)
+            let timeout = fixedInterval;
             
             cont.html(cont.html() + text[p]);
             if (p < text.length - 1) {
-                if (Math.random() > 0.2) {
-                    setTimeout(() => printSmbl(onPrintComplete), timeout);
-                    p++;
-                } else {
-                    if (p < 2 || lastDeletedIndex == p || removedIndexes.includes(p - 1)) {
-                        setTimeout(() => printSmbl(onPrintComplete), timeout);
-                        p++;
-
-                        console.log(`${p} ${text[p]}, ${lastDeletedIndex}`);
-
-                    } else {
-                        p--;
-                        setTimeout(() => {
-                            deleteSmbl();
-                        }, 300);
-                    }
-                }
+                setTimeout(() => printSmbl(onPrintComplete), timeout);
+                p++;
             } else {
                 setTimeout(onPrintComplete, 400);
             }
         }
 
-        function deleteSmbl() {
-            removedIndexes.push(p);
+        function printHeading(onPrintComplete) {
+            let timeout = fixedInterval;
+            let currentIndex = 0;
+            // let texts = [
+            //     'Fgency', 
+            //     'Faency', 
+            //     'Fanncy',
+            //     'Fandcy',
+            //     'Fanncy',
+            //     'Fandsy',
+            //     'Fands.',
+            //     'Fands.A',
+            //     'Fands.Ag',
+            //     'Fands.Age',
+            //     'Fands.Agen',
+            //     'Fands.Agenc',
+            //     'Fands.Agency',
+            // ]
 
-            console.log(`Удаляю ${p}`)
+            let texts = [
+                'Farst',
+                'Ferst',
+                'Firsd',
+                'First',
+                'First ',
+                'First U',
+                'First I',
+                'First IT',
+                'First IT ',
+                'First IT C',
+                'First IT Co',
+                'First IT Com',
+                'First IT Comp',
+                'First IT Compn',
+                'First IT Compay',
+                'First IT Company'
+            ];
 
-            cont.html(cont.html().substring(0, cont.html().length - 1));
 
-            let timeout = Math.round(Math.random() * randomRange);
-            
-            if (p < text.length - 1) {
-                if (Math.random() > 0.2) {
-                    setTimeout(() => printSmbl(onPrintComplete), timeout);
-                    p++;
-                } else {
-                    if (p < 2 || lastDeletedIndex == p || removedIndexes.includes(p - 1)) {
-                        setTimeout(() => printSmbl(onPrintComplete), 200);
-                        p++;
-
-                        console.log(`${p} ${text[p]}, ${lastDeletedIndex}`);
-
-                    } else {
-                        lastDeletedIndex = p;
-                        p--;
-                        setTimeout(() => {
-                            deleteSmbl();
-                        }, 200);
-                    }
+            function runNextStep() {
+                if (currentIndex >= texts.length) {
+                    setTimeout(
+                        onPrintComplete, 
+                        400
+                    )
                 }
-            } else {
-                setTimeout(onPrintComplete, 400);
+
+                cont.text(texts[currentIndex]);
+                currentIndex++;
+
+                setTimeout(runNextStep, fixedInterval);
             }
+
+            runNextStep();
+
         }
 
         function onPrintComplete() {
@@ -313,7 +318,8 @@
             }, timeout);
         }
 
-        setTimeout(() => printSmbl(onPrintComplete), 800);
+        // setTimeout(() => printSmbl(onPrintComplete), 100);
+        setTimeout(() => printHeading(onPrintComplete), 150);
     }
 
     function runPreloader(isHomePage = false) {
