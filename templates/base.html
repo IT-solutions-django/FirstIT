@@ -278,11 +278,6 @@
                 'First IT Company'
             ];
 
-            texts = [
-                'Farst',
-                'First IT Company'
-            ];
-
 
             function runNextStep() {
                 if (currentIndex >= texts.length) {
@@ -305,8 +300,6 @@
         function onPrintComplete() {
             document.querySelector('.preloader-divider')?.classList.add('active');
 
-            timeout = 1700
-
             setTimeout(() => {
                 document.querySelector('.preloader-heading.top')?.classList.add('active');
                 document.querySelector('.preloader-heading.bottom')?.classList.add('active');
@@ -319,7 +312,7 @@
 
                 document.querySelector('body').classList.add('active');
 
-            }, timeout);
+            }, 1400);
         }
 
         // setTimeout(() => printSmbl(onPrintComplete), 100);
