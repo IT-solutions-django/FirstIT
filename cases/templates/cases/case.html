@@ -7,14 +7,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="container main home">
+<div class="container main home x-container">
     <section>
         <div class="case-screenshots">
             <div class="heading">
                 <h1>{{ case.name }}</h1>
             </div>
             <div class="case-screenshots-container">
-                <img class="mobile-screenshot" src="{{ case.mobile_screenshot.url }}" alt="">
+                <img class="mobile-screenshot only-more-than-990" src="{{ case.mobile_screenshot.url }}" alt="">
                 <img class="desktop-screenshot" src="{{ case.desktop_screenshot.url }}" alt="">
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="goal">
             <div class="left-column">
                 <p class="heading">Цель</p>
-                <p class="text">{{ case.goal|linebreaks }}</p>
+                <div class="text">{{ case.goal|linebreaks }}</div>
             </div>
             <img src="{{ case.goal_screenshot.url }}" alt="">
         </div>
@@ -89,8 +89,9 @@
                         <p class="label">Посещений в день</p>
                     </div>
                 </div>
-                <div class="text">
-                    {{ case.result|linebreaks }}
+                <div class="buttons">
+                    <a href="{{ case.link }}" class="violet-button">Перейти на сайт</a>
+                    <button class="gray-button">Хочу такой же</button>
                 </div>
             </div>
             <img src="{{ case.result_screenshot.url }}" alt="">

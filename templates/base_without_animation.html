@@ -168,8 +168,9 @@
 
 <style>
     main {
-        max-height: 10000px !important;
-        overflow-y: scroll;
+        max-height: 30000px !important;
+        overflow-y: visible;
+        height: auto;
     }
 
     header {
@@ -188,6 +189,12 @@
     }
     .footer-right-gradient {
         filter: blur(50px);
+    }
+    @media (max-width: 990px) {
+        .container.main {
+            padding-top: 100px !important;
+            padding-bottom: 40px;
+        }
     }
 </style>
 

@@ -33,7 +33,8 @@ class Case(models.Model):
     goal = models.TextField('Цель', max_length=800) 
     tasks = models.TextField('Задачи', max_length=1000)  
     solution = models.TextField('Решение', max_length=1000) 
-    result = models.TextField('Результат', max_length=1000)
+
+    link = models.URLField('Ссылка на сайт', max_length=200, null=True, blank=True)
 
     category = models.ForeignKey(verbose_name='Категория', to=CaseCategory, on_delete=models.CASCADE, null=True, blank=True)
 

@@ -1803,7 +1803,8 @@ footer .column,
 .goals-and-tasks .tasks .heading, 
 .goals-and-tasks .solution .heading {
     font-size: 40px;
-    line-height: 17.2px;
+    /* line-height: 17.2px; */
+    /* line-height: 21px; */
     font-family: var(--font-special);
 }
 .goals-and-tasks .goal .text, 
@@ -1822,6 +1823,12 @@ footer .column,
 .result-section .body {
     display: flex;
     gap: 50px;
+}
+.result-section .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px
 }
 .result-section .left-column {
     display: flex;
@@ -2092,13 +2099,13 @@ footer .column,
         padding: 187px 0px 56px 0px;
     }
     .container.main {
-        padding-top: 40px;
+        padding-top: 40px !important;
         padding-left: 0px;
         padding-right: 0px;
     }
     .x-container {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
     }
     .tabs-content {
         height: 478px;
@@ -2548,6 +2555,77 @@ footer .column,
     }
     .home__services .description {
         min-height: 0;
+    }
+    .case-screenshots {
+        padding: 24.77px 16px;
+        height: auto;
+    }
+    .case-screenshots .heading h1 {
+        font-size: 50px;
+        line-height: 45px;
+    }
+    .case-screenshots-container img {
+        border-radius: 6.52px;
+    }
+    .big-gray-card {
+        padding: 25px 16px;
+    }
+    .case__client-info .card {
+        flex-direction: column;
+        gap: 13px;
+    }
+    .case__client-info .card img {
+        max-height: 63px;
+    }
+    .goals-and-tasks .tasks {
+        flex-direction: column-reverse;
+    }
+    .goals-and-tasks {
+        gap: 27px;
+    }
+    .goals-and-tasks .tasks img {
+        position: relative;
+        left: -35%;
+        top: 0px;
+    }
+    .goals-and-tasks .goal {
+        flex-direction: column;
+        gap: 27px;
+    }
+    .goals-and-tasks .solution {
+        padding: 0px;
+        flex-direction: column;
+        padding-bottom: 72px;
+    }
+    .goals-and-tasks .solution img {
+        position: relative;
+        right: -18%;
+        transform: scale(1.4);
+        top: 14px;
+    }
+    .result-section .body {
+        flex-direction: column;
+    }
+    .result-section .left-column {
+        width: 100%;
+        min-width: 0;
+    }
+    .result-section .stats {
+        column-gap: 10px;
+        row-gap: 22px;
+    }
+    .result-section .stat .heading {
+        font-size: 48px;
+        line-height: 28.2px;
+        text-align: center;
+    }
+    .result-section .stat .label {
+        font-size: 12px;
+        line-height: 10.8px;
+        text-align: center;
+    }
+    .result-section .stat {
+        width: calc((100% - 10px * 2) / 3);
     }
 
 
