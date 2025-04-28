@@ -40,12 +40,12 @@
 </style>
 
 <div class="container main home">
-    <section>
+    <section class="x-container">
         <div class="categories-panel only-more-than-990">
-            <p class="category-name active">Все</p>
+            <a href="{% url 'cases:cases' %}" class="category-name {% if not category %} active {% endif %}">Все</a>
             <div class="divider"></div>           
-            {% for category in case_categories %}
-                <p class="category-name">{{ category.name }}</p>
+            {% for c in case_categories %}
+                <a href="{% url 'cases:cases' %}?category={{ c.pk }}" class="category-name {% if c.pk == category %} active {% endif %}">{{ c.name }}</a>
                 {% if not forloop.last %}
                     <div class="divider"></div>                          
                 {% endif %}
@@ -58,9 +58,16 @@
           <div class="divider">
 
           </div>
-          <div class="sphere">
+          <div id="categoryButton" class="sphere">
             Все
           </div>
+        </div>
+        <div class="categories-dropdown">
+            <div class="categories-dropdown-inner">
+                {% for c in case_categories %}
+                    <a href="{% url 'cases:cases' %}?category={{ c.pk }}">{{ c.name }}</a>
+                {% endfor %}
+            </div>
         </div>
         <div class="cases cases-page">
             {% for case in cases %}
@@ -78,4 +85,15 @@
     {% include 'home/includes/request_block.html' %}
 </div>
 
+{% endblock %}
+
+{% block script %}
+<script defer>
+    const categoryButton = document.querySelector('#categoryButton');
+    const categoriesDropdown = document.querySelector('.categories-dropdown');
+
+    categoryButton.addEventListener('click', (element) => {
+        categoriesDropdown.classList.toggle('active');
+    });
+</script>
 {% endblock %}

@@ -82,7 +82,7 @@
 
 
 <!-- Услуги, круговой слайдер -->
-<script defer>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
     let rotationAngle = 0; 
     let currentSlideIndex = 1;
@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mousewheel: {
             sensitivity: 1
         }, 
+        allowTouchMove: false,
         coverflowEffect: {
             rotate: 0,
             stretch: 0,
