@@ -345,6 +345,10 @@
             
             if (!next) return;
 
+            // Останавливаем текущие анимации
+            gsap.killTweensOf(current);
+            gsap.killTweensOf(next);
+
             document.querySelectorAll('.home__services .tab').forEach(tab => 
                 tab.classList.toggle('active', tab.dataset.tabId == index)
             );
@@ -396,8 +400,13 @@
 <!-- Услуги, круговой слайдер -->
 <script defer>
 document.addEventListener("DOMContentLoaded", function () {
+
+    const mobile = isMobile();
+
     let rotationAngle = 0; 
     let currentSlideIndex = 1;
+
+    let prevText = '';
 
     const mainSLider = new Swiper('.rounded-slides.swiper', {
     loop: true,
@@ -413,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
     allowTouchMove: true,
     preventClicks: false,
     preventInteractionOnTransition: false,
-    on: {
+    on: !mobile ? {
         slideNextTransitionStart: function () {
             currentSlideIndex++;
             const angle = getRotationAngleNext();
@@ -426,7 +435,53 @@ document.addEventListener("DOMContentLoaded", function () {
             rotationAngle += angle; 
             rotateImage();
         }
-    }, 
+    } :
+    {
+        slideChange: function () {
+            const activeSlide = this.slides[this.activeIndex];
+
+            const activeTextElement = activeSlide.querySelector('.rect-slide-heading');
+            if (!activeTextElement) return;
+
+            const activeText = activeTextElement.textContent.trim();
+            let angle = 0;
+
+            console.log(`Прошлый текст: ${prevText}`)
+            console.log('Текущий текст:', activeText);
+
+            if (activeText === 'Время') {
+                if (prevText === 'Услуги') {
+                    angle = -56;
+                } else if (prevText === 'Помощь') {
+                    angle = 64;
+                } else {
+                    angle = 0;
+                }
+            } else if (activeText === 'Помощь') {
+                if (prevText === 'Время') {
+                    angle = -57.6;
+                } else if (prevText === 'Услуги') {
+                    angle = 64;
+                } else {
+                    angle = 0;
+                }
+            } else if (activeText === 'Услуги') {
+                if (prevText === 'Помощь') {
+                    angle = -64.5;
+                } else if (prevText === 'Время') {
+                    angle = 64;
+                } 
+            }
+
+
+            console.log(angle)
+            rotationAngle += angle;
+
+            rotateImage();
+
+            prevText = activeText;
+        }
+    },
     breakpoints: {
         0: {
             slidesPerView: 1.2,
@@ -435,6 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
             centeredSlides: true,
             coverflowEffect: false, 
             effect: 'slide',
+            initialSlide: 1,
         },
         990: {
             slidesPerView: 3,
@@ -445,7 +501,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 depth: 300,
                 modifier: 1,
                 slideShadows: true,
-            }
+            }, 
+            initialSlide: 0,
         }
     }
 });
@@ -498,6 +555,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return angle;
     }
 });
+
+
+
 </script>
 
 
