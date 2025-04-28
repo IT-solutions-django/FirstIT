@@ -14,9 +14,15 @@ class CasesView(View):
     def get(self, request): 
         cases = Case.objects.all()
         case_categories = CaseCategory.objects.all()
+
+        category = request.GET.get('category')
+        if category: 
+            cases = cases.filter(category=category)
+
         context = {
             'cases': cases,
             'case_categories': case_categories,
+            'category': category
         }
         return render(request, self.template_name, context)
     

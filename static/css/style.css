@@ -1311,6 +1311,41 @@ footer .nav-links p {
     flex-direction: column;
     gap: 20px; 
 }
+.categories-dropdown {
+    background-color: var(--dark-bg-color);
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    top: 117px;
+
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+
+    transition: all 0.3s ease;
+}
+.categories-dropdown.active {
+    opacity: 1;
+    user-select: all;
+    pointer-events: all;
+}
+.categories-dropdown-inner {
+    background-color: rgb(45, 46, 51, 0.4);
+    padding: 10px 50px;
+    padding-top: 18px;
+    display: flex;
+    width: calc(100vw - 32px);
+    gap: 20px;
+    font-size: 24px;
+    flex-direction: column;
+    font-family: var(--font-special);
+}
+.categories-dropdown-inner a {
+    font-size: 24px;
+}
 .worker-name-and-role {
     display: flex;
     flex-direction: column;
@@ -2522,21 +2557,26 @@ footer .column,
         font-size: 24px;
         padding: 12px 40px;
         font-family: var(--font-special);
+        justify-content: space-between;
+        justify-content: space-between;
+        gap: 10px
+
     }
     .categories-panel .divider {
         width: 2px;
         background-color: white;
     }
     .categories-panel .label {
-        width: 100%;
-        text-align: center;
+        width: fit-content;
+        z-index: 11;
     }
     .categories-panel .sphere {
-        width: 100%;
-        text-align: center;
+        width: fit-content;
+        /* text-align: center; */
+        /* flex: 1; */
     }
     .cases.cases-page {
-        gap: 20px;
+        gap: 30px;
     }
 
     .home__services .tab-content .image.seo-optimization {
@@ -2647,6 +2687,11 @@ footer .column,
         transform: translateX(250px) translateY(-300px) scale(1);
     }
 }
+@media(max-width: 568px) { 
+    .categories-dropdown {
+        top: 136px;
+    }
+}
 
 
 
@@ -2665,5 +2710,6 @@ footer .column,
     }
     .only-less-than-990.flex {
         display: flex !important;
+        gap: 20px
     }
 }
