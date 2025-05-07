@@ -1845,19 +1845,20 @@ footer .column,
 }
 .case-screenshots {
     width: 100%;
-    height: 677px;
+    /* height: 677px; */
     border-radius: 5px;
     background-color: rgb(45, 46, 51, 0.4);
     padding: 55px 50px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
 }
 .case-screenshots .heading {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 .case-screenshots .heading h1 {
     font-family: var(--font-special);
@@ -1947,6 +1948,7 @@ footer .column,
     position: absolute;
     right: -450px;
     top: -130px;
+    top: 0px;
     max-width: 1140px;
 }
 .goals-and-tasks .tasks img {
@@ -1996,26 +1998,33 @@ footer .column,
     min-width: 513.51px;
     width: 513.51px;
 }
-.result-section .stats {
+.stats {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
+    justify-content: center;
 }
-.result-section .stat {
-    width: calc((100% - 40px * 2) / 3);
+.stat {
+    
     display: flex;
     flex-direction: column;
     gap: 13.2px;
     align-items: center;
 }
-.result-section .stat .heading {
+.stat .heading {
     font-size: 64px;
     line-height: 45.7px;
     font-family: var(--font-bebas);
+    margin-bottom: 0px;;
 }
-.result-section .stat .label {
+.stat .label {
     font-size: 14px;
     line-height: 17.5px;
+}
+.case-buttons {
+    display: flex;
+    gap: 30px;
+    align-self: center;
 }
 .result-section img {
     object-fit: contain;
@@ -2339,6 +2348,9 @@ footer .column,
         max-width: calc(150vw);
         left: -25vw;
         transform: translateY(0px);
+    }
+    .case-screenshots .heading {
+        /* margin-bottom: 0px; */
     }
     .down-black-ellipsis {
         transform: scale(1.1) translateY(-35px);

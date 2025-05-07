@@ -11,11 +11,23 @@
     <section>
         <div class="case-screenshots">
             <div class="heading">
-                <h1>{{ case.name }}</h1>
+                <h1>{{ case.name|highlight_digits }}</h1>
             </div>
             <div class="case-screenshots-container">
                 <img class="mobile-screenshot only-more-than-990" src="{{ case.mobile_screenshot.url }}" alt="">
                 <img class="desktop-screenshot" src="{{ case.desktop_screenshot.url }}" alt="">
+            </div>
+            <div class="stats">
+                {% for metric in case.metrics.all %}
+                    <div class="stat">
+                        <p class="heading">{{ metric.number }}</p>
+                        <p class="label">{{ metric.label }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="case-buttons">
+                <a href="{{ case.link }}" class="violet-button">Перейти на сайт</a>
+                <button class="gray-button">Хочу такой же</button>
             </div>
         </div>
     </section>
@@ -58,27 +70,8 @@
             <img src="{{ case.solution_screenshot.url }}" alt="">
         </div>
     </section>
-
-    <section class="result-section big-gray-card">
-        <p class="section__heading">Результаты</p>
-        <div class="body">
-            <div class="left-column">
-                <div class="stats">
-                    {% for metric in case.metrics.all %}
-                        <div class="stat">
-                            <p class="heading">{{ metric.number }}</p>
-                            <p class="label">{{ metric.label }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="buttons">
-                    <a href="{{ case.link }}" class="violet-button">Перейти на сайт</a>
-                    <button class="gray-button">Хочу такой же</button>
-                </div>
-            </div>
-            <img src="{{ case.result_screenshot.url }}" alt="">
-        </div>
-    </section>
+    
+    {% include 'home/includes/request_block.html' %}
 </div>
 
 {% endblock %}
