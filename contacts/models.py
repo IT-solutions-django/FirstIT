@@ -19,7 +19,7 @@ class CompanyInfo(models.Model):
     whatsapp = models.URLField('Ссылка на WhatsApp', max_length=100) 
     telegram = models.URLField('Ссылка на Telegram', max_length=100) 
     vk = models.URLField('Ссылка на ВК', max_length=100)
-    behance = models.URLField('Ссылка на Behance', max_length=100)
+    whatsapp = models.URLField('Ссылка на WhatsApp', max_length=100)
     github = models.URLField('Ссылка на Github', max_length=100)
 
 
