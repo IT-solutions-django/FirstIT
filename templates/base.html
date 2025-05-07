@@ -44,6 +44,58 @@
 
 </head>
 <body>
+
+    <div class="form-modal-container">
+        <div class="form-modal active">
+            <div class="form-modal-inner">
+                <div class="form-modal-close">
+                    <img src="{% static 'images/modal-close.svg' %}" alt="">
+                </div>
+
+                <div class="form-modal-heading">Оставьте заявку</div>
+
+                <p>Заполните заявку, и наш специалист свяжется с вами как можно скорее, чтобы обсудить детали и ответить на все ваши вопросы</p>
+
+                <form class="form-block" id="modalRequestForm" method="POST">
+                    {% csrf_token %}
+                    <div class="two-columned-row">
+                        <input type="text" name="{{ request_form.name.name }}" placeholder="{{ request_form.name.field.widget.attrs.placeholder }}" maxlength="{{ request_form.name.field.max_length }}" required="{{ request_form.name.field.required }}" aria-invalid="true" id="modal_{{ request_form.name.id_for_label }}">
+                        <input type="tel" name="{{ request_form.phone.name }}" placeholder="{{ request_form.phone.field.widget.attrs.placeholder }}" maxlength="{{ request_form.phone.field.max_length }}" required="{{ request_form.phone.field.required }}" aria-invalid="true" id="modal_{{ request_form.phone.id_for_label }}">
+                    </div>
+                    <textarea name="{{ request_form.message.name }}" cols="40" rows="3" placeholder="{{ request_form.message.field.widget.attrs.placeholder }}" maxlength="{{ request_form.message.field.max_length }}" id="modal_{{ request_form.message.id_for_label }}"></textarea>
+                    <div class="buttons-row">
+                        <div class="checkbox">
+                            <div class="checkbox-wrap">
+                                <input checked type="checkbox" id="efficiency" name="efficiency" required>
+                            </div>
+                            <div>
+                                <label for="efficiency" class="checkbox-label">
+                                    Согласие на обработку персональных данных
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="violet-button">Оставить заявку</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="success-modal">
+            <div class="success-modal-inner">
+                <div class="success-modal-close">
+                    <img src="{% static 'images/modal-close.svg' %}" alt="">
+                </div>
+                <img class="modal-success-image" src="{% static 'images/modal-success.svg' %}" alt="">
+                <div class="form-modal-heading">Спасибо, что доверяете нам!</div>
+                <p class="success-modal-text">Наши специалисты свяжутся с вами в ближайшее время по указанным контактным данным</p>
+                <div class="buttons-row">
+                    <a class="violet-button" href="{% url 'services:services' %}">Все услуги</a>
+                    <a class="gray-button" href="{% url 'home:home' %}">На главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <img class="left-corner-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt="">
     <img class="right-corner-gradient" src="{% static 'images/right-corner-gradient.png' %}" alt="">
     <img class="request-background" src="{% static 'images/request-background.png' %}" alt="">
@@ -199,13 +251,13 @@
 {% if is_home_page %}
 <style>
     .preloader-divider {
-        transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);;
+        transition: all 0.5s cubic-bezier(0.85, 0, 0.15, 1);;
     }
 </style>
 {% else %}
 <style>
     .preloader-divider {
-        transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);;
+        transition: all 0.5s cubic-bezier(0.85, 0, 0.15, 1);;
     }
 </style>
 {% endif %}
@@ -267,20 +319,12 @@
 
             let texts = [
                 'Farst',
-                'Ferst',
-                'Firsd',
                 'First',
-                'First ',
-                'First U',
                 'First I',
                 'First IT',
-                'First IT ',
                 'First IT C',
-                'First IT Co',
                 'First IT Com',
                 'First IT Comp',
-                'First IT Compn',
-                'First IT Compay',
                 'First IT Company'
             ];
 
@@ -318,7 +362,7 @@
 
                 document.querySelector('body').classList.add('active');
 
-            }, 900);
+            }, 800);
         }
 
         // setTimeout(() => printSmbl(onPrintComplete), 100);
@@ -337,7 +381,7 @@
         }
 
         function printSmbl(onPrintComplete) {
-            let timeout = Math.round(Math.random() * randomRange);
+            let timeout = 60;
             cont.html(cont.html() + text[p]);
             p++;
             if (p < text.length) {
@@ -436,5 +480,66 @@
         input.addEventListener("input", validatePhoneNumber);
     });
  </script>
+
+ <script defer>
+    const openModalButtons = document.querySelectorAll('.open-modal');
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelector('.form-modal-container').classList.add('active');
+        });
+    });
+    console.log(openModalButtons)
+
+    const modalRequestForm = document.getElementById("modalRequestForm"); 
+    modalRequestForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        
+        let data = new FormData(modalRequestForm);
+        let csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        
+        modalRequestForm.reset(); 
+
+        document.querySelector('.form-modal').classList.remove('active');
+        setTimeout(() => {
+            document.querySelector('.success-modal').classList.add('active');
+        }, 250);
+
+        try {
+            let s = await fetch(`/contacts/api/save-request/`, {
+                method: "POST",
+                body: data,
+                headers: {
+                    "X-CSRFToken": csrfToken
+                }
+            });
+            s.status
+        } catch (n) {
+            console.error("Ошибка запроса:", n)
+        }
+    });
+
+    const modalClose = document.querySelector('.form-modal-close');
+    console.log(modalClose)
+    modalClose.addEventListener('click', () => {
+        console.log('ага')
+        document.querySelector('.form-modal-container').classList.remove('active');
+    }); 
+
+    const successModalClose = document.querySelector('.success-modal-close');
+    successModalClose.addEventListener('click', () => {
+        document.querySelector('.form-modal-container').classList.remove('active');
+        document.querySelector('.form-modal').classList.add('active');
+        document.querySelector('.success-modal').classList.remove('active');
+    });
+
+    document.querySelector('.form-modal-container').addEventListener('mousedown', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.querySelector('.form-modal').classList.add('active');
+            document.querySelector('.success-modal').classList.remove('active');
+        }
+    });
+
+</script>
 
 </html>

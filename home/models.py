@@ -17,17 +17,14 @@ class CompanyService(models.Model):
 class Case(models.Model): 
     name = models.CharField('Название', max_length=80)
     photo = models.ImageField('Картинка', upload_to='cases/backgrounds/')
-    logo = models.ImageField('Логотип', upload_to='cases/logos/')
+    logo = models.FileField('Логотип', upload_to='cases/logos/')
 
     goal_screenshot = models.ImageField('Скришнот (блок "Цель")', upload_to='cases/screenshots/', null=True, blank=True) 
     tasks_screenshot = models.ImageField('Скришнот (блок "Задачи")', upload_to='cases/screenshots/', null=True, blank=True)
     solution_screenshot = models.ImageField('Скриншот (блок "Решение")', upload_to='cases/screenshots/', null=True, blank=True)
-    result_screenshot = models.ImageField('Скриншот (блок "Результаты")', upload_to='cases/screenshots/', null=True, blank=True)
 
     mobile_screenshot = models.ImageField('Скриншот (мобильный)', upload_to='cases/screenshots/', null=True, blank=True)
     desktop_screenshot = models.ImageField('Скриншот (десктоп)', upload_to='cases/screenshots/', null=True, blank=True) 
-    screenshot_3 = models.ImageField('Скриншот №3 (поле пока не используется)', upload_to='cases/screenshots/', null=True, blank=True)
-    screenshot_4 = models.ImageField('Скриншот №4 (поле пока не используется)', upload_to='cases/screenshots/', null=True, blank=True)
 
     description = models.TextField('Информация о клиенте', max_length=1000) 
     goal = models.TextField('Цель', max_length=800) 
