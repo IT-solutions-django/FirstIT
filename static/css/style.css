@@ -1,11 +1,11 @@
 @import 'config.css';
 
-@font-face {
+/* @font-face {
     font-family: "Saar";
     src: url("/static/fonts/SaarSPDemo.otf") format("truetype");
     font-style: normal;
     font-weight: normal;
-} 
+}  */
 @font-face {
     font-family: "Lack";
     src: url("/static/fonts/lack-regular.otf") format("truetype");
@@ -907,6 +907,14 @@ footer .nav-links p {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+
+    max-height: 690px;
+    overflow: hidden;
+
+    transition: all 1s ease;
+}
+.cases.more {
+    max-height: 2000px;
 }
 .case {
     width: calc((100% - 20px * 3) / 4); 
@@ -1897,7 +1905,8 @@ footer .column,
 }
 .case__client-info .card img {
     object-fit: contain;
-    width: 100%;
+    /* width: 100%; */
+    min-width: 250px;
     max-height: 92px;
 }
 .case__client-info .card .description {
@@ -2955,7 +2964,9 @@ footer .column,
         margin-right: 16px;
     }
 
-
+    .cases {
+        max-height: none;
+    }
 
     @media (max-width: 990px) {
         .cases {
