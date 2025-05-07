@@ -2006,6 +2006,26 @@ footer .column,
     flex-wrap: wrap;
     justify-content: center;
 }
+.why-us-wrapper {
+    display: flex;
+    gap: 15px;
+}
+.why-us-card {
+    width: calc((100% - 15px * 4) / 5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 299px;
+    text-align: center;
+    font-size: 32px;
+    font-family: var(--font-special);
+    
+}
+.why-us-card p {
+    max-width: 210px;
+}
 .stat {
     
     display: flex;
