@@ -3,7 +3,7 @@
 {% load home_filters %}
 
 {% block title %}
-1IT
+Первая IT-компания
 {% endblock %}
 
 {% block content %} 
@@ -26,6 +26,32 @@
     </section>
 
     {% include 'home/includes/company_block.html' %}
+
+    <section class="why-us-section">
+        <p class="section__heading">Почему стоит выбирать нас</p>
+        <div class="why-us-wrapper">
+            <div class="why-us-card">
+                <img src="{% static 'images/why-us-1.png' %}" alt="">
+                <p>Качество на высшем уровне</p>
+            </div>
+            <div class="why-us-card">
+                <img src="{% static 'images/why-us-2.png' %}" alt="">
+                <p>Уважаем дедлайны</p>
+            </div>
+            <div class="why-us-card">
+                <img src="{% static 'images/why-us-3.png' %}" alt="">
+                <p>Внимательно слушаем клиентов</p>
+            </div>
+            <div class="why-us-card">
+                <img src="{% static 'images/why-us-4.png' %}" alt="">
+                <p>Всегда на связи</p>
+            </div>
+            <div class="why-us-card">
+                <img src="{% static 'images/why-us-5.png' %}" alt="">
+                <p>Цены ниже чем у конкурентов</p>
+            </div>
+        </div>
+    </section>
 
     <!-- {% include 'home/includes/workers_block.html' %} -->
 

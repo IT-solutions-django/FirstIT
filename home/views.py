@@ -31,9 +31,16 @@ class HomeView(View):
         }
         return render(request, self.template_name, context)
     
+    
 
-class Show404View(View): 
+class Test404View(View): 
     template_name = '404.html' 
 
     def get(self, request): 
         return render(request, self.template_name)
+    
+
+def handler404(request, *args, **argv):
+    return render(request, '404.html', status=404)
+    
+    
