@@ -64,30 +64,12 @@
         <div class="body">
             <div class="left-column">
                 <div class="stats">
-                    <div class="stat">
-                        <p class="heading">200+</p>
-                        <p class="label">Посещений в день</p>
-                    </div>
-                    <div class="stat">
-                        <p class="heading">200+</p>
-                        <p class="label">Посещений в день</p>
-                    </div>
-                    <div class="stat">
-                        <p class="heading">200+</p>
-                        <p class="label">Посещений в день</p>
-                    </div>
-                    <div class="stat">
-                        <p class="heading">200+</p>
-                        <p class="label">Посещений в день</p>
-                    </div>
-                    <div class="stat">
-                        <p class="heading">200+</p>
-                        <p class="label">Посещений в день</p>
-                    </div>
-                    <div class="stat">
-                        <p class="heading">200+</p>
-                        <p class="label">Посещений в день</p>
-                    </div>
+                    {% for metric in case.metrics.all %}
+                        <div class="stat">
+                            <p class="heading">{{ metric.number }}</p>
+                            <p class="label">{{ metric.label }}</p>
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="buttons">
                     <a href="{{ case.link }}" class="violet-button">Перейти на сайт</a>

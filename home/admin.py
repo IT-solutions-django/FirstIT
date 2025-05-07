@@ -5,6 +5,12 @@ from .models import (
     CompanyClient,
     Technology,
 )
+from cases.models import CaseMetric
+
+
+class CaseMetricInline(admin.TabularInline):
+    model = CaseMetric
+    extra = 1
 
 
 @admin.register(CompanyService) 
@@ -16,6 +22,7 @@ class CompanyServiceAdmin(admin.ModelAdmin):
 class CaseAdmin(admin.ModelAdmin): 
     list_display = ['name', 'photo', 'logo']
     prepopulated_fields = {'slug': ('name',)}
+    inlines = [CaseMetricInline]
 
 
 @admin.register(CompanyClient) 
