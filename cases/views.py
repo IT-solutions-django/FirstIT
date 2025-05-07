@@ -22,7 +22,8 @@ class CasesView(View):
         context = {
             'cases': cases,
             'case_categories': case_categories,
-            'category': category
+            'category': int(category) if category else None, 
+            'category_name': CaseCategory.objects.filter(pk=category).first().name if category else None
         }
         return render(request, self.template_name, context)
     

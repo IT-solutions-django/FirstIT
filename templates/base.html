@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Preload fonts -->
+    <link rel="preload" href="{% static 'fonts/SaarSPDemo.otf' %}" as="font" type="font/otf" crossorigin>
+
+    <!-- Local fonts -->
+    <link rel="stylesheet" href="{% static 'fonts/saar.css' %}">
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,6 +249,17 @@
         }
         return false;
     }
+
+    // Функция для проверки загрузки шрифта
+    function waitForFont(fontName, callback) {
+        if (document.fonts.check(`1em "${fontName}"`)) {
+            callback();
+        } else {
+            document.fonts.ready.then(() => {
+                callback();
+            });
+        }
+    }
 </script>
 
 {% block script %}
@@ -268,11 +285,14 @@
         const alreadyVisited = sessionStorage.getItem('alreadyVisited');
         const isHome = isHomePage();
 
-        if (isHome) {
-            runHomePreloader();
-        } else {
-            runPreloader(isHome);
-        }
+        // Ждем загрузки шрифта Saar перед запуском прелоадера
+        waitForFont('Saar', () => {
+            if (isHome) {
+                runHomePreloader();
+            } else {
+                runPreloader(isHome);
+            }
+        });
     });
 
     function runHomePreloader() {

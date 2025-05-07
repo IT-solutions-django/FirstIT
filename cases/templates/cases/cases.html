@@ -3,7 +3,7 @@
 {% load home_filters %}
 
 {% block title %}
-1IT
+Первая IT-компания
 {% endblock %}
 
 {% block content %} 
@@ -59,7 +59,12 @@
 
           </div>
           <div id="categoryButton" class="sphere">
-            Все
+            {% if category_name %}
+                {{ category_name }}
+            {% else %}
+                Все
+                {{ category_name }}
+            {% endif %}
           </div>
         </div>
         <div class="categories-dropdown">
@@ -77,9 +82,11 @@
                 </a>
             {% endfor %}
         </div>
-        <div class="all-cases">
-            <button class="violet-button">Показать ещё</button>
-        </div>
+        {% if cases|length > 8 %}
+            <div class="all-cases">
+                <button id="showMoreCases" class="violet-button">Показать ещё</button>
+            </div>
+        {% endif %}
     </section>
 
     {% include 'home/includes/request_block.html' %}
@@ -91,9 +98,15 @@
 <script defer>
     const categoryButton = document.querySelector('#categoryButton');
     const categoriesDropdown = document.querySelector('.categories-dropdown');
+    const cases = document.querySelector('.cases');
 
     categoryButton.addEventListener('click', (element) => {
         categoriesDropdown.classList.toggle('active');
+    });
+
+    const showMoreCases = document.querySelector('#showMoreCases');
+    showMoreCases.addEventListener('click', (element) => {
+        cases.classList.add('more');
     });
 </script>
 {% endblock %}
