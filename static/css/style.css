@@ -349,13 +349,38 @@ header.header {
 footer {
     position: relative;
 }
+
 .footer-left-gradient {
     left: -400px;
     bottom: 0px;
     filter: blur(10px);
     transform: translateY(56px);
     z-index: -1;
+    clip-path: inset(0 0 0 0);
 }
+
+/* @media (min-width: 2000px) {
+    .footer-left-gradient {
+        left: calc((100vw - 1400px) / -2);
+        bottom: -170px;
+        filter: blur(10px);
+        transform: translateY(56px) scale(2);
+        z-index: -1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@media (max-width: 1999px) {
+    .footer-left-gradient {
+        left: -400px;
+        bottom: 0px;
+        filter: blur(10px);
+        transform: translateY(56px);
+        z-index: -1;
+        clip-path: inset(0 0 0 0);
+    }
+} */
+
 .footer-right-gradient {
     right: -240px;
     bottom: 0;
@@ -1458,6 +1483,7 @@ footer .nav-links p {
 }
 .request-background.active {
     bottom: 370px;
+    /* bottom: -280px; */
     left: calc((100vw - 1400px) / 2 - 450px);
     z-index: -1;
     opacity: 1;
