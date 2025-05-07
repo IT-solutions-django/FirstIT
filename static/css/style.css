@@ -2964,7 +2964,9 @@ footer .column,
         margin-right: 16px;
     }
 
-
+    .cases {
+        max-height: none;
+    }
 
     @media (max-width: 990px) {
         .cases {

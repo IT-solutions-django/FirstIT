@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View 
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 from home.models import (
     Case, 
 )
@@ -25,6 +27,11 @@ class CasesView(View):
             'category': int(category) if category else None, 
             'category_name': CaseCategory.objects.filter(pk=category).first().name if category else None
         }
+        
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            html = render_to_string('cases/includes/cases_list.html', context, request=request)
+            return JsonResponse({'html': html})
+            
         return render(request, self.template_name, context)
     
 

@@ -37,15 +37,27 @@
             flex-direction: column;
         }
     }
+
+    .cases {
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .cases.loading {
+        opacity: 0;
+    }
+
+    .category-name {
+        transition: color 0.2s ease-in-out;
+    }
 </style>
 
 <div class="container main home">
     <section class="x-container">
         <div class="categories-panel only-more-than-990">
-            <a href="{% url 'cases:cases' %}" class="category-name {% if not category %} active {% endif %}">Все</a>
+            <a href="{% url 'cases:cases' %}" class="category-name {% if not category %} active {% endif %} category-link" data-category="">Все</a>
             <div class="divider"></div>           
             {% for c in case_categories %}
-                <a href="{% url 'cases:cases' %}?category={{ c.pk }}" class="category-name {% if c.pk == category %} active {% endif %}">{{ c.name }}</a>
+                <a href="{% url 'cases:cases' %}?category={{ c.pk }}" class="category-name {% if c.pk == category %} active {% endif %} category-link" data-category="{{ c.pk }}">{{ c.name }}</a>
                 {% if not forloop.last %}
                     <div class="divider"></div>                          
                 {% endif %}
@@ -69,18 +81,14 @@
         </div>
         <div class="categories-dropdown">
             <div class="categories-dropdown-inner">
+                <a href="{% url 'cases:cases' %}" class="category-link" data-category="">Все</a>
                 {% for c in case_categories %}
-                    <a href="{% url 'cases:cases' %}?category={{ c.pk }}">{{ c.name }}</a>
+                    <a href="{% url 'cases:cases' %}?category={{ c.pk }}" class="category-link" data-category="{{ c.pk }}">{{ c.name }}</a>
                 {% endfor %}
             </div>
         </div>
         <div class="cases cases-page">
-            {% for case in cases %}
-                <a class="case" href="{{ case.get_absolute_url }}">
-                    <img class="background" src="{{ case.photo.url }}" alt="">
-                    <img class="logo" src="{{ case.white_logo.url }}" alt="">
-                </a>
-            {% endfor %}
+            {% include 'cases/includes/cases_list.html' %}
         </div>
         {% if cases|length > 8 %}
             <div class="all-cases">
@@ -99,14 +107,75 @@
     const categoryButton = document.querySelector('#categoryButton');
     const categoriesDropdown = document.querySelector('.categories-dropdown');
     const cases = document.querySelector('.cases');
+    const categoryLinks = document.querySelectorAll('.category-link');
 
     categoryButton.addEventListener('click', (element) => {
         categoriesDropdown.classList.toggle('active');
     });
 
     const showMoreCases = document.querySelector('#showMoreCases');
-    showMoreCases.addEventListener('click', (element) => {
-        cases.classList.add('more');
+    if (showMoreCases) {
+        showMoreCases.addEventListener('click', (element) => {
+            cases.classList.add('more');
+        });
+    }
+
+    // Фильтрация
+    function updateActiveCategory(category) {
+        categoryButton.textContent = category ? document.querySelector(`.category-link[data-category="${category}"]`).textContent : 'Все';
+        categoriesDropdown.classList.remove('active');
+        
+        document.querySelectorAll('.categories-panel .category-name').forEach(link => {
+            link.classList.remove('active');
+            if (link.dataset.category === category) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    async function loadCases(category) {
+        // Сначала обновляем визуальное состояние вкладок
+        updateActiveCategory(category);
+        
+        cases.classList.add('loading');
+        
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        const url = category ? `{% url 'cases:cases' %}?category=${category}` : '{% url 'cases:cases' %}';
+        
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+            const data = await response.json();
+            cases.innerHTML = data.html;
+            
+            // Перепривязываем обработчик для кнопки "Показать ещё"
+            const newShowMoreButton = document.querySelector('#showMoreCases');
+            if (newShowMoreButton) {
+                newShowMoreButton.addEventListener('click', () => {
+                    cases.classList.add('more');
+                });
+            }
+
+            // Удаляем класс loading для анимации появления
+            requestAnimationFrame(() => {
+                cases.classList.remove('loading');
+            });
+        } catch (error) {
+            console.error('Ошибка при загрузке кейсов:', error);
+            cases.classList.remove('loading');
+        }
+    }
+
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const category = link.dataset.category;
+            await loadCases(category);
+        });
     });
 </script>
 {% endblock %}
