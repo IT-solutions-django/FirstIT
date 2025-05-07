@@ -16,8 +16,9 @@ class CompanyService(models.Model):
 
 class Case(models.Model): 
     name = models.CharField('Название', max_length=80)
-    photo = models.ImageField('Картинка', upload_to='cases/backgrounds/')
+    photo = models.ImageField('Фон карточки', upload_to='cases/backgrounds/')
     logo = models.FileField('Логотип', upload_to='cases/logos/')
+    white_logo = models.FileField('Белый логотип', upload_to='cases/logos/', null=True, blank=True)
 
     goal_screenshot = models.ImageField('Скришнот (блок "Цель")', upload_to='cases/screenshots/', null=True, blank=True) 
     tasks_screenshot = models.ImageField('Скришнот (блок "Задачи")', upload_to='cases/screenshots/', null=True, blank=True)
