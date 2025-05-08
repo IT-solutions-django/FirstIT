@@ -1,48 +1,59 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-    var didScroll;    
-    var lastScrollTop = 0;    
-    var delta = 5;  
+    const header = document.querySelector('header');
+    if (!header) return;
 
-    var navbarHeight = document.querySelector('header').offsetHeight;    
+    let didScroll = false;
+    let lastScrollTop = 0;
+    const delta = 10;
+    const navbarHeight = header.offsetHeight;
+    let bodyElement;
 
-    window.addEventListener('scroll', function() {        
-        didScroll = true;    
-    });    
+    // Функция для проверки наличия body.active
+    function checkBodyActive() {
+        bodyElement = document.querySelector('body.active');
+        if (bodyElement) {
+            bodyElement.addEventListener('scroll', () => {
+                didScroll = true;
+            });
+            return true;
+        }
+        return false;
+    }
 
-    setInterval(function() {        
-        if (didScroll) {            
-            hasScrolled();            
-            didScroll = false;        
-        }    
-    }, 150);    
+    const checkInterval = setInterval(() => {
+        if (checkBodyActive()) {
+            clearInterval(checkInterval);
+        }
+    }, 100);
 
-    function hasScrolled() {        
-        var st = window.pageYOffset || document.documentElement.scrollTop;  
+    setInterval(() => {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 100);
 
-        // Проверяем, изменился ли scroll больше, чем delta
-        if(Math.abs(lastScrollTop - st) <= delta)            
-            return;        
+    function hasScrolled() {
+        if (!bodyElement) return;
+
+        const st = bodyElement.scrollTop;
+        
+        // Проверяем, изменился ли скролл больше, чем delta
+        if (Math.abs(lastScrollTop - st) <= delta) return;
 
         // Скрыть хедер при прокрутке вниз
-        if (st > lastScrollTop && st > navbarHeight){            
-            document.querySelector('header').classList.remove('nav-down');
-            document.querySelector('header').classList.add('nav-up'); 
-
-            // Закрываем мобильное меню, если оно открыто
-            const navbarNav = document.getElementById('navbarNav');
-            if (navbarNav) {
-                navbarNav.classList.remove('show');
-            }
+        if (st > lastScrollTop && st > navbarHeight) {
+            header.classList.remove('nav-down');
+            header.classList.add('nav-up');
         } 
         // Показать хедер при прокрутке вверх
-        else {            
-            if(st + window.innerHeight < document.body.scrollHeight) {                
-                document.querySelector('header').classList.remove('nav-up');
-                document.querySelector('header').classList.add('nav-down');            
-            }        
-        }     
-        lastScrollTop = st;    
+        else {
+            if (st + bodyElement.clientHeight < bodyElement.scrollHeight) {
+                header.classList.remove('nav-up');
+                header.classList.add('nav-down');
+            }
+        }
+        
+        lastScrollTop = st;
     }
 });
