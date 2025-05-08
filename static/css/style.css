@@ -2999,13 +2999,13 @@ footer .column,
     .goals-and-tasks .solution {
         padding: 0px;
         flex-direction: column;
-        padding-bottom: 84px;
+        /* padding-bottom: 84px; */
     }
     .goals-and-tasks .solution img {
         position: relative;
         right: -18%;
         transform: scale(1.4);
-        top: 14px;
+        top: 30px;
     }
     .result-section .body {
         flex-direction: column;
