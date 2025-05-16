@@ -17,7 +17,7 @@ main {
     transition: transform 1.2s ease-in-out;
 }
 main.active {
-    transform: translateY(-300px);
+    transform: translateY(-340px);
 }
 .dark-rect {
     /* display: none; */
@@ -94,7 +94,7 @@ body.active {
     position: relative;
 }
 .preloader-heading {
-    transition: transform 1.4s ease, opacity 1s;
+    transition: transform 1.4s ease, opacity 0.9s;
     color: black;
     position: relative;
     z-index: 100;

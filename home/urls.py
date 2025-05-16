@@ -6,6 +6,6 @@ app_name = 'home'
 
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('', NewHomeView.as_view(), name='home'),
     path('contacts/', include('contacts.urls', namespace='contacts')),
 ]
