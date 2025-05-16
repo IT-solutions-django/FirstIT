@@ -243,7 +243,7 @@
                     <a class="hover-violet" href="{% url 'contacts:about' %}">О компании</a>
 
                 </div>
-                <p class="privacy-policy"><span class="color-violet">Политика конфиденциальности</span></p>
+                <a target="_blank" href="{% if company_info.privacy_policy.url %}{{ company_info.privacy_policy.url }}{% endif %}" class="privacy-policy"><span class="color-violet">Политика конфиденциальности</span></a>
             </div>
         </footer>
     </div>

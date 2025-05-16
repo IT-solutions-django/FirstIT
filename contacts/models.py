@@ -22,6 +22,8 @@ class CompanyInfo(models.Model):
     whatsapp = models.URLField('Ссылка на WhatsApp', max_length=100)
     github = models.URLField('Ссылка на Github', max_length=100)
 
+    privacy_policy = models.FileField('Политика конфиденциальности', upload_to='privacy-policy/', null=True, blank=True)
+
 
     class Meta:
         verbose_name = 'Информация о компании'
