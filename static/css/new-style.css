@@ -14,7 +14,7 @@ main {
     max-height: 100vh;
 
     transform: translateY(50vh);
-    transition: transform 1.4s ease-in-out;
+    transition: transform 1.2s ease-in-out;
 }
 main.active {
     transform: translateY(-300px);
@@ -94,14 +94,21 @@ body.active {
     position: relative;
 }
 .preloader-heading {
-    transition: transform 1.5s ease, opacity 0s;
+    transition: transform 1.4s ease, opacity 1s;
     color: black;
     position: relative;
     z-index: 100;
 }
+/* .preloader-heading.first {
+    transition: transform 1.5s ease, opacity 1s;
+} */
 .preloader-heading.transparent {
     opacity: 0;
     z-index: 90;
+}
+.preloader-heading.first.invisible {
+    /* display: contents; */
+    color: transparent;
 }
 .preloader-heading.dublicat {
     transform: translateY(-210px);
