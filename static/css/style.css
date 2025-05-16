@@ -1872,11 +1872,11 @@ footer .column,
     top: 171px;
 }
 .categories-panel {
-    padding: 22.49px 71.46px; 
+    padding: 22.49px 20.46px; 
     background-color: rgb(45, 46, 51, 0.4);
     border-radius: 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .categories-panel .divider {
     height: 22px;
