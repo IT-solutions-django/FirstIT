@@ -31,6 +31,27 @@ class HomeView(View):
         }
         return render(request, self.template_name, context)
     
+
+class NewHomeView(View):
+    template_name = 'home/new-home.html'
+
+    def get(self, request):
+        request_form = RequestForm(request.GET)
+        services = CompanyService.objects.all()
+        cases = Case.objects.all()
+        clients = CompanyClient.objects.all()
+        technologies = Technology.objects.all()
+        workers = Worker.objects.all()
+        context = {
+            'request_form': request_form,
+            'services': services,
+            'cases': cases,
+            'clients': clients, 
+            'technologies': technologies,
+            'workers': workers,
+            'is_home_page': True,
+        }
+        return render(request, self.template_name, context)
     
 
 class Test404View(View): 
@@ -42,5 +63,4 @@ class Test404View(View):
 
 def handler404(request, *args, **argv):
     return render(request, '404.html', status=404)
-    
     

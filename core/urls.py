@@ -21,7 +21,7 @@ from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from django.urls import re_path
 from django.views.static import serve
-from home.views import Test404View
+from home.views import Test404View, NewHomeView
 
 
 urlpatterns = [
@@ -31,6 +31,8 @@ urlpatterns = [
     path('services/', include('services.urls', namespace='services')),
     path('cases/', include('cases.urls', namespace='cases')),
     path('contacts/', include('contacts.urls', namespace='contacts')),
+
+    path('new-home/', NewHomeView.as_view(), name='new-home'),
 
     path('404/', Test404View.as_view(), name='not-found'),
 ]
