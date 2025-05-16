@@ -213,7 +213,7 @@
                 <p>Новости</p>
                 <p>Контакты</p>
             </div>
-            <p><span class="color-violet">Политика конфиденциальности</span></p>
+            <a target="_blank" href="{% if company_info.privacy_policy.url %}{{ company_info.privacy_policy.url }}{% endif %}"><span class="color-violet">Политика конфиденциальности</span></a>
         </div>
     </footer>
 </body>

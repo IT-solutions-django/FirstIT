@@ -2235,6 +2235,13 @@ footer .column,
     cursor: pointer;
 }
 
+.privacy-policy {
+    transition: all 0.3s ease;
+}
+.privacy-policy:hover {
+    opacity: 0.9;
+}
+
 
 .success-modal {
     position: absolute;
