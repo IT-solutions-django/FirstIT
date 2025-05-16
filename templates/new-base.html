@@ -1,0 +1,600 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Preload fonts -->
+    <link rel="preload" href="{% static 'fonts/SaarSPDemo.otf' %}" as="font" type="font/otf" crossorigin>
+
+    <!-- Local fonts -->
+    <link rel="stylesheet" href="{% static 'fonts/saar.css' %}">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Local files -->
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new-style.css' %}">
+    <script src="{% static 'js/header.js' %}"></script>
+
+    <!-- Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/imask/Imask.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/imask/Imask.min.js' %}"></script>
+
+    <!-- Logo -->
+    <link rel=icon type=image/png sizes=16x16 href="{% static 'images/favicon.svg' %}">
+
+    <!-- Меню-бургер -->
+    <script src="{% static 'js/menuBurger.js' %}"></script>
+    
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name=description content="{% block description %}{% endblock %}">
+    <meta property=og:title content="{% block meta_title %}{% endblock %}">
+    <meta property=og:description content="{% block meta_description %}{% endblock %}">
+    
+    {% block head %}
+    {% endblock %}
+
+</head>
+<body>
+
+    <div class="form-modal-container">
+        <div class="form-modal active">
+            <div class="form-modal-inner">
+                <div class="form-modal-close">
+                    <img src="{% static 'images/modal-close.svg' %}" alt="">
+                </div>
+
+                <div class="form-modal-heading">Оставьте заявку</div>
+
+                <p>Заполните заявку, и наш специалист свяжется с вами как можно скорее, чтобы обсудить детали и ответить на все ваши вопросы</p>
+
+                <form class="form-block" id="modalRequestForm" method="POST">
+                    {% csrf_token %}
+                    <div class="two-columned-row">
+                        <input type="text" name="{{ request_form.name.name }}" placeholder="{{ request_form.name.field.widget.attrs.placeholder }}" maxlength="{{ request_form.name.field.max_length }}" required="{{ request_form.name.field.required }}" aria-invalid="true" id="modal_{{ request_form.name.id_for_label }}">
+                        <input type="tel" name="{{ request_form.phone.name }}" placeholder="{{ request_form.phone.field.widget.attrs.placeholder }}" maxlength="{{ request_form.phone.field.max_length }}" required="{{ request_form.phone.field.required }}" aria-invalid="true" id="modal_{{ request_form.phone.id_for_label }}">
+                    </div>
+                    <textarea name="{{ request_form.message.name }}" cols="40" rows="3" placeholder="{{ request_form.message.field.widget.attrs.placeholder }}" maxlength="{{ request_form.message.field.max_length }}" id="modal_{{ request_form.message.id_for_label }}"></textarea>
+                    <div class="buttons-row">
+                        <div class="checkbox">
+                            <div class="checkbox-wrap">
+                                <input checked type="checkbox" id="efficiency" name="efficiency" required>
+                            </div>
+                            <div>
+                                <label for="efficiency" class="checkbox-label">
+                                    Согласие на обработку персональных данных
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="violet-button">Оставить заявку</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="success-modal">
+            <div class="success-modal-inner">
+                <div class="success-modal-close">
+                    <img src="{% static 'images/modal-close.svg' %}" alt="">
+                </div>
+                <img class="modal-success-image" src="{% static 'images/modal-success.svg' %}" alt="">
+                <div class="form-modal-heading">Спасибо, что доверяете нам!</div>
+                <p class="success-modal-text">Наши специалисты свяжутся с вами в ближайшее время по указанным контактным данным</p>
+                <div class="buttons-row">
+                    <a class="violet-button" href="{% url 'services:services' %}">Все услуги</a>
+                    <a class="gray-button" href="{% url 'home:home' %}">На главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="left-corner-gradient" src="{% static 'images/left-corner-gradient.png' %}" alt="">
+    <img class="right-corner-gradient" src="{% static 'images/right-corner-gradient.png' %}" alt="">
+    <img class="request-background" src="{% static 'images/request-background.png' %}" alt="">
+    {% if page_heading == 'Услуги' %}
+        <img class="right-glowing" src="{% static 'images/right-glowing.png' %}" alt="">
+    {% endif %}
+    <header class="header">
+        <div class="container">
+            <div class="header__row">
+                <div class="header__left-part">
+                    <div class="header__logo">
+                        <a href="{% url 'home:home' %}" class="header__logo-link">
+                            <img src="{% static 'images/logo.svg' %}" alt="Логотип">
+                        </a>
+                    </div>
+                </div>
+                <div class="header__nav">
+                    <div class="header__menu">
+                        <div class="header__menu-link">
+                            <a class="red-hover" href="{% url 'services:services' %}">Услуги</a>
+                        </div>
+                        <div class="header__menu-link">
+                            <a class="red-hover" href="{% url 'cases:cases' %}">Кейсы</a>
+                        </div>
+                        <div class="header__menu-link">
+                            <a class="red-hover" href="{% url 'contacts:about' %}">Компания</a>
+                        </div>
+                    </div>
+                    <div class="header__right-part header__desktop">
+                        <div class="header__contacts">
+                            <a target="_blank" href="tel:{{ company_info.phone }}" class="header__phone">
+                                {{ company_info.phone }}
+                            </a>
+                            <div class="header__contacts-social">
+                                <a target="_blank" href="{{ company_info.whatsapp }}" class="header__contact-link">
+                                    <img src="{% static 'images/whatsapp.svg' %}" alt="Логотип WhatsApp">
+                                </a>
+                                <a target="_blank" href="{{ company_info.telegram }}" class="header__contact-link">
+                                    <img src="{% static 'images/telegram.svg' %}" alt="Логотип Telegram">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__hamburger header__mobile">
+                        <img src="{% static 'images/burger-icon.svg' %}" alt="">
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="header__mobile-menu">
+        <div class="header__mobile-menu-links">
+            <a href="{% url 'home:home' %}">Главная</a>
+            <a href="{% url 'services:services' %}">Услуги</a>
+            <a href="{% url 'cases:cases' %}">Кейсы</a>
+            <a href="{% url 'contacts:about' %}">О компании</a>
+        </div>   
+        <div class="header__mobile-menu-contacts">
+            <div class="header__contacts">
+                <a target="_blank" href="tel:{{ company_info.phone }}" class="header__phone">
+                    {{ company_info.phone }}
+                </a>
+                <div class="header__contacts-social">
+                    <a target="_blank" href="{{ company_info.whatsapp }}" class="header__contact-link">
+                        <img src="{% static 'images/whatsapp.svg' %}" alt="Логотип WhatsApp">
+                    </a>
+                    <a target="_blank" href="{{ company_info.telegram }}" class="header__contact-link">
+                        <img src="{% static 'images/telegram.svg' %}" alt="Логотип Telegram">
+                    </a>
+                </div>
+            </div>
+            <div class="email">
+                {{ company_info.email }}
+            </div>
+        </div>           
+    </div>
+
+    <div class="waves-container">
+        <div class="waves-container-inner">
+            <div class="wave-1">
+            </div>
+        </div>
+    </div>
+
+    <div class="preloader container">
+
+        <div class="preloader-parts">
+            <div class="preloader-heading top first">
+                <p></p>
+            </div>
+
+            <div class="preloader-heading top dublicat">
+                <p></p>
+            </div>
+
+            <main class="site-content">
+                <div class="main-border-top"></div>
+
+                <div class="dark-rect"></div>
+
+                {% block content %}
+                {% endblock content %}
+
+                <div class="bottom-divider"></div>
+            </main>
+            <div class="preloader-bottom-divider">
+
+            </div>
+
+        </div>
+        <footer class="container">
+            <img class="footer-left-gradient" src="{% static 'images/test-3.png' %}" alt="">
+            <img class="footer-right-gradient" src="{% static 'images/test-4.png' %}" alt="">
+            <div class="upper">
+                <a href="" class="logo-link">
+                    <img src="{% static 'images/logo.svg' %}" alt="">
+                </a>
+                <div class="links">
+                    <div class="column">
+                        <img src="{% static 'images/address-icon.svg' %}" alt="">
+                        <a target="_blank">{{ company_info.address }}</a>
+                    </div>
+                    <div class="column">
+                        <img src="{% static 'images/phone-icon.svg' %}" alt="">
+                        <a target="_blank" href="tel:{{ company_info.phone }}">{{ company_info.phone }}</a>
+                    </div>
+                    <div class="column">
+                        <img src="{% static 'images/dog.svg' %}" alt="">
+                        <a target="_blank" href="mailto:{{ company_info.phone }}">{{ company_info.email }}</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="lower">
+                <div class="nav-links">
+                    <a class="hover-violet" href="{% url 'services:services' %}">Услуги</a>
+                    <a class="hover-violet" href="{% url 'cases:cases' %}">Кейсы</a>
+                    <a class="hover-violet" href="{% url 'contacts:about' %}">О компании</a>
+
+                </div>
+                <p class="privacy-policy"><span class="color-violet">Политика конфиденциальности</span></p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+</body>
+
+<script>
+    function isHomePage() {
+        return (window.location.pathname === "/" || window.location.pathname === "/new-home/");
+    }
+    
+    function isMobile() {
+        if (window.innerWidth < 990) {
+            return true;
+        }
+        return false;
+    }
+
+    // Функция для проверки загрузки шрифта
+    function waitForFont(fontName, callback) {
+        if (document.fonts.check(`1em "${fontName}"`)) {
+            callback();
+        } else {
+            document.fonts.ready.then(() => {
+                callback();
+            });
+        }
+    }
+</script>
+
+{% block script %}
+{% endblock script %}
+
+{% if is_home_page %}
+<style>
+    .preloader-divider {
+        transition: all 0.5s cubic-bezier(0.85, 0, 0.15, 1);;
+    }
+</style>
+{% else %}
+<style>
+    .preloader-divider {
+        transition: all 0.5s cubic-bezier(0.85, 0, 0.15, 1);;
+    }
+</style>
+{% endif %}
+
+
+<script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+        const alreadyVisited = sessionStorage.getItem('alreadyVisited');
+        const isHome = isHomePage();
+
+        // Ждем загрузки шрифта Saar перед запуском прелоадера
+        waitForFont('Saar', () => {
+            if (isHome) {
+                runHomePreloader();
+            } else {
+                runPreloader(isHome);
+            }
+        });
+    });
+
+    function runHomePreloader() {
+        let cont = $('.preloader-heading'),
+            text = '{{ page_heading }}',
+            p = 0;
+        text = 'Fands.Agency';
+        cont.html("fgency");
+
+        randomRange = 120;
+
+        let fixedInterval = 150;
+
+        function printSmbl(onPrintComplete) {
+            let timeout = fixedInterval;
+            
+            cont.html(cont.html() + text[p]);
+            if (p < text.length - 1) {
+                setTimeout(() => printSmbl(onPrintComplete), timeout);
+                p++;
+            } else {
+                setTimeout(onPrintComplete, 400);
+            }
+        }
+
+        function printHeading(onPrintComplete) {
+            let timeout = fixedInterval;
+            let currentIndex = 0;
+            // let texts = [
+            //     'Fgency', 
+            //     'Faency', 
+            //     'Fanncy',
+            //     'Fandcy',
+            //     'Fanncy',
+            //     'Fandsy',
+            //     'Fands.',
+            //     'Fands.A',
+            //     'Fands.Ag',
+            //     'Fands.Age',
+            //     'Fands.Agen',
+            //     'Fands.Agenc',
+            //     'Fands.Agency',
+            // ]
+
+            let texts = [
+                'Farst',
+                'First',
+                'First I',
+                'First IT',
+                'First IT C',
+                'First IT Com',
+                'First IT Comp',
+                'First IT Company'
+            ];
+
+
+            function runNextStep() {
+                if (currentIndex >= texts.length) {
+                    setTimeout(
+                        onPrintComplete, 
+                        350
+                    )
+                }
+
+                cont.text(texts[currentIndex]);
+                currentIndex++;
+
+                setTimeout(runNextStep, fixedInterval);
+            }
+
+            runNextStep();
+
+        }
+
+        function onPrintComplete() {
+            document.querySelector('.preloader-heading')?.classList.add('decrease-z-index');
+            document.querySelector('.preloader-heading.dublicat')?.classList.add('increase-z-index');
+
+
+            document.querySelector('.preloader-divider')?.classList.add('active');
+            document.querySelector('.wave-1')?.classList.add('active');
+
+
+            
+            setTimeout(() => {
+                // document.querySelector('.wave-1')?.classList.add('up');
+
+                // document.querySelector('.preloader-heading.dublicat')?.classList.add('zero-z-index');
+
+                setTimeout(() => {
+
+                    document.querySelector('header')?.classList.add('active');
+                    document.querySelector('footer')?.classList.add('active');
+                    document.querySelector('.preloader')?.classList.add('active');
+                    document.querySelector('main')?.classList.add('active');
+
+                    setTimeout(() => {
+                        document.querySelector('.preloader-heading.dublicat')?.classList.add('zero-z-index');
+                        document.querySelector('.preloader-heading.first')?.classList.add('transparent');
+                        document.querySelector('.preloader-heading.dublicat')?.classList.add('scale');
+
+                        document.querySelector('.left-corner-gradient')?.classList.add('visible');
+                        document.querySelector('.right-corner-gradient')?.classList.add('visible');
+
+                        setTimeout(() => {
+                            document.querySelector('body').classList.add('active');
+                            document.querySelector('.preloader-bottom-divider')?.classList.add('active');
+                        }, 1200);
+
+                    }, 300);
+
+                }, 200); 
+            }, 200);
+        }
+
+        setTimeout(() => printHeading(onPrintComplete), 150);
+    }
+
+    function runPreloader(isHomePage = false) {
+        let cont = $('.preloader-heading'),
+            text = '{{ page_heading }}',
+            p = 0;
+        cont.html("");
+
+        let randomRange = 160;
+        if (isHomePage) {
+            randomRange = 200;
+        }
+
+        function printSmbl(onPrintComplete) {
+            let timeout = 60;
+            cont.html(cont.html() + text[p]);
+            p++;
+            if (p < text.length) {
+                setTimeout(() => printSmbl(onPrintComplete), timeout);
+            } else {
+                setTimeout(onPrintComplete, 400);
+            }
+        }
+
+        function onPrintComplete() {
+            document.querySelector('.preloader-divider')?.classList.add('active');
+
+            let timeout = 900;
+            if (isHomePage) {
+                timeout = 1700
+            }
+
+            setTimeout(() => {
+                document.querySelector('.preloader-heading.top')?.classList.add('active');
+                document.querySelector('.preloader-heading.bottom')?.classList.add('active');
+                document.querySelector('.preloader-bottom-divider')?.classList.add('active');
+
+                document.querySelector('header')?.classList.add('active');
+                document.querySelector('footer')?.classList.add('active');
+                document.querySelector('.preloader')?.classList.add('active');
+                document.querySelector('main')?.classList.add('active');
+
+                document.querySelector('body').classList.add('active');
+
+                if (!isHomePage) {
+                    if ('{{ page_heading }}' != 'Компания') {
+                        setTimeout(() => {
+                            document.querySelector('.request-background').classList.add('active');
+                            document.querySelector('.right-glowing')?.classList.add('active');
+                        }, 500);
+                    }
+                }
+            }, timeout);
+        }
+
+        setTimeout(() => printSmbl(onPrintComplete), 800);
+    }
+</script>
+
+
+<!-- Для тестов -->
+<!-- <script>
+    document.querySelector('.preloader-heading.top').classList.add('active');
+    document.querySelector('.preloader-heading.bottom').classList.add('active');
+    document.querySelector('.preloader-bottom-divider').classList.add('active');
+    document.querySelector('body').classList.add('active');
+
+    document.querySelector('header').classList.add('active');
+    document.querySelector('footer').classList.add('active');
+    document.querySelector('.preloader').classList.add('active');
+    document.querySelector('main').classList.add('active');
+</script> -->
+
+
+<!-- Отправка формы ОС -->
+ <script defer>
+    const feedbackForm = document.getElementById("requestForm"); 
+    console.log(feedbackForm)
+    feedbackForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        let data = new FormData(feedbackForm);
+        let csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        
+        feedbackForm.reset();
+
+        try {
+            let s = await fetch(`contacts/api/save-request/`, {
+            method: "POST",
+            body: data,
+            headers: {
+                "X-CSRFToken": csrfToken
+            }
+        });
+            s.status
+        } catch (n) {
+            console.error("Ошибка запроса:", n)
+        }
+    });
+ </script>
+
+ <script defer>
+    document.querySelectorAll('input[type="tel"]').forEach(input => {
+        let phoneMask = IMask(input, { mask: "+{7} (000) 000-00-00" });
+
+        function validatePhoneNumber() {
+            let t = input.value.replace(/\D/g, "");
+            return t.length < 11 ? (input.setCustomValidity("Необходимо минимум 11 цифр"), !1) : (input.setCustomValidity(""), !0);
+        }
+
+        input.addEventListener("input", validatePhoneNumber);
+    });
+ </script>
+
+ <script defer>
+    const openModalButtons = document.querySelectorAll('.open-modal');
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelector('.form-modal-container').classList.add('active');
+        });
+    });
+    console.log(openModalButtons)
+
+    const modalRequestForm = document.getElementById("modalRequestForm"); 
+    modalRequestForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        
+        let data = new FormData(modalRequestForm);
+        let csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        
+        modalRequestForm.reset(); 
+
+        document.querySelector('.form-modal').classList.remove('active');
+        setTimeout(() => {
+            document.querySelector('.success-modal').classList.add('active');
+        }, 250);
+
+        try {
+            let s = await fetch(`/contacts/api/save-request/`, {
+                method: "POST",
+                body: data,
+                headers: {
+                    "X-CSRFToken": csrfToken
+                }
+            });
+            s.status
+        } catch (n) {
+            console.error("Ошибка запроса:", n)
+        }
+    });
+
+    const modalClose = document.querySelector('.form-modal-close');
+    console.log(modalClose)
+    modalClose.addEventListener('click', () => {
+        console.log('ага')
+        document.querySelector('.form-modal-container').classList.remove('active');
+    }); 
+
+    const successModalClose = document.querySelector('.success-modal-close');
+    successModalClose.addEventListener('click', () => {
+        document.querySelector('.form-modal-container').classList.remove('active');
+        document.querySelector('.form-modal').classList.add('active');
+        document.querySelector('.success-modal').classList.remove('active');
+    });
+
+    document.querySelector('.form-modal-container').addEventListener('mousedown', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.querySelector('.form-modal').classList.add('active');
+            document.querySelector('.success-modal').classList.remove('active');
+        }
+    });
+
+</script>
+
+</html>

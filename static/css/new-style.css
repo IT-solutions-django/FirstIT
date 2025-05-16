@@ -1,0 +1,142 @@
+
+.preloader-heading.top.active {
+    max-height: fit-content;
+    overflow: hidden;
+    display: flex;
+}
+
+main {
+    max-height: fit-content;
+    position: relative;
+
+    overflow: visible;
+    background-color: #010314;
+    max-height: 100vh;
+
+    transform: translateY(50vh);
+    transition: transform 1.4s ease-in-out;
+}
+main.active {
+    transform: translateY(-300px);
+}
+.dark-rect {
+    /* display: none; */
+    top: 1.2px;
+    position: absolute;
+    width: 200vw;
+    background-color: #010314;
+    height: 300px;
+    left: -50vw
+}
+.main-border-top {
+    position: absolute;
+    height: 1px;
+    transform: translateX(-100vh); 
+    background-color: white;
+    width: 200vw;
+}
+
+.waves-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+    margin-top: 0;
+}
+.waves-container-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+
+body {
+    background-color: white;
+}
+body.active {
+    background-color: #010314;
+}
+
+.wave-1 { 
+    position: absolute;
+    bottom: 0;
+    max-height: 0;
+    left: 0;
+    width: 200vw;
+    height: 100vh; 
+    max-height: 0px;
+    z-index: 1;
+    background-color: #010314;
+
+    overflow: hidden;
+
+    transform: translateX(-50vw);
+
+    transition: all 0.8s ease-in-out;
+}
+.wave-1.active {
+    max-height: 100vh;
+    z-index: -1;
+    /* transform:  translateX(-50vw) translateY(0px); */
+}
+.wave-1.up {
+    top: 0; 
+    max-height: 0px;
+}
+
+.body {
+    position: relative;
+}
+.preloader-heading {
+    transition: transform 1.5s ease, opacity 0s;
+    color: black;
+    position: relative;
+    z-index: 100;
+}
+.preloader-heading.transparent {
+    opacity: 0;
+    z-index: 90;
+}
+.preloader-heading.dublicat {
+    transform: translateY(-210px);
+
+    /* position: absolute; */
+
+    /* top: 210px; */
+    z-index: 0;
+    color: white;
+}
+.preloader-heading.scale {
+    transform: scale(1.28);
+}
+.preloader-heading.dublicat.scale {
+    transform: scale(1.28) translateY(-210px);
+}
+
+.preloader-heading.decrease-z-index {
+    z-index: 90;
+}
+.preloader-heading.dublicat.increase-z-index {
+    z-index: 110;
+}
+.preloader-heading.dublicat.zero-z-index {
+    z-index: 0;
+}
+.right-corner-gradient,
+.left-corner-gradient {
+    transition: all 0.3s ease;
+    opacity: 0 !important;
+}
+.right-corner-gradient.visible,
+.left-corner-gradient.visible {
+    opacity: 1 !important;
+    z-index: 1;
+}
+
+

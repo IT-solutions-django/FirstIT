@@ -1,0 +1,584 @@
+{% extends 'new-base.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block title %}
+Первая IT-компания
+{% endblock %}
+
+{% block content %} 
+<!-- Gsap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<!-- Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<div class="container main home">
+    <section class="x-container">
+        <p class="section__heading">Услуги</p>
+        <div class="home__services">
+            <div class="tabs only-more-than-990">
+                {% for service in services %}
+                    <div class="tab {% if forloop.counter == 1 %}active{% endif %}" onclick="changeTab({{ forloop.counter }})" data-tab-id="{{ forloop.counter }}">
+                        <p class="tab-name">{{ service.name }}</p>
+                        <p class="tab-number">0{{ forloop.counter }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="tabs-content swiper">
+                <div class="swiper-wrapper">
+                    {% for service in services %}
+                        <div class="tab-content swiper-slide {% if forloop.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" style="{% if forloop.counter == 1%}opacity: 1; transform: translateX(0);{% endif %}">
+                            <div class="upper">
+                                <div class="home__service-header">
+                                    <p class="home__service-heading">{{ service.heading|highlight_digits }}</p>
+                                    <p class="home__service-label">{{ service.label }}</p>
+                                </div>
+                                <div class="description">
+                                    {{ service.text|linebreaks }}
+                                </div>
+                                <div class="home__service-buttons">
+                                    <a class="violet-button open-modal">Заказать услугу</a>
+                                    <a class="gray-button" href="{% url 'services:services' %}">Все услуги</a>
+                                </div>
+                            </div>
+                            <div class="lower only-more-than-990">
+                                {% for service in services %}
+                                    <p class="{% if forloop.counter == 1 %}active{% endif %}" data-tab-id="{{ forloop.counter }}" onclick="changeTab('{{ forloop.counter }}')">0{{ forloop.counter }}</p>
+                                {% endfor %}
+                            </div>
+                            {% if forloop.counter == 1 %}
+                                <img class="image" src="{% static 'images/home-service-1.png' %}" alt="">
+                            {% endif %}
+                            {% if forloop.counter == 2 %}
+                                <img class="image" src="{% static 'images/home-service-2.png' %}" alt="">
+                            {% endif %}
+                            {% if forloop.counter == 3 %}
+                                <img class="image" src="{% static 'images/internet-shops.png' %}" alt="">
+                            {% endif %}
+                            {% if forloop.counter == 4 %}
+                                <img class="image seo-optimization" src="{% static 'images/seo.png' %}" alt="">
+                            {% endif %}
+                            {% if forloop.counter == 5 %}
+                                <img class="image" src="{% static 'images/context-ad.png' %}" alt="">
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    
+    <section class="slides">
+        <div class="rounded-slides swiper">
+            <img class="black-ellipsis" src="{% static 'images/black-ellipsis.svg' %}" alt="">
+            <div class="rect-slides swiper-wrapper">
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Услуги</p>
+                    <hr>
+                    <p class="rect-slide-text">Мы предлагаем широкий спектр услуг, у нас вы найдете, подходящие решения</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Время</p>
+                    <hr>
+                    <p class="rect-slide-text">Позвоните нам и сэкономьте свое время, мы подберем для вас идеальное решение</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Помощь</p>
+                    <hr>
+                    <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Услуги</p>
+                    <hr>
+                    <p class="rect-slide-text">Мы предлагаем широкий спектр услуг, у нас вы найдете, подходящие решения</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Время</p>
+                    <hr>
+                    <p class="rect-slide-text">Позвоните нам и сэкономьте свое время, мы подберем для вас идеальное решение</p>
+                </div>
+                <div class="rect-slide swiper-slide">
+                    <p class="rect-slide-heading">Помощь</p>
+                    <hr>
+                    <p class="rect-slide-text">Поможем избежать навязанных решений, с нами вы получите только то, что вам нужно</p>
+                </div>
+            </div>
+            <img class="down-black-ellipsis" src="{% static 'images/down-black-ellipsis.svg' %}" alt="">
+            <div class="swiper-button-prev">
+                <img src="{% static 'images/left-black-arrow.svg' %}" alt="">
+            </div>
+            <div class="swiper-button-next">
+                <img src="{% static 'images/right-black-arrow.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="round-slider">
+            <div class="round-slider__image-wrapper">
+                <img class="round-slider__image" src="{% static 'images/services-round-slider.png' %}" alt="">
+            </div>
+            <div class="round-slider__request-button">
+                <a class="violet-button open-modal">
+                    Оставить заявку
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <p class="section__heading">Кейсы</p>
+        <div class="cases-container swiper">
+            <div class="cases swiper-wrapper">
+                {% for case in cases %}
+                    <a href="{{ case.get_absolute_url }}" class="case swiper-slide">
+                       
+                            <img class="background" src="{{ case.photo.url }}" alt="">
+                            <img class="logo" src="{{ case.white_logo.url }}" alt="">
+                        
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="all-cases">
+            <a href="{% url 'cases:cases' %}" class="violet-button">Все кейсы</a>
+        </div>
+    </section>
+
+    <section>
+        <p class="section__heading">Клиенты</p>
+        <div class="clients-description">
+            <p>Компании абсолютно из разных сфер, которые доверили нам автоматизацию своего бизнеса и повысили конверсию клиентовмабсолютно из разных сфер</p>
+        </div>
+        <div class="clients-cards swiper">
+            <div class="swiper-wrapper">
+                {% for client in clients %}
+                    <div class="client-card swiper-slide">
+                        <img src="{{ client.logo.url }}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% include 'home/includes/company_block.html' %}
+
+    {% include 'home/includes/technologies_block.html' %}
+
+    {% include 'home/includes/request_block.html' %}
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- Услуги -->
+<script defer>
+    if (!isMobile()) {
+        let activeIndex = 1;
+
+        function changeTab(index) {
+            console.log(index)
+            if (index === activeIndex) return;
+
+            const current = document.querySelector(`.home__services .tab-content[data-tab-id="${activeIndex}"]`);
+            const next = document.querySelector(`.home__services .tab-content[data-tab-id="${index}"]`);
+
+            console.log(current)
+            console.log(next)
+            
+            if (!next) return;
+
+            // Останавливаем текущие анимации
+            gsap.killTweensOf(current);
+            gsap.killTweensOf(next);
+
+            document.querySelectorAll('.home__services .tab').forEach(tab => 
+                tab.classList.toggle('active', tab.dataset.tabId == index)
+            );
+
+            
+            document.querySelectorAll('.home__services .tab-content').forEach(element => {
+                element.classList.remove('active');
+            });
+            next.classList.toggle('active');
+
+            next.querySelectorAll(".home__services .lower p").forEach(p => 
+                p.classList.toggle('active', p.dataset.tabId == index)
+            );
+
+            gsap.to(current, { 
+                opacity: 0, 
+                duration: 0.5,
+                onComplete: () => {
+                    current.style.display = "none";
+                }
+            });
+
+            next.style.display = "flex";
+            gsap.fromTo(next, 
+                { opacity: 0 }, 
+                { 
+                    opacity: 1, 
+                    duration: 0.5
+                }
+            );
+
+            activeIndex = index;
+        }
+    } else {
+        var swiper = new Swiper(".tabs-content.swiper", {
+            spaceBetween: 32,
+            pagination: {
+                el: ".home__services .swiper-pagination",
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + (index + 1) + "</span>";
+                },
+            },
+        });
+    }
+</script>
+
+
+<!-- Услуги, круговой слайдер -->
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const mobile = isMobile();
+
+    let rotationAngle = 0; 
+    let currentSlideIndex = 1;
+
+    let prevText = '';
+
+    const mainSLider = new Swiper('.rounded-slides.swiper', {
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    mousewheel: {
+        sensitivity: 1
+    },
+    touchRatio: 1.5,
+    threshold: 10,
+    allowTouchMove: true,
+    preventClicks: false,
+    preventInteractionOnTransition: false,
+    on: !mobile ? {
+        slideNextTransitionStart: function () {
+            currentSlideIndex++;
+            const angle = getRotationAngleNext();
+            rotationAngle -= angle; 
+            rotateImage();
+        },
+        slidePrevTransitionStart: function () {
+            currentSlideIndex--;
+            const angle = getRotationAnglePrev();
+            rotationAngle += angle; 
+            rotateImage();
+        }
+    } :
+    {
+        slideChange: function () {
+            const activeSlide = this.slides[this.activeIndex];
+
+            const activeTextElement = activeSlide.querySelector('.rect-slide-heading');
+            if (!activeTextElement) return;
+
+            const activeText = activeTextElement.textContent.trim();
+            let angle = 0;
+
+            console.log(`Прошлый текст: ${prevText}`)
+            console.log('Текущий текст:', activeText);
+
+            if (activeText === 'Время') {
+                if (prevText === 'Услуги') {
+                    angle = -56;
+                } else if (prevText === 'Помощь') {
+                    angle = 64;
+                } else {
+                    angle = 0;
+                }
+            } else if (activeText === 'Помощь') {
+                if (prevText === 'Время') {
+                    angle = -57.6;
+                } else if (prevText === 'Услуги') {
+                    angle = 64;
+                } else {
+                    angle = 0;
+                }
+            } else if (activeText === 'Услуги') {
+                if (prevText === 'Помощь') {
+                    angle = -64.5;
+                } else if (prevText === 'Время') {
+                    angle = 64;
+                } 
+            }
+
+
+            console.log(angle)
+            rotationAngle += angle;
+
+            rotateImage();
+
+            prevText = activeText;
+        }
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1.2,
+            spaceBetween: 24,
+            loop: true,
+            centeredSlides: true,
+            coverflowEffect: false, 
+            effect: 'slide',
+            initialSlide: 1,
+        },
+        990: {
+            slidesPerView: 3,
+            spaceBetween: 53,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 300,
+                modifier: 1,
+                slideShadows: true,
+            }, 
+            initialSlide: 0,
+        }
+    }
+});
+
+    function rotateImage() {
+        const image = document.querySelector('.round-slider__image');
+        if (image) {
+            image.style.transform = `rotate(${rotationAngle}deg)`;
+        }
+    }
+    function getRotationAnglePrev() {
+        const currentSlide = document.querySelector('.rect-slide.swiper-slide.swiper-slide-active');
+        const activeText = currentSlide.querySelector('.rect-slide-heading').textContent;
+        let angle = 60;
+        console.log(activeText)
+        
+        console.log(currentSlideIndex % 6)
+        if (activeText == 'Время') {
+            if (currentSlideIndex % 6 < 3) {
+                angle = 68.5;
+            } else {
+                angle = 64.5;
+            }
+        } else if (activeText == 'Помощь') {
+            angle = 56;
+        } else if (activeText == 'Услуги') {
+            angle = 57.6;
+        }
+        console.log(angle);
+        return angle;
+    }
+    function getRotationAngleNext() {
+        const currentSlide = document.querySelector('.rect-slide.swiper-slide.swiper-slide-next');
+        const activeText = currentSlide.querySelector('.rect-slide-heading').textContent;
+        let angle = 60;
+        console.log(activeText)
+        
+        if (activeText == 'Время') {
+            angle = 56;
+        } else if (activeText == 'Помощь') {
+            angle = 57.6;
+        } else if (activeText == 'Услуги') {
+            if (currentSlideIndex % 6 < 3) {
+                angle = 64.5;
+            } else {
+                angle = 68.5;
+            }
+        }
+        console.log(angle);
+        return angle;
+    }
+});
+
+
+
+</script>
+
+
+<script defer>
+    if (isMobile()) {
+        console.log('Кейсы')
+        var swiper = new Swiper(".cases-container.swiper", {
+            spaceBetween: 20, 
+            touchRatio: 0.8, 
+            slidesOffsetBefore: 16, 
+            slidesOffsetAfter: 16, 
+            freeMode: true,
+            simulateTouch: true, 
+            slidesPerView : 'auto',
+            // freeMode: true,
+        });
+    }
+</script>
+
+
+<!-- Клиенты -->
+<script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+    const clientsSection = document.querySelector('.clients-cards');
+    
+    if (!clientsSection) return; 
+
+    var swiper = new Swiper('.clients-cards', {
+        slidesPerView: 8,
+        spaceBetween: 30,
+        centeredSlides: true,
+        grid: {
+            rows: 2,
+        },
+        breakpoints: {
+        0: {
+            slidesPerView: 3.5,
+            initialSlide: 0, 
+            centeredSlides: true,
+            initialSlide: 1,
+            spaceBetween: 16,
+            grid: {
+                rows: 2
+            },
+        },
+        576: {
+            slidesPerView: 3,
+            spaceBetween: 16,
+            grid: {
+                rows: 2
+            }
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            grid: {
+                rows: 2
+            }
+        },
+        992: {
+            slidesPerView: 6,
+            spaceBetween: 24,
+            grid: {
+                rows: 2
+            }
+        },
+        1200: {
+            slidesPerView: 8,
+            spaceBetween: 30,
+            centeredSlides: false,
+            initialSlide: 0,
+            grid: {
+                rows: 2
+            }
+        }
+    },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: true,
+        },
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const tl = gsap.timeline({
+                    defaults: { ease: "power3.out" }
+                });
+                clientsSection.classList.add('active');
+                tl.from('.clients-cards', {
+                    x: '100vw',
+                    duration: 1, 
+                    opacity: 1,
+                })
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2, 
+        rootMargin: '0px 0px -50px 0px' 
+    });
+
+    observer.observe(clientsSection);
+});
+</script>
+
+<!-- Отзывы -->
+<script defer>
+    const reviews = new Swiper('.reviews.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 4,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }, 
+        pagination: {
+            el: '.reviews-pagination.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
+
+
+<!-- Сотрудники -->
+ <script defer>
+    if (isMobile()) {
+        const reviews = new Swiper('.section__workers .swiper', {
+            slidesPerView: 1.6,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }, 
+            freeMode: true,
+        });
+    }
+ </script>
+
+<!-- Технологии -->
+<script defer>
+document.addEventListener("DOMContentLoaded", () => {
+    const techCards = document.querySelectorAll(".technology-small-card");
+    const techNameHeading = document.querySelector(".technology-name-heading");
+    const techDescription = document.querySelector(".technology-description");
+
+    const techData = {
+        {% for tech in technologies %}
+            "{{ tech.name|escapejs }}": "{{ tech.description|escapejs }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    };
+
+    techCards.forEach(card => {
+        card.addEventListener("click", () => {
+            const techName = card.querySelector(".technology-name").textContent.trim();
+
+            techCards.forEach((card) => {
+                card.classList.remove('active');
+            });
+
+            card.classList.add('active');
+
+            if (techData[techName]) {
+                gsap.to([techNameHeading, techDescription], {
+                    opacity: 0,
+                    duration: 0.3,
+                    onComplete: () => {
+                        techNameHeading.textContent = techName;
+                        techDescription.textContent = techData[techName];
+                        gsap.to([techNameHeading, techDescription], {
+                            opacity: 1,
+                            duration: 0.3
+                        });
+                    }
+                });
+            }
+        });
+    });
+});
+
+</script>
+{% endblock %}
